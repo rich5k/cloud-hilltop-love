@@ -49,6 +49,7 @@
         </div>
     </div>
 
+    <script src="../js/hammer.min.js"></script>
     <script src="../js/swipe_page.js"></script>
 </body>
 </html>
