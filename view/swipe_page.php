@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/swipe_page.css">
 </head>
 <body>
+    <div class="top-buttons">
+        <button id="message"><i class="fa-solid fa-message"></i></button>
+    </div>
     <div class="tinder">
         <div class="tinder--status">
             <i class="fa fa-remove"></i>

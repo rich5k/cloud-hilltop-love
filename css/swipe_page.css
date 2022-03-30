@@ -140,3 +140,32 @@ body {
 .fa-remove {
   color: #CDD6DD;
 }
+
+.fa-message{
+  color: green;
+}
+
+.top-buttons {
+  flex: 0 0 100px;
+  text-align: end;
+  padding: 20px;
+}
+
+.top-buttons button {
+  border-radius: 50%;
+  line-height: 60px;
+  width: 60px;
+  border: 0;
+  background: #FFFFFF;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.top-buttons button:focus {
+  outline: 0;
+}
+
+.top-buttons i{
+  font-size: 32px;
+  vertical-align: middle;
+}
