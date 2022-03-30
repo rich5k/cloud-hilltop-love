@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="top-buttons">
+        <button id="profile"><i class="fa-solid fa-user"></i></button>
         <button id="message"><i class="fa-solid fa-message"></i></button>
     </div>
     <div class="tinder">
