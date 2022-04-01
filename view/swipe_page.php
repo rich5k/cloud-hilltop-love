@@ -10,8 +10,8 @@
 </head>
 <body>
     <div class="top-buttons">
-        <button id="profile" onclick="location.href = './messages';"><i class="fa-solid fa-user"></i></button>
-        <button id="message" onclick="location.href = './profile';"><i class="fa-solid fa-message"></i></button>
+        <button id="profile" onclick="location.href = './messages.php';"><i class="fa-solid fa-user"></i></button>
+        <button id="message" onclick="location.href = './profile.php';"><i class="fa-solid fa-message"></i></button>
     </div>
     <div class="tinder">
         <div class="tinder--status">
