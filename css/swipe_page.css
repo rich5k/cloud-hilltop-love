@@ -137,16 +137,32 @@ body {
   color: #FFACE4;
 }
 
+#love:hover{
+  cursor: pointer;
+}
+
 .fa-remove {
   color: #CDD6DD;
+}
+
+#nope:hover{
+  cursor: pointer;
 }
 
 .fa-message{
   color: green;
 }
 
+#message:hover{
+  cursor: pointer;
+}
+
 .fa-user{
   color: lightblue;
+}
+
+#profile:hover{
+  cursor: pointer;
 }
 
 .top-buttons {

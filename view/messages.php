@@ -9,7 +9,9 @@
 <body>
     <div class="grid grid-cols-3">
         <div class="contacts">
-
+            <div class="profile">
+                
+            </div>
         </div>
         <div class="current-chat">
 
