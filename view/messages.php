@@ -7,6 +7,16 @@
     <title>Your Messages</title>
 </head>
 <body>
-    
+    <div class="grid grid-cols-3">
+        <div class="contacts">
+
+        </div>
+        <div class="current-chat">
+
+        </div>
+        <div class="contact-info">
+            
+        </div>
+    </div>
 </body>
 </html>
