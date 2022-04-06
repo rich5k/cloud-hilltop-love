@@ -20,7 +20,7 @@
             </div>
             <div class="matches-page">
                 <div class="caption">
-                    Discover New Matches
+                   <button><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button> Discover New Matches
                 </div>
                 <div class="micro-caption">
                     Start swiping to start connecting with new people

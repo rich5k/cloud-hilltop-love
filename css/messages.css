@@ -232,3 +232,16 @@ h2 {
   background-color: #EDF4F5
 }
 
+.caption button{
+  color: #e73c7e;
+  border-color: #e73c7e;
+  background: white;
+  border-radius: 20px;
+}
+
+.card1{
+  transform: rotate(45deg);
+}
+.card2{
+  border-color: white;
+}
