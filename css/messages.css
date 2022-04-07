@@ -280,3 +280,15 @@ h2 {
   height: 60px;
   margin-left: 5%;
 }
+
+input{
+  border: none;
+  width: 90%;
+}
+
+.send-text{
+  border-radius: 20%;
+  color: white;
+  border: none;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}

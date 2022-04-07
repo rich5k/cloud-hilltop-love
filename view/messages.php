@@ -118,22 +118,24 @@
                 Alex Liked you on 09/12/16
                 <button class="close-chat"></button>
             </div>
-            <div class="chat-window">
+            <div class="chat-window ">
                 <div class="your-text">
-                    <span class="datetime">
+                    <!-- <span class="datetime">
                         Sept 12, 2016 11:11PM
-                    </span>
-                    <div class="your-chat-bubble">
+                    </span> -->
+                    <p class="your-chat-bubble from-me">
                         Hey, we matched!
-                    </div>
-                    <span class="text-status">Sent</span>
+                    </p>
+                    <!-- <span class="text-status">Sent</span> -->
                 </div>
-                <div class="your-match-text">
-                    Hey, Jess. How are you?
+                <div class="your-match-text ">
+                    <p class="from-them">
+                        Hey, Jess. How are you?
+                    </p>
                 </div>
                 <form action="">
-                    <input type="text">
-                    <button type="submit">SEND</button>
+                    <input type="text" placeholder="Type a message..." required>
+                    <button class="send-text" type="submit">SEND</button>
                 </form>
             </div>
         </div>
