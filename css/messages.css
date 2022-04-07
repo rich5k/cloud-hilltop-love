@@ -236,7 +236,9 @@ h2 {
   color: #e73c7e;
   border-color: #e73c7e;
   background: white;
-  border-radius: 20px;
+  border-radius: 32px;
+  width: 50px;
+  height: 50px;
 }
 
 .card1{
@@ -244,4 +246,37 @@ h2 {
 }
 .card2{
   border-color: white;
+  position: absolute;
+  left: 55px;
+  top: 77px;
+  transform: rotate(73deg);
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+}
+
+.matches-page{
+  padding: 20px;
+}
+
+.micro-caption{
+  display: inline-block;
+}
+
+.contacts{
+  padding-right: 0;
+}
+
+.messages-page{
+  margin-right: 0;
+}
+
+.messages-title{
+  font-weight: 700;
+  color: #e73c7e;
+}
+
+.message img{
+  border-radius: 50%;
+  width:60px;
+  height: 60px;
+  margin-left: 5%
 }

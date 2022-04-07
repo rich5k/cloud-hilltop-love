@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/messages.css">
 </head>
 <body>
-    <div class="row">
+    <div class="row messages-page">
         <div class="contacts col-lg-4">
             <div class="profile-banner py-2 px-4">
                 <img src="../images/homepic6.jpg" alt="profile-pic"> <strong>My Profile</strong>
@@ -21,9 +21,9 @@
             <div class="matches-page">
                 <div class="caption">
                    <button><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button> Discover New Matches
-                </div>
-                <div class="micro-caption">
-                    Start swiping to start connecting with new people
+                   <span class="micro-caption">
+                       Start swiping to start connecting with new people
+                   </span>
                 </div>
             </div>
             <div class="messages">
@@ -31,7 +31,14 @@
                     Messages
                 </div>
                 <div class="message">
-
+                    <img src="../images/person2.jpg" alt="match">
+                    <span class="match-name">
+                        Anna
+                    </span>
+                    <br>
+                    <span class="latest-text">
+                        New Match! Say Hello 👋 
+                    </span>
                 </div>
             </div>
         </div>
