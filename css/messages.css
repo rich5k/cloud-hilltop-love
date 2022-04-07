@@ -232,7 +232,7 @@ h2 {
   background-color: #EDF4F5
 }
 
-.caption button{
+.matches-page button{
   color: #e73c7e;
   border-color: #e73c7e;
   background: white;
@@ -247,8 +247,8 @@ h2 {
 .card2{
   border-color: white;
   position: absolute;
-  left: 55px;
-  top: 77px;
+  left: 50%;
+  top: 26%;
   transform: rotate(73deg);
   text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
 }
@@ -278,5 +278,5 @@ h2 {
   border-radius: 50%;
   width:60px;
   height: 60px;
-  margin-left: 5%
+  margin-left: 5%;
 }

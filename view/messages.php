@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/messages.css">
 </head>
+
 <body>
     <div class="row messages-page">
         <div class="contacts col-lg-4">
@@ -18,27 +20,94 @@
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </span>
             </div>
-            <div class="matches-page">
-                <div class="caption">
-                   <button><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button> Discover New Matches
-                   <span class="micro-caption">
-                       Start swiping to start connecting with new people
-                   </span>
+            <div class="matches-page row">
+                <div class="col-lg-2">
+                    <button><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button>
+
+                </div>
+                <div class="col-lg-10">
+                    <div class="caption">
+                        Discover New Matches
+                    </div>
+                    <span class="micro-caption">
+                        Start swiping to start connecting with new people
+                    </span>
+
                 </div>
             </div>
-            <div class="messages">
+            <div class="messages px-4 py-2">
                 <div class="messages-title">
                     Messages
                 </div>
-                <div class="message">
-                    <img src="../images/person2.jpg" alt="match">
-                    <span class="match-name">
-                        Anna
-                    </span>
-                    <br>
-                    <span class="latest-text">
-                        New Match! Say Hello 👋 
-                    </span>
+                <div class="message row my-4">
+                    <div class="col-lg-2">
+                        <img src="../images/person2.jpg" alt="match">
+                    </div>
+                    <div class="col-lg-10">
+                        <span class="match-name">
+                            Anna
+                        </span>
+                        <br>
+                        <span class="latest-text">
+                            New Match! Say Hello 👋
+                        </span>
+                    </div>
+                </div>
+                <div class="message row my-4">
+                    <div class="col-lg-2">
+                        <img src="../images/person3.jpg" alt="match">
+                    </div>
+                    <div class="col-lg-10">
+                        <span class="match-name">
+                            Anna
+                        </span>
+                        <br>
+                        <span class="latest-text">
+                            New Match! Say Hello 👋
+                        </span>
+                    </div>
+                </div>
+                <div class="message row my-4">
+                    <div class="col-lg-2">
+                        <img src="../images/person4.jpg" alt="match">
+                    </div>
+                    <div class="col-lg-10">
+                        <span class="match-name">
+                            Anna
+                        </span>
+                        <br>
+                        <span class="latest-text">
+                            New Match! Say Hello 👋
+                        </span>
+                    </div>
+                </div>
+                <div class="message row my-4">
+                    <div class="col-lg-2">
+                        <img src="../images/person5.jpg" alt="match">
+                    </div>
+                    <div class="col-lg-10">
+                        <span class="match-name">
+                            Anna
+                        </span>
+                        <br>
+                        <span class="latest-text">
+                            New Match! Say Hello 👋
+                        </span>
+                    </div>
+                </div>
+                <div class="message row my-4">
+                    <div class="col-lg-2">
+                        <img src="../images/person6.jpg" alt="match">
+                    </div>
+                    <div class="col-lg-10">
+                        <span class="match-name">
+                            Anna
+                        </span>
+                        <br>
+                        <span class="latest-text">
+                            New Match! Say Hello 👋
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,7 +148,7 @@
             <br><br>
             <div class="your-match-bio">
                 <p>
-                    I'm a libra, but not sure what it means. I like 
+                    I'm a libra, but not sure what it means. I like
                     leftover pizza better than the fresh stuff. I love
                     to travel. I have a cat named pickles, if he likes
                     you I probably will too.
@@ -88,4 +157,5 @@
         </div>
     </div>
 </body>
+
 </html>
