@@ -22,7 +22,7 @@
             </div>
             <div class="matches-page row">
                 <div class="col-lg-2">
-                    <button><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button>
+                    <button onclick="location.href = './swipe_page.php';"><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button>
 
                 </div>
                 <div class="col-lg-10">
@@ -112,11 +112,17 @@
             </div>
         </div>
         <div class="current-chat col-lg-6">
-            <div class="chat-header">
-                <img src="../images/person1.jpg" alt="Alex's pic">
-                CONVERSATION WITH ALEX <br>
-                Alex Liked you on 09/12/16
-                <button class="close-chat"></button>
+            <div class="chat-header row">
+                <div class="col-lg-1">
+                    <img src="../images/person1.jpg" alt="Alex's pic">
+                </div>
+                <div class="col-lg-10">
+                    CONVERSATION WITH ALEX <br>
+                    Alex Liked you on 09/12/16
+                </div>
+                <div class="col-lg-1">
+                    <button class="close-chat"><i class="fa-solid fa-xmark"></i></button>
+                </div>
             </div>
             <div class="chat-window ">
                 <div class="your-text">
