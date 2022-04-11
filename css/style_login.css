@@ -7,21 +7,22 @@
 html {
 	height: 100%;
 	/*Image only BG fallback*/
-	
+
 	/*background = gradient + image pattern combo*/
-	background: 
-		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+	background-color: #0C0D0F;
 }
 
 body {
 	font-family: montserrat, arial, verdana;
+	min-height: 100%;
 }
 /*form styles*/
 #msform {
-	width: 400px;
-	margin: 50px auto;
+	width: 701.9px;
+	margin: 50px 55px;
 	text-align: center;
 	position: relative;
+
 }
 #msform fieldset {
 	background: white;
@@ -30,11 +31,16 @@ body {
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
 	box-sizing: border-box;
-	width: 80%;
+	max-width: 100%;
+	min-width: 40%;
 	margin: 0 10%;
-	
+	margin-right: 50px;
+
 	/*stacking fieldsets above each other*/
 	position: relative;
+
+
+
 }
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
@@ -55,7 +61,7 @@ body {
 /*buttons*/
 #msform .action-button {
 	width: 100px;
-	background: #27AE60;
+	background: #C3E5EF;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -65,13 +71,13 @@ body {
 	margin: 10px 5px;
 }
 #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #C3E5EF;
 }
 /*headings*/
 .fs-title {
 	font-size: 15px;
 	text-transform: uppercase;
-	color: #2C3E50;
+	color: #C3E5EF;
 	margin-bottom: 10px;
 }
 .fs-subtitle {
@@ -121,12 +127,12 @@ body {
 }
 #progressbar li:first-child:after {
 	/*connector not needed before the first step*/
-	content: none; 
+	content: none;
 }
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-	background: #27AE60;
+	background:#C3E5EF;
 	color: white;
 }
 
@@ -157,6 +163,19 @@ background-color: var(--select-arrow);
 clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 justify-self: end;
 }
+#msform fieldset label{
+	text-align: left;
+}
 
+.text{
+	
+	width: 300px;
+	height: 29.31px;
+	
 
-
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
