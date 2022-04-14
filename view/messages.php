@@ -164,8 +164,7 @@
             </div>
         </div>
     </div>
-    <script src="https://localhost:44323/javascript/weavy.jquery.js"></script>
-    <script src="../js/weavy.js"></script>
+
 </body>
 
 </html>
