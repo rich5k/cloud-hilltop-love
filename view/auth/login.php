@@ -14,7 +14,7 @@
 
       <div class="form_side" style="width:65%">
         <form name="registration" id="msform" action="" method='post' style="" style="margin-left:auto margin-right:auto">
-          <!-- progressbar -->
+          <!-- progressbar here -->
           <fieldset>
             <h2 class="fs-title" style="color:">Sign In</h2>
             <label for="email">Email</label>
