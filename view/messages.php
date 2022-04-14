@@ -164,7 +164,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
 </body>
 
 </html>
