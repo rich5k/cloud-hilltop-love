@@ -10,34 +10,38 @@ $(".next").click(function(){
 	next_fs = $(this).parent().next();
 	
 	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-	
-	//show the next fieldset
-	next_fs.show(); 
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale current_fs down to 80%
-			scale = 1 - (1 - now) * 0.2;
-			//2. bring next_fs from the right(50%)
-			left = (now * 50)+"%";
-			//3. increase opacity of next_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
-			next_fs.css({'left': left, 'opacity': opacity});
-		}, 
-		duration: 800, 
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-		}, 
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
+
+		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+		//show the next fieldset
+		next_fs.show();
+		//hide the current fieldset with style
+		current_fs.animate({opacity: 0}, {
+			step: function(now, mx) {
+				//as the opacity of current_fs reduces to 0 - stored in "now"
+				//1. scale current_fs down to 80%
+				scale = 1 - (1 - now) * 0.2;
+				//2. bring next_fs from the right(50%)
+				left = (now * 50)+"%";
+				//3. increase opacity of next_fs to 1 as it moves in
+				opacity = 1 - now;
+				current_fs.css({
+					'transform': 'scale('+scale+')',
+					'position': 'absolute'
+				});
+				next_fs.css({'left': left, 'opacity': opacity});
+			},
+			duration: 800,
+			complete: function(){
+				current_fs.hide();
+				animating = false;
+			},
+			//this comes from the custom easing plugin
+			easing: 'easeInOutBack'
+		});
+
+
+
 });
 
 $(".previous").click(function(){
@@ -75,12 +79,12 @@ $(".previous").click(function(){
 	});
 });
 
-$(".submit").click(function(){
+/*$(".submit").click(function(){
 	return false;
-})
+})*/
 
 // Wait for the DOM to be ready
-$(function() {
+/*$(function() {
 	// Initialize form validation on the registration form.
 	// It has the name attribute "registration"
 	$("form[name='registration']").validate({
@@ -119,5 +123,64 @@ $(function() {
 	  }
 	});
   });
+*/
+
+
+function validate1stInputs() {
+	let email = document.getElementById('email');
+	let password = document.getElementById('password');
+	let passcheck = document.getElementById('passcheck')
+	let cpas = document.getElementById('cpass');
+	let cpasscheck = document.getElementById('cpasscheck');
+	let cemalcheck_check=document.getElementById('cemailcheck');
+	var determiner=true;
+	// regex emails
+	regex_email="^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+
+	if (regex_email.test(email.value())){
+		cemalcheck_check.style.visibility="visible";
+		determiner=false;
+	}else{
+		cemalcheck_check.style.visibility="hidden";
+	}
+	if(password.value===" "){
+		passcheck.style.visibility="visible"
+		determiner=false;
+	}else{
+		passcheck.style.visibility="hidden"
+	}
+	if(password.value!=cpas.value){
+		cpasscheck.style.visibility="visible"
+		determiner=false;
+	}else{
+		cpasscheck.style.visibility="hidden"
+	}
+
+
+	//personal details section
+
+	let firstname = document.getElementById('fname');
+	let lastname = document.getElementById('lname');
+	let phoneNumber = document.getElementById('phone');
+
+	let username = document.getElementById('username');
+	let gender = document.getElementById('gender');
+	let sexual_orient = document.getElementById('sexual_orient');
+
+
+
+
+	//social media
+
+	let twitter=document.getElementById('twitter');
+	let facebool=document.getElementById('facebook');
+
+	let pictures_details=document.getElementById('filefield');
+
+
+	return false;
+
+
+}
 
 

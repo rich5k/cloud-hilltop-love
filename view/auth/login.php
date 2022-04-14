@@ -21,10 +21,10 @@
             <input type="text" name="email" placeholder="Email" required />
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password" required />
-            <h5 id="passcheck" style="color: red;">
+            <h5 id="passcheck" style="color: red;" hidden>
               **Please Fill the password
             </h5>
-            
+
             <span>
               <input type="button" name="next" class="next action-button" value="Login">
               <p class='text'>Dont have an Account? <a href="./register.php">Sign Up here</a></p>

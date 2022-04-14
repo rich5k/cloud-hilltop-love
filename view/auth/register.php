@@ -13,7 +13,7 @@
     <div class="program_container" style="display:flex;">
 
       <div class="form_side" style="width:65%">
-        <form name="registration" id="msform" action="" method='post' style="">
+        <form name="registration" id="msform" action="../../controllers/call_registerUser.php" method='post' style="">
           <!-- progressbar -->
           <ul id="progressbar">
             <li class="active">Account Setup</li>
@@ -24,15 +24,18 @@
           <fieldset>
             <h2 class="fs-title">Sign UP</h2>
             <label for="email" style="text-align:left">Email</label>
-            <input type="text" name="email" placeholder="Email" required />
-            <label for="password">Password</label>
+            <input type="text" id="email" name="email" placeholder="Email" required />
+              <h5 id="cemailcheck" style="color: red;" hidden>
+                  **email should be like the ashesi email
+              </h5>
+              <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password" required />
-            <h5 id="passcheck" style="color: red;">
+            <h5 id="passcheck" style="color: red;" hidden>
               **Please Fill the password
             </h5>
             <label for="cpass">Confirm Password</label>
-            <input type="password" name="cpass" id="cpass" placeholder="Confirm Password" required />
-            <h5 id="cpasscheck" style="color: red;">
+            <input type="password"  name="cpass" id="cpass" placeholder="Confirm Password" required />
+            <h5 id="cpasscheck" style="color: red;" hidden>
                 **Password didn't match
             </h5>
             <input type="button" name="next" class="next action-button" value="Next" />
@@ -43,15 +46,15 @@
           <fieldset>
             <h2 class="fs-title">Personal Details</h2>
             <label for="fname">Firstname</label>
-            <input type="text" name="fname" placeholder="First Name" required />
-            <label for="lname">Lastname</label>
-            <input type="text" name="lname" placeholder="Last Name" required />
+            <input type="text" id="fname" name="fname" placeholder="First Name" required />
+              <label for="lname">Lastname</label>
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required />
             <label for="phone">phone number</label>
-            <input type="text" name="phone" placeholder="Phone" required />
+            <input type="text" id="phone" name="phone" placeholder="Phone" required />
             <label for="dob">Date of  Birth</label>
-            <input type="date" name="dob" placeholder="Date of Birth" required />
+            <input type="date" id="dob" name="dob" placeholder="Date of Birth" required />
             <label for="username">Username</label>
-            <input type="text" name="username" placeholder = "Username" required>
+            <input type="text" id="username" name="username" placeholder = "Username" required>
 
             <div class="select" style="width:200px">
               <label for="gender">Gender</label>
@@ -79,10 +82,10 @@
 
           <fieldset>
             <h2 class="fs-title">Social Profiles</h2>
-            <label for="twitter">Twiter handel</label>
-            <input type="text" name="twitter" placeholder="Twitter" />
-            <label for="facebook">Facebook handel</label>
-            <input type="text" name="facebook" placeholder="Instagram" />
+            <label for="twitter">Twiter handle</label>
+            <input type="text" id="twitter" name="twitter" placeholder="Twitter" />
+            <label for="facebook">Intagram handle</label>
+            <input type="text" id="facebook" name="facebook" placeholder="Instagram" />
 
             <div id="pictures_here">
               <label for="filefield">Pictures</label>
@@ -91,7 +94,7 @@
 
 
             <input type="button" name="previous" class="previous action-button" value="Previous" />
-            <input type="submit" name="submit" class="submit action-button" value="Submit" />
+            <input type="submit" name="submit" class="submit action-button" value="Submit"  onclick="validate1stInputs()"/>
           </fieldset>
 
 
