@@ -2,16 +2,16 @@
 require("../db/db_class.php");
 
 class User extends Connection{
-    function adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $major, $phone, $role){
-        return $this->query("INSERT INTO User(fname, lname, user_email, user_password, gender, twitter, instagram, class, major, user_number, user_role)
+    function adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone, $role){
+        return $this->query("INSERT INTO User(fname, lname, user_email, user_password, gender, twitter, instagram, class, sexual_orientation, major, user_number, user_role)
                                                     values ('$fname', '$lname', '$email', '$pass','$gender' ,'$class', '$major',
                                                     '$phone','$role')");
     }
 
-    function edituser($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $major, $phone ){
+    function edituser($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone ){
         return $this->query("UPDATE User
                             SET fname = '$fname', lname='$lname', user_email = '$email', user_password= '$pass', gender='$gender', class = '$class',
-                            major='$major', user_number = '$phone' , twitter = '$twitter', instagram = '$instagram'
+                            major='$major', user_number = '$phone' , twitter = '$twitter', instagram = '$instagram', sexual_orientation = '$sexual_orientation'
                             WHERE Uid = '$id'");
     }
 
