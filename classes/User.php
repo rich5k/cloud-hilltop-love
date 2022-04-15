@@ -1,5 +1,5 @@
 <?php
-require("../db/db_class.php");
+require("../settings/db_class.php");
 
 class User extends Connection{
     function adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone, $role){
