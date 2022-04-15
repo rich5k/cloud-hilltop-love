@@ -1,3 +1,13 @@
+<?php
+require(dirname(__FILE__).'/settings/core.php');
+require(dirname(__FILE__).'/controllers/UserController.php');
+
+$user = get_user_controller($_SESSION['Uid']);
+$partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +55,16 @@
             <h3>Demo card 5</h3>
             <p>This is a demo for Tinder like swipe cards</p>
             </div>
+            <?php //foreach($partners as $partner) {
+                //echo '<div class="tinder--card">
+                //<img src="../images/'.$partner['image_1'].'">
+                //<h3>'.$partner['username'].'</h3>
+                //<p>This is a demo for Tinder like swipe cards</p>
+                //</div>';
+            //}
+                ?>
+                
+    
         </div>
 
         <div class="tinder--buttons">

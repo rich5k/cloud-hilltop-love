@@ -31,20 +31,27 @@ function find_user_id($email) {
     return $user_instance->findID($email);
 }
 
-// function find_user_role($email){
-//     $user_instance = new user();
-//     return $user_instance->find_role($email);
-// }
+function add_image_controller($image_1, $image_2, $image_3, $image_4, $image_5){
+    $user_instance = new user();
+    return $user_instance->addImage($image_1, $image_2, $image_3, $image_4, $image_5);
+}
 
-// function get_user_controller($id){
-//     $user_instance = new user();
-//     return $user_instance->get_user($id);
-// }
+function update_image_controller($image_1, $image_2, $image_3, $image_4, $image_5){
+    $user_instance = new User();
+    return $user_instance->updateImage($image_1, $image_2, $image_3, $image_4, $image_5);
+}
 
-// function get_user_service_controller($id) {
-//     $user_instance = new user();
-//     return $user_instance->get_user_service($id);
-// }
+function get_user_controller($id){
+    $user_instance = new user();
+    return $user_instance->getUser($id);
+}
+
+function get_partner_controller($id, $gender, $sexual_orientation){
+    $user_instance = new User();
+    return $user_instance->getPartner($id, $gender, $sexual_orientation);
+}
+
+
 
 
 
