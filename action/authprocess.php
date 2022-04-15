@@ -10,12 +10,13 @@ if(isset($_POST['register'])){
     $pass = $_POST['password'];
     $username = $_POST['username'];
     $class = $_POST['class'];
-    $confirmPass = $_POST['confirmPassword'];
+    $confirmPass = $_POST['cpass'];
+    $dob = $_POST['dob'];
     $instagram = $_POST['instagram'];
     $twitter = $_POST['twitter'];
     $gender = $_POST['gender'];
     $sexual_orientation = $_POST['sexual_orientation'];
-    $contact = $_POST['contact'];
+    $contact = $_POST['phone'];
     $major = $_POST['major'];
     $role = 1;
 
@@ -38,17 +39,14 @@ if(isset($_POST['register'])){
         // echo $country ."<br>";
         // echo $city ."<br>";
         // echo $contact ."<br>";
-        // var_dump(add_customer_controller($fname, $lname, $address, $email, $pass, $country, $city, $contact, $role));
+        // var_dump(add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $contact, $role));
         // die;
-        if( add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $contact, $role) !== true) 
-            header('Location: register.php?error=Data could not be inserted');
-        $_SESSION['user_id'] = find_user_id($email);
-            header("Location: ..view/auth/login.php");
+        if( add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $contact, $role) !== true) 
+            header('Location: ../view/auth/register.php?error=Data could not be inserted');
+        //$_SESSION['Uid'] = find_user_id($email);
+        header("Location: ../view/auth/login.php");
         
     }   
-   
-    
-    
 }
 die("ERROR: Could not execute");
 
@@ -62,31 +60,25 @@ if(isset($_POST['login'])){
     // die();
 
     if(isset($result)){
-        if(password_verify($password, $result['customer_password'])){
-        
-            $customer = find_user_controller($email);
-            $_SESSION['user_id'] = $customer['customer_id'];
-            $role = $customer['user_role'];
+        if(password_verify($password, $result['user_password'])){
+            $user = find_user_controller($email);
+            $_SESSION['Uid'] = $user['Uid'];
+            $role = $user['user_role'];
             //var_dump($role);
             if($role === '1' ){
                 header("Location: ../index.php");
             }else if ($role === '0'){
                 $_SESSION['user_role'] = 0;
-                
-                header("Location: ../admin/index.php?role=".$role);
+                header("Location: ../admin/index.php");
             }
-
-            
-
         }else{
             $_SESSION['errors'] = 'Email or password is incorrect'; 
             
-            header("Location: login.php");
+            header("Location: ../view/auth/login.php");
         }
     }else{
-        
         $_SESSION['errors'] = 'Email or password is incorrect'; 
-        header("Location: login.php");
+        header("Location: ../view/auth/login.php");
     }
 
 }

@@ -67,11 +67,10 @@
             <div class="select" style="width:200px">
               <label for="sexual_orient"> Sexual Orientation</label>
               <select name="sexual_orient" id="sexual_orient" required>
-                <option value="1">Hecterosexual</option>
+                <option value="1">Heterosexual</option>
                 <option value="2">Bisexual</option>
                 <option value="3">Homosexual</option>
                 <option value="4">Pansexual</option>
-                <option value="5">Pansexual</option>
               </select>
             </div>
 
@@ -85,7 +84,7 @@
             <label for="twitter">Twiter handle</label>
             <input type="text" id="twitter" name="twitter" placeholder="Twitter" />
             <label for="facebook">Intagram handle</label>
-            <input type="text" id="facebook" name="facebook" placeholder="Instagram" />
+            <input type="text" id="facebook" name="instagram" placeholder="Instagram" />
 
             <div id="pictures_here">
               <label for="filefield">Pictures</label>

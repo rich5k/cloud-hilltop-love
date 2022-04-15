@@ -1,9 +1,9 @@
 <?php
-require("../controllers/User.php");
+require("../classes/User.php");
 
-function add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone, $role){
+function add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone, $role){
     $user_instance = new user();
-    return $user_instance->adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone, $role);
+    return $user_instance->adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone, $role);
 }
 
 function delete_user_controller($id){
@@ -11,9 +11,9 @@ function delete_user_controller($id){
     return $user_instance->deleteuser($id);
 }
 
-function update_user_controller($id,$fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone){
+function update_user_controller($id,$fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone){
     $user_instance = new user();
-    return $user_instance->edituser($id,$fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone);
+    return $user_instance->edituser($id,$fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone);
 }
 
 function find_user_controller($email){
