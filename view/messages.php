@@ -111,8 +111,8 @@
                 </div>
             </div>
         </div>
-        <div id="weavy-chat" class="current-chat col-lg-6">
-            <!-- <div class="chat-header row">
+        <div class="current-chat col-lg-6">
+            <div class="chat-header row">
                 <div class="col-lg-1">
                     <img src="../images/person1.jpg" alt="Alex's pic">
                 </div>
@@ -143,7 +143,7 @@
                     <input type="text" placeholder="Type a message..." required>
                     <button class="send-text" type="submit">SEND</button>
                 </form>
-            </div> -->
+            </div>
         </div>
         <div class="contact-info col-lg-2">
             <div class="your-match-pics">
