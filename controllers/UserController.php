@@ -36,9 +36,9 @@ function add_image_controller($image_1, $image_2, $image_3, $image_4, $image_5){
     return $user_instance->addImage($image_1, $image_2, $image_3, $image_4, $image_5);
 }
 
-function update_image_controller($image_1, $image_2, $image_3, $image_4, $image_5){
+function update_image_controller($id,$image_1, $image_2, $image_3, $image_4, $image_5){
     $user_instance = new User();
-    return $user_instance->updateImage($image_1, $image_2, $image_3, $image_4, $image_5);
+    return $user_instance->updateImage($id,$image_1, $image_2, $image_3, $image_4, $image_5);
 }
 
 function get_user_controller($id){
@@ -50,20 +50,3 @@ function get_partner_controller($id, $gender, $sexual_orientation){
     $user_instance = new User();
     return $user_instance->getPartner($id, $gender, $sexual_orientation);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>
