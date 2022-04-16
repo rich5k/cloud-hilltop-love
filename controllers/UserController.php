@@ -1,9 +1,9 @@
 <?php
 require("../classes/User.php");
 
-function add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone, $role){
+function add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone){
     $user_instance = new user();
-    return $user_instance->adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone, $role);
+    return $user_instance->adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone);
 }
 
 function delete_user_controller($id){
@@ -49,4 +49,10 @@ function get_user_controller($id){
 function get_partner_controller($id, $gender, $sexual_orientation){
     $user_instance = new User();
     return $user_instance->getPartner($id, $gender, $sexual_orientation);
+}
+
+
+function get_all_user_images_controller($id){
+    $user_instance = new User();
+    return $user_instance->getAllUserImages($id);
 }

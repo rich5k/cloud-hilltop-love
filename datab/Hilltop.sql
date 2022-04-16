@@ -22,7 +22,7 @@ CREATE TABLE users (
 CREATE TABLE Pictures (
   pic_id int(8) auto_increment,
   Uid int(80),
-  pic_path blob,
+  pic_name varchar(100),
   PRIMARY KEY (pic_id),
   FOREIGN KEY (Uid) REFERENCES Users(Uid)
 );
@@ -64,5 +64,9 @@ CREATE TABLE converstion (
   uMid int(8) auto_increment,
   message varchar(200),
   mess_time timestamp,
+  sender_id int(8),
+  receiver_id int(8),
+  FOREIGN KEY (sender_id) REFERENCES Users(Uid),
+  FOREIGN KEY (receiver_id) REFERENCES Users(Uid),
   PRIMARY KEY (uMid)
 );

@@ -9,15 +9,15 @@ if(isset($_POST['register'])){
     $lname = $_POST['lname'];
     $pass = $_POST['password'];
     $username = $_POST['username'];
-    $class = $_POST['class'];
+    $class = null;
     $confirmPass = $_POST['cpass'];
     $dob = $_POST['dob'];
     $instagram = $_POST['instagram'];
     $twitter = $_POST['twitter'];
     $gender = $_POST['gender'];
     $sexual_orientation = $_POST['sexual_orientation'];
-    $contact = $_POST['phone'];
-    $major = $_POST['major'];
+    $phone = $_POST['phone'];
+    $major = null;
     $role = 1;
 
     if(find_email($email) === true){
@@ -39,12 +39,12 @@ if(isset($_POST['register'])){
         // echo $country ."<br>";
         // echo $city ."<br>";
         // echo $contact ."<br>";
-        // var_dump(add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $contact, $role));
+        // var_dump(add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone));
         // die;
-        if( add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $contact, $role) !== true) 
+        if( add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone) !== true) 
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
         //$_SESSION['Uid'] = find_user_id($email);
-        header("Location: ../view/auth/login.php");
+        header("Location: ../view/auth/login.php"); 
         
     }   
 }

@@ -7,6 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
   <link rel="stylesheet" href="../../css/style_signUP.css">
+  <link rel="stylesheet" href="yearpicker.css">
+<script src="/path/to/cdn/jquery.slim.min.js"></script>
+
+<script src="yearpicker.js" async></script>
 
 </head>
 
@@ -15,7 +19,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registration" id="msform" action="" method='post'>
+      <form name="registration" id="msform" action="../../action/authprocess.php" method='post'>
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>
@@ -61,14 +65,24 @@
           <div class="select" style="width:200px">
             <label for="gender">Gender</label>
             <select name="gender" id="gender" required>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
+              <option value="f">Male</option>
+              <option value="m">Female</option>
             </select>
           </div>
+          
+          <!-- <div class="select" style="width: 200px;">
+            <label for="">Class</label>
+            <select name="class" id="class" required>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+          </div>   -->
 
           <div class="select" style="width:200px">
             <label for="sexual_orient"> Sexual Orientation</label>
-            <select name="sexual_orient" id="sexual_orient" required>
+            <select name="sexual_orientation" id="sexual_orient" required>
               <option value="1">Heterosexual</option>
               <option value="2">Bisexual</option>
               <option value="3">Homosexual</option>
@@ -95,7 +109,7 @@
 
 
           <input type="button" name="previous" class="previous action-button" value="Previous" />
-          <input type="submit" name="submit" class="submit action-button" value="Submit" onclick="registerUser();" />
+          <input type="submit" name="register" class="submit action-button" value="register" onclick="registerUser();" />
         </fieldset>
 
 
