@@ -15,7 +15,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registration" id="msform" action="../../controllers/call_registerUser.php" method='post'>
+      <form name="registration" id="msform" action="" method='post'>
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>
@@ -95,7 +95,7 @@
 
 
           <input type="button" name="previous" class="previous action-button" value="Previous" />
-          <input type="submit" name="submit" class="submit action-button" value="Submit" onclick="validate1stInputs()" />
+          <input type="submit" name="submit" class="submit action-button" value="Submit" onclick="registerUser();" />
         </fieldset>
 
 
@@ -117,6 +117,8 @@ height: 100%;">
   </div>
 
   <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+  <script src="../../js/quickblox.js"></script>
+  <script src="../../js/quickblox-auth.js"></script>
 </body>
 
 </html>

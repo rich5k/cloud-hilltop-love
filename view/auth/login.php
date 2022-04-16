@@ -22,7 +22,7 @@
         <fieldset>
           <h2 class="fs-title">Sign In</h2>
           <label for="email">Email</label>
-          <input type="text" name="email" placeholder="Email" required />
+          <input type="text" id="email" name="email" placeholder="Email" required />
           <label for="password">Password</label>
           <input type="password" name="password" id="password" placeholder="Password" required />
           <h5 id="passcheck" style="color: red;" hidden>
@@ -30,7 +30,7 @@
           </h5>
 
           <span>
-            <input type="button" name="next" class="next action-button" value="Login">
+            <input type="button" name="next" class="next action-button" value="Login" onclick="loginUser();">
             <p class='text'>Dont have an Account? <a href="./register.php">Sign Up here</a></p>
           </span>
 
@@ -53,6 +53,8 @@ height: 730px">
   </div>
   </div>
   <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+  <script src="../../js/quickblox.js"></script>
+  <script src="../../js/quickblox-auth.js"></script>
 </body>
 
 </html>
