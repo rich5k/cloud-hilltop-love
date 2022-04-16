@@ -77,6 +77,7 @@ require('../controllers/UserController.php');
 
     <script src="../js/hammer.min.js"></script>
     <script src="../js/swipe_page.js"></script>
+    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
 </body>
 
 </html>
