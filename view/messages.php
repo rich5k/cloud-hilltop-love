@@ -125,19 +125,24 @@
                 </div>
             </div>
             <div class="chat-window ">
-                <div class="your-text">
-                    <span class="datetime">
+                <div class="talk-bubble tri-right right-in">
+                    <!-- <span class="datetime">
                         Sept 12, 2016 11:11PM
-                    </span>
-                    <p class="your-chat-bubble from-me">
-                        Hey, we matched!
-                    </p>
-                    <span class="text-status">Sent</span>
+                    </span> -->
+                    <div class="talktext ">
+                        <p class="from-me">
+                            Hey, we matched!
+                        </p>
+                    </div>
+                    <!-- <span class="text-status">Sent</span> -->
                 </div>
-                <div class="your-match-text ">
-                    <p class="from-them">
-                        Hey, Jess. How are you?
-                    </p>
+                <div class="talk-bubble tri-right right-in">
+                    <div class="talktext">
+                        <p class="from-them">
+                            Hey, Jess. How are you?
+                        </p>
+                    </div>
+
                 </div>
                 <form action="">
                     <input type="text" placeholder="Type a message..." required>
