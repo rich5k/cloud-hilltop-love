@@ -120,3 +120,13 @@ class User extends db_connection
         }
     }
 }
+
+// record user like of other users.
+function recordLike( $likee_username,  $liker_username){
+    return $this->db_query("INSERT INTO user_likes(Uid, lid) values ('$likee_username','$liker_username')");
+}
+
+function checkMatch ($likee_username,  $liker_username){
+    return $this->db_fetch_one("SELECT * from users_likes WHERE Uid = '$likee_username' AND lid = '$liker_username");
+
+}

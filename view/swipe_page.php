@@ -63,7 +63,15 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             <img src="../images/'.$partner['image_1'].'">
             <h3>'.$partner['username'].'</h3>
             <p>This is a demo for Tinder like swipe cards</p>
-            </div>';
+            </div>
+            
+            <div class="tinder--buttons">
+            <button id="nope"><i class="fa fa-remove"></i></button>
+            <button name="swipe_like" id="love"><i class="fa fa-heart"></i></button>
+        </div>
+';
+
+            
             }
             ?>
 
@@ -72,7 +80,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
         <div class="tinder--buttons">
             <button id="nope"><i class="fa fa-remove"></i></button>
-            <button id="love"><i class="fa fa-heart"></i></button>
+            <button name="swipe_like" id="love"><i class="fa fa-heart"></i></button>
         </div>
     </div>
 

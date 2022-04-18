@@ -56,3 +56,16 @@ function get_all_user_images_controller($id){
     $user_instance = new User();
     return $user_instance->getAllUserImages($id);
 }
+
+function recordLikeController( $likee_username,  $liker_username){
+    $user_instance = new User();
+    return $user_instance->recordLike( $likee_username,  $liker_username);
+
+}
+
+
+function checkMatchController ($likee_username,  $liker_username){
+    $user_instance = new User();
+    return $user_instance->recordLike( $likee_username,  $liker_username);
+
+}
