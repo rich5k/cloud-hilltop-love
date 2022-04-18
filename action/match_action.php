@@ -16,7 +16,10 @@ if (isset($_POST["swipe_like"])) {
     $check_for_match = checkMatchController ($likee_username,  $liker_username);
 
     if ($check_for_match == true) {
-        // match notification
+        // insert record into match table
+        record_success_match_controller($likee_username,  $liker_username);
+        // send successful match notification
+        exit;
     } else {
         // not a match event
     
