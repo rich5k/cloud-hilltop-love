@@ -30,7 +30,7 @@ $(document).ready(function(){
             },
         });
         if(logForm.valid() === true){
-            return true;
+            return false;
         }
         
     });

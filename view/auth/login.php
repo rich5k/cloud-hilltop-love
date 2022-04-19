@@ -19,13 +19,17 @@
           <!-- progressbar here -->
           <fieldset>
             <h2 class="fs-title" style="color:">Sign In</h2>
-            <label for="email">Email</label>
-            <input type="text" name="email" placeholder="Email" required />
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" name="email" placeholder="Email" required />
+            </div>
+            
+            <div class="form-group">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Password" required />
-            <h5 id="passcheck" style="color: red;" hidden>
-              **Please Fill the password
-            </h5>
+            </div>
+            
+            
 
             <span>
               <input type="button" name="next" class="next action-button" value="Login" onclick="loginUser();">
@@ -42,6 +46,7 @@
         <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
         <script src="../../js/quickblox.js"></script>
         <script src="../../js/quickblox-auth.js"></script>
+        <script src="../../js/login_validation.js"></script>
         </form>
 
       </div>
