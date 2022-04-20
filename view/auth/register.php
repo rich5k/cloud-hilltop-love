@@ -119,13 +119,25 @@
           <fieldset id='social_details' class='fieldset'>
             <h2 class="fs-title">Social Profiles</h2>
             <div class='form-group'>
-              <label for="class">Year Group</label>
-              <input type="text" id="class" name="class" placeholder="year group" />
+              <label for="class"  >Year Group</label>
+              <select id="class" name="class">
+                <option value="1">Freshman</option>
+                <option value="2">Sophomore</option>
+                <option value="3">Junior</option>
+                <option value="4">Senior</option>
+              </select>
             </div>
 
             <div class='form-group'>
               <label for="major">Offering Major</label>
-              <input type="text" id="major" name="major" placeholder="major" />
+              <select id="major" name="major">
+                <option value="BA">Buisness Administration</option>
+                <option value="Cs">Computer Science</option>
+                <option value="MIS">Management Information Studies</option>
+                <option value="EE">Electrical Engineering</option>
+                <option value="CE">Computer Engineering</option>
+                <option value="ME">Mechanical Engineering</option>
+              </select>
             </div>
             <div class='form-group'>
               <label for="twitter">Twiter handle</label>
@@ -154,35 +166,28 @@
           </fieldset>
 
 
+          <!--<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+          <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
           <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-          <!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
-        
-
-
-
-        <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
-        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-
-        <script src='../../js/script.js'>
-        </script>
+          <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
+          <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>-->
+          <script src='../../js/script.js'></script>
       </form>
 
     </div>
     <div class="picture side" style="width:35% ">
-      
+      <img src="../../images/sky.jpg" alt="hill top love" style="width: 568px;
+height: 100%;">
 
     </div>
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
-        
+
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
         <script src='../../js/script.js'></script>
         <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
         <script src="../../js/quickblox.js"></script>
         <script src="../../js/quickblox-auth.js"></script>
-
-  </div>
 
 </body>
 
