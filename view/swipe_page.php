@@ -2,8 +2,8 @@
 require('../settings/core.php');
 require('../controllers/UserController.php');
 
-$user = get_user_controller($_SESSION['Uid']);
-$partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
+// $user = get_user_controller($_SESSION['Uid']);
+// $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
 
 ?>
@@ -57,14 +57,15 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
                 <h3>Demo card 5</h3>
                 <p>This is a demo for Tinder like swipe cards</p>
             </div>
-            <?php if($partners !== false)
-            foreach($partners as $partner) {
-            echo '<div class="tinder--card">
-            <img src="../images/'.$partner['image_1'].'">
-            <h3>'.$partner['username'].'</h3>
-            <p>This is a demo for Tinder like swipe cards</p>
-            </div>';
-            }
+            <?php
+            // if ($partners !== false)
+            //     foreach ($partners as $partner) {
+            //         echo '<div class="tinder--card">
+            // <img src="../images/' . $partner['image_1'] . '">
+            // <h3>' . $partner['username'] . '</h3>
+            // <p>This is a demo for Tinder like swipe cards</p>
+            // </div>';
+            //     }
             ?>
 
 
