@@ -9,7 +9,7 @@ if(isset($_POST['register'])){
     $lname = $_POST['lname'];
     $pass = $_POST['password'];
     $username = $_POST['username'];
-    $class = null;
+    $class = $_POST['class'];
     $confirmPass = $_POST['cpass'];
     $dob = $_POST['dob'];
     $instagram = $_POST['instagram'];
@@ -17,7 +17,7 @@ if(isset($_POST['register'])){
     $gender = $_POST['gender'];
     $sexual_orientation = $_POST['sexual_orientation'];
     $phone = $_POST['phone'];
-    $major = null;
+    $major = $_POST['major'];
     $role = 1;
 
     if(find_email($email) === true){
@@ -41,7 +41,7 @@ if(isset($_POST['register'])){
         // echo $contact ."<br>";
         // var_dump(add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone));
         // die;
-        if( add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone) !== true) 
+        if( add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) 
             if (isset($_FILES["file"]["name"])){
                 //Get Image Upload path
                 $targetDir = "../assets/avis/";
