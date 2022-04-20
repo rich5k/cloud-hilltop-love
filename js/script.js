@@ -14,12 +14,12 @@ $(document).ready(function(){
 		form.validate({
 			errorElement: 'span',
 			errorClass: 'help-block',
-			highlight: function(element, errorClass, validClass) {
+			/*highlight: function(element, errorClass, validClass) {
 				$(element).closest('.form-group').addClass("has-error");
 			},
 			unhighlight: function(element, errorClass, validClass) {
 				$(element).closest('.form-group').removeClass("has-error");
-			},
+			},*/
 			rules: {
 				email: {
 					required: true,
@@ -106,7 +106,7 @@ $(document).ready(function(){
 				
 				
 				
-			}
+			},
 		});
 		if (form.valid() === true){
 			
