@@ -150,7 +150,7 @@
 
 
             <input type="button" name="previous" class="previous action-button" value="Previous" />
-            <input type="submit" name="submit" class="submit action-button" value="Submit"  onclick="registerUser();"/>
+            <input type="submit" name="register" class="submit action-button" value="Submit"  onclick="registerUser();"/>
           </fieldset>
 
 
