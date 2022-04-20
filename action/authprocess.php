@@ -30,19 +30,11 @@ if(isset($_POST['register'])){
     }
     else{
         $pass = password_hash($pass, PASSWORD_DEFAULT);
-        // echo $email ."<br>";
-        // echo $fname ."<br>";
-        // echo $lname ."<br>";
-        // echo $pass ."<br>";
-        // echo $address ."<br>";
-        // echo $confirmPass ."<br>";
-        // echo $country ."<br>";
-        // echo $city ."<br>";
-        // echo $contact ."<br>";
-        // var_dump(add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone));
-        // die;
-        if( add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) 
+        //die($pass);
+        
+        if( add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) === true) {
             if (isset($_FILES["file"]["name"])){
+                $Uid = find_user_controller($email);
                 //Get Image Upload path
                 $targetDir = "../assets/avis/";
                 $fileName = basename($_FILES["file"]["name"]);
@@ -59,7 +51,7 @@ if(isset($_POST['register'])){
                     // Upload file to server
                     if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
                         //echo "true";
-                        add_image_controller($fileName);
+                        add_image_controller($Uid['Uid'], $fileName);
                         $_SESSION['avi'] = $fileName;
                         header('Location: ../view/profile.php');
                             
@@ -67,24 +59,34 @@ if(isset($_POST['register'])){
                 }
             }
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
+        }
         //$_SESSION['Uid'] = find_user_id($email);
-        header("Location: ../view/auth/login.php"); 
+        //header("Location: ../view/auth/login.php"); 
         
     }   
 }
-die("ERROR: Could not execute");
+//die("ERROR: Could not execute");
+//echo $_POST['signin'];
 
 
-if(isset($_POST['login'])){
+if(isset($_POST['signin'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    $result = find_user_controller($email);
+    $result = find_email($email);
+    $result2 = find_user_id($email);
+    var_dump($result2);
+    var_dump($result);
+    echo $email;
+    //echo $password;
+    die;
     
-    // die();
+    //die('home');
+    
 
-    if(isset($result)){
-        if(password_verify($password, $result['user_password'])){
+    if(isset($result['email'])){
+        $result1 = find_user_controller($email); 
+        if(password_verify($password, $result1['user_password'])){
             $user = find_user_controller($email);
             $_SESSION['Uid'] = $user['Uid'];
             $role = $user['user_role'];
@@ -98,7 +100,7 @@ if(isset($_POST['login'])){
                 header("Location: ../admin/index.php");
             }
         }else{
-            $_SESSION['errors'] = 'Email or password is incorrect'; 
+            $_SESSION['error'] = 'password is incorrect'; 
             
             header("Location: ../view/auth/login.php");
         }
@@ -108,6 +110,7 @@ if(isset($_POST['login'])){
     }
 
 }
+
     
 
 ?>

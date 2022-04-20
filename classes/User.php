@@ -26,24 +26,25 @@ class User extends db_connection
         return $this->db_query("DELETE FROM users WHERE Uid = '$id'");
     }
 
+
     function finduser($email)
     {
-        return $this->db_fetch_one("SELECT Uid, email, pass from users WHERE email = '$email'");
+        return $this->db_fetch_one("SELECT Uid, email, pass from `users` WHERE email = '$email'");
     }
 
     function findEmail($email)
     {
-        return $this->db_fetch_one("SELECT email from users WHERE email = '$email'");
+        return $this->db_fetch_one("SELECT email from `users` WHERE email = '$email'");
     }
 
     function findID($email)
     {
-        return $this->db_fetch_one("SELECT Uid FROM users WHERE email = '$email'");
+        return $this->db_fetch_one("SELECT Uid FROM `users` WHERE email = '$email'");
     }
 
-    function addImage($id, $image_1)
+    function addImage($Uid, $image_1)
     {
-        return $this->db_query("INSERT INTO pictures(Uid, pic_name) values ('$id','$image_!')");
+        return $this->db_query("INSERT INTO pictures(Uid, pic_name) values ('$Uid','$image_1')");
     }
 
     function updateImage($id, $image_1)

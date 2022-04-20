@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+  if(isset($_SESSION['errors'])){
+    $error ="<div class = 'error'>
+              Email or password is incorrect
+              </div>";
+  }
+  if(isset($_SESSION['error'])){
+    $errors ="<div class = 'error'>
+              Password is incorrect
+              </div>";
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +29,14 @@
     <div class="program_container" style="display:flex;">
 
       <div class="form_side" style="width:65%">
-        <form name="registration" id="msform" action="" method='post' style="" style="margin-left:auto margin-right:auto">
+        <form name="registration" id="msform" action="../../action/authprocess.php" method='post' style="" style="margin-left:auto margin-right:auto">
           <!-- progressbar here -->
           <fieldset>
             <h2 class="fs-title" style="color:">Sign In</h2>
+            <?php if(isset($error))
+                  echo $error;
+                  if(isset($errors))
+                  echo $error ?>
             <div class="form-group">
               <label for="email">Email</label>
               <input type="text" name="email" placeholder="Email" required />
@@ -29,16 +47,18 @@
             <input type="password" name="password" id="password" placeholder="Password" required />
             </div>
             
-            
-
             <span>
-              <input type="button" name="next" class="next action-button" value="Login" onclick="loginUser();">
+              <input type="submit" name="signin" class="submit action-button" value="Login" onclick="loginUser();">
               <p class='text'>Dont have an Account? <a href="./register.php">Sign Up here</a></p>
             </span> 
             
           </fieldset>
-
-
+          </div>
+          </form>
+          <div class="picture side" style="width:50% ">
+        <img src="../../images/sky.jpg" alt="hill top love" style="width: 714px; height: 730px">
+      </div>
+</div>
 
           <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
@@ -47,20 +67,9 @@
         <script src="../../js/quickblox.js"></script>
         <script src="../../js/quickblox-auth.js"></script>
         <script src="../../js/login_validation.js"></script>
-        </form>
+  
+      <?php unset($error); unset($errors)?>
 
-      </div>
-      <div class="picture side" style="width:50% ">
-        <img src="../../images/sky.jpg" alt="hill top love" style="width: 714px;
-height: 730px">
-
-    </div>
-
-  </div>
-  </div>
-  <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
-  <script src="../../js/quickblox.js"></script>
-  <script src="../../js/quickblox-auth.js"></script>
 </body>
 
 </html>
