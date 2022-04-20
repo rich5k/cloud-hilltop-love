@@ -92,8 +92,8 @@
               <div class="select" style="width:200px">
                 <label for="gender">Gender</label>
                 <select name="gender" id="gender" required>
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
                 </select>
               </div>
             </div>
@@ -101,7 +101,7 @@
             <div class='form-group'>
               <div class="select" style="width:200px">
                 <label for="sexual_orient"> Sexual Orientation</label>
-                <select name="sexual_orient" id="sexual_orient" required>
+                <select name="sexual_orientation" id="sexual_orient" required>
                   <option value="1">Hecterosexual</option>
                   <option value="2">Bisexual</option>
                   <option value="3">Homosexual</option>
@@ -146,7 +146,7 @@
             
             <div class='form-group'>
               <label for="facebook">Instagram handle</label>
-              <input type="text" id="facebook" name="facebook" placeholder="Instagram" />
+              <input type="text" id="instagram" name="instagram" placeholder="Instagram" />
             </div>
 
             <div class='form-group'>
