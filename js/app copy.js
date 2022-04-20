@@ -54,7 +54,7 @@ App.prototype.renderDashboard = function (activeTabName) {
         renderParams.tabName = activeTabName;
     }
 
-    // helpers.clearView(app.page);
+    helpers.clearView(app.page);
 
     document.querySelector('#user-name').innerHTML = this.user.name;
 

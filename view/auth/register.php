@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../css/style_signUP.css">
     <link rel="stylesheet" href="../../css/parsley.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous"></script>-->
     <link rel="stylesheet" href="../../css/style_signUP.css">
   <link rel="stylesheet" href="yearpicker.css">
   <script src="/path/to/cdn/jquery.slim.min.js"></script>
@@ -170,8 +170,8 @@
           <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
           <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
           <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
-          <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>-->
-          <script src='../../js/script.js'></script>
+          <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+          <script src='../../js/script.js'></script>-->
       </form>
 
     </div>

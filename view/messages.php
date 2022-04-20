@@ -88,84 +88,43 @@
 
 <body>
     <div class="row messages-page">
-        <div class="contacts col-lg-4">
-            <div class="profile-banner py-2 px-4">
-                <img src="../images/homepic6.jpg" alt="profile-pic"> <strong>My Profile</strong>
-                <span class="search-button">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                </span>
-            </div>
-            <div class="matches-page row">
-                <div class="col-lg-2">
-                    <button onclick="location.href = './swipe_page.php';"><i class="fa-solid fa-diamond card1"></i> <i class="fa-solid fa-diamond card2"></i></button>
+        <div class="contacts col-lg-10">
+            <div id="user-name"></div>
+            <div id="page">
 
-                </div>
-                <div class="col-lg-10">
-                    <div class="caption">
-                        Discover New Matches
-                    </div>
-                    <span class="micro-caption">
-                        Start swiping to start connecting with new people
-                    </span>
-
-                </div>
-            </div>
-            <div class="messages px-4 py-2">
-                <div class="messages-title">
-                    Messages
-                </div>
-
-
-            </div>
-            <div class="current-chat col-lg-6">
-                <div class="chat-header row">
-                    <div class="col-lg-1">
-                        <img src="../images/person1.jpg" alt="Alex's pic">
-                    </div>
-                    <div class="col-lg-10">
-                        CONVERSATION WITH ALEX <br>
-                        Alex Liked you on 09/12/16
-                        <!-- <div class="notifications j-notifications hidden"></div> -->
-                    </div>
-                    <div class="col-lg-1">
-                        <button class="close-chat"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                </div>
-                <div class="chat-window ">
-
-                </div>
-
-            </div>
-            <div class="contact-info col-lg-2">
-                <div class="your-match-pics">
-                    <img src="../images/person1.jpg" alt="Alex's pic">
-                </div>
-                <div class="personal-info">
-                    <span class="name-age p-2">Alex, 24</span>
-                    <span class="your-match-title">Founder at Creative Productions</span>
-                </div>
-                <br><br>
-                <div class="your-match-bio">
-                    <p>
-                        I'm a libra, but not sure what it means. I like
-                        leftover pizza better than the fresh stuff. I love
-                        to travel. I have a cat named pickles, if he likes
-                        you I probably will too.
-                    </p>
-                </div>
             </div>
         </div>
-        <!-- script to handle when the user has not selected any chat yet -->
-        <script type="text/template" id="tpl_welcome">
-            <div class="content__inner j-content__inner welcome">
+        <div class="contact-info col-lg-2">
+            <div class="your-match-pics">
+                <img src="../images/person1.jpg" alt="Alex's pic">
+            </div>
+            <div class="personal-info">
+                <span class="name-age p-2">Alex, 24</span>
+                <span class="your-match-title">Founder at Creative Productions</span>
+            </div>
+            <br><br>
+            <div class="your-match-bio">
+                <p>
+                    I'm a libra, but not sure what it means. I like
+                    leftover pizza better than the fresh stuff. I love
+                    to travel. I have a cat named pickles, if he likes
+                    you I probably will too.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- script to handle when the user has not selected any chat yet -->
+    <script type="text/template" id="tpl_welcome">
+        <div class="content__inner j-content__inner welcome">
                             <div class="welcome__message">
                                 <p>Please select a chat to start messaging</p>
                             </div>
                         </div>
                     </script>
-        <!-- script to handle the chat window -->
-        <script type="text/template" id="tpl_conversationContainer">
-            <div class="content__title j-content__title j-dialog none">
+    <!-- script to handle the chat window -->
+    <script type="text/template" id="tpl_conversationContainer">
+        <div class="content__title j-content__title j-dialog none">
                             <!--<button class="open_sidebar j-open_sidebar"></button>-->
                             <h1 class="dialog__title j-dialog__title" style="display:none;"><%- title %></h1>
                             <div class="action_links">
@@ -205,9 +164,9 @@
                             </form>
                         </div>
                     </script>
-        <!-- script to handle message content -->
-        <script type="text/template" id="tpl_editChatUser">
-            <div class="user__item <% selected ? print('disabled selected') : ''%>" id="<%= id %>">
+    <!-- script to handle message content -->
+    <script type="text/template" id="tpl_editChatUser">
+        <div class="user__item <% selected ? print('disabled selected') : ''%>" id="<%= id %>">
                                 <span class="user__avatar m-user__img_<%= color %>">
                                     <i class="material-icons m-user_icon">account_circle</i>
                                 </span>
@@ -220,15 +179,15 @@
                         </div>
                     </script>
 
-        <script type="text/template" id="tpl_date_message">
-            <div class="message__wrap" id="<%=month+'-'+date.getDate()%>">
+    <script type="text/template" id="tpl_date_message">
+        <div class="message__wrap" id="<%=month+'-'+date.getDate()%>">
                             <div class="dialog_date_message">
                                 <%= groupDate %>
                             </div>
                         </div>
                     </script>
-        <script type="text/template" id="tpl_message">
-            <div class="message__wrap" id="<%= message.id %>" data-status="<%= message.status %>">
+    <script type="text/template" id="tpl_message">
+        <div class="message__wrap" id="<%= message.id %>" data-status="<%= message.status %>">
                             <% if (window.app.user.id !== sender.id && dialogType !== 3) { %>
                             <span class="message__avatar m-user__img_<%= sender ? sender.color : 'not_loaded' %>">
                                     <i class="icons"><%- sender.name[0].toUpperCase() %></i>
@@ -290,9 +249,9 @@
                             </div>
                         </div>
                     </script>
-        <!-- script to handle to notify a user when the other is typing -->
-        <script type="text/template" id="tpl_message__typing">
-            <div class="message__wrap m-typing j-istyping" id="is__typing">
+    <!-- script to handle to notify a user when the other is typing -->
+    <script type="text/template" id="tpl_message__typing">
+        <div class="message__wrap m-typing j-istyping" id="is__typing">
                             <%- users %> typing
                             <% if (users.length){ %>
                             <div id="fountainG">
@@ -304,34 +263,34 @@
 
                         </div>
                     </script>
-        <!-- script to handle attachment preview and cancellation -->
-        <script type="text/template" id="tpl_attachmentPreview">
-            <div class="attachment_preview__wrap m-loading" id="<%= id %>">
+    <!-- script to handle attachment preview and cancellation -->
+    <script type="text/template" id="tpl_attachmentPreview">
+        <div class="attachment_preview__wrap m-loading" id="<%= id %>">
                             <img class="img-close" src="../img/Close.svg" width="24px" height="24px" >
                             <img class="attachment_preview__item" src="<%= src %>">
                         </div>
                     </script>
-        <!-- script for attachment error -->
-        <script type="text/template" id="tpl_attachmentLoadError">
-            <p class="attachment__error">Can't load attachment...</p>
+    <!-- script for attachment error -->
+    <script type="text/template" id="tpl_attachmentLoadError">
+        <p class="attachment__error">Can't load attachment...</p>
                     </script>
-        <!-- script for pending network -->
-        <script type="text/template" id="tpl_lost_connection">
-            <div class="titile">Waiting for network.</div>
+    <!-- script for pending network -->
+    <script type="text/template" id="tpl_lost_connection">
+        <div class="titile">Waiting for network.</div>
                         <div class="spinner"><img src="../img/loader2.gif" alt="wating"></div>
                     </script>
-        <!-- script for loading data notification -->
-        <script type="text/template" id="tpl_loading">
-            <div class="loading__wrapper">
+    <!-- script for loading data notification -->
+    <script type="text/template" id="tpl_loading">
+        <div class="loading__wrapper">
                             <div class="loading_inner">
                                 <img class="loading__logo" src="../img/qb-logo.svg" alt="QB_logo">
                                 <p class="loading__description">Loading...</p>
                             </div>
                         </div>
                     </script>
-        <!-- script for delivered message dialog -->
-        <script type="text/template" id="tpl_delivered">
-            <div style="width: 100%;" class="modal__inner sidebar__inner">
+    <!-- script for delivered message dialog -->
+    <script type="text/template" id="tpl_delivered">
+        <div style="width: 100%;" class="modal__inner sidebar__inner">
                             <div class="content__title j-content__title j-create_dialog">
 
                                 <div class="back_to_dashboard back_to_dialog j-back_to_dialog" ><i class="material-icons">arrow_back</i></div>
@@ -349,9 +308,9 @@
                             </div>
                         </div>
                     </script>
-        <!-- script for read message dialog -->
-        <script type="text/template" id="tpl_viewed">
-            <div style="width: 100%;" class="modal__inner sidebar__inner">
+    <!-- script for read message dialog -->
+    <script type="text/template" id="tpl_viewed">
+        <div style="width: 100%;" class="modal__inner sidebar__inner">
                             <div class="content__title j-content__title j-create_dialog">
 
                                 <div class="back_to_dashboard back_to_dialog j-back_to_dialog" ><i class="material-icons">arrow_back</i></div>
@@ -368,9 +327,9 @@
                             </div>
                         </div>
                     </script>
-        <!-- script for forwarding messages dialog -->
-        <script type="text/template" id="tpl_forward">
-            <div style="width: 100%;" class="modal__inner sidebar__inner">
+    <!-- script for forwarding messages dialog -->
+    <script type="text/template" id="tpl_forward">
+        <div style="width: 100%;" class="modal__inner sidebar__inner">
                             <div class="content__title j-content__title j-forward_dialog">
 
                                 <div class="back_to_dashboard back_to_dialog j-back_to_dialog" style="
@@ -395,9 +354,9 @@
                             </div>
                         </div>
                     </script>
-        <!-- script for image preview -->
-        <script type="text/template" id="tpl_imgPreview">
-            <div class="id_preview" style="color: #fff; text-align: center;" ><%= id %></div>
+    <!-- script for image preview -->
+    <script type="text/template" id="tpl_imgPreview">
+        <div class="id_preview" style="color: #fff; text-align: center;" ><%= id %></div>
                         <div class="img_preview" style="display: grid; padding-top: 16px;">
                             <img onload="window.modal.watch();" src="<%= src %>" style="margin: 0 auto;" >
                         </div>
@@ -408,8 +367,8 @@
                             </div>
                         </div>
                     </script>
-        <script type="text/template" id="tpl_dashboardContainer">
-            <div class="dashboard">
+    <script type="text/template" id="tpl_dashboardContainer">
+        <div class="dashboard">
                         <div class="sidebar j-sidebar active">
                             <div class="sidebar__inner">
                                 <div class="sidebar__content">
@@ -422,8 +381,8 @@
                         </div>
                     </div>
                 </script>
-        <script type="text/template" id="tpl_userConversations">
-            <li class="dialog__item j-dialog__item" id="<%= dialog._id %>" data-name="<%- dialog.name %>">
+    <script type="text/template" id="tpl_userConversations">
+        <li class="dialog__item j-dialog__item" id="<%= dialog._id %>" data-name="<%- dialog.name %>">
                         <a class="dialog__item_link" href="#!/dialog/<%= dialog._id %>">
                             <span class="dialog__avatar m-user__img_<%= dialog.color %> m-type_<%= dialog.type === 2 ? 'group' : 'chat' %>">
                                 <% if(dialog.type === 2) { %>
@@ -448,8 +407,8 @@
                     </li>
                 </script>
 
-        <script type="text/template" id="tpl_dialogItem">
-            <div class="user__item <% user.selected ? print('disabled selected') : ''%>" id="<%= user._id %>">
+    <script type="text/template" id="tpl_dialogItem">
+        <div class="user__item <% user.selected ? print('disabled selected') : ''%>" id="<%= user._id %>">
                             <span class="user__avatar m-user__img_<%= user.color %>">
                                 <i class="icons m-user_icon"><%- (user.name !== null) ? user.name[0].toUpperCase() : '' %></i>
                             </span>
@@ -485,14 +444,14 @@
                         </div>
                     </div>
                 </script>
-        <script src="../js/QBconfig.js" defer></script>
-        <script src="../js/helpers.js" defer></script>
-        <script src="../js/user.js" defer></script>
-        <script src="../js/dialog.js" defer></script>
-        <script src="../js/message.js" defer></script>
-        <script src="../js/listeners.js" defer></script>
-        <script src="../js/app.js" defer></script>
-        <script src="../js/modal.js" defer></script>
+    <script src="../js/QBconfig.js" defer></script>
+    <script src="../js/helpers.js" defer></script>
+    <script src="../js/user.js" defer></script>
+    <script src="../js/dialog.js" defer></script>
+    <script src="../js/message.js" defer></script>
+    <script src="../js/listeners.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/modal.js" defer></script>
 </body>
 
 </html>
