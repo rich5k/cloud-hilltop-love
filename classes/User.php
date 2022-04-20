@@ -5,16 +5,17 @@ require("../settings/db_class.php");
 
 class User extends db_connection
 {
-    function adduser($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone)
+    
+    function adduser($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone)
     {
-        return $this->db_query("INSERT INTO users(fname, lname, username, email, pass, gender, twitter, insta, class, sexual_orientation, dob, major, phone)
-                                                    values ('$fname', '$lname', '$username', '$email', '$pass','$gender' '$twitter','$instagram','$class', '$sexual_orientation', '$dob', '$major',
+        return $this->db_query("INSERT INTO `users`(fname, lname, username, email, pass, gender, twitter, insta, class, sexual_orientation, dob, major, phone)
+                                                    values ('$fname', '$lname', '$username', '$email', '$pass','$gender', '$twitter','$instagram','$class', '$sexual_orientation', '$dob', '$major',
                                                     '$phone')");
     }
 
     function edituser($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone)
     {
-        return $this->db_query("UPDATE users
+        return $this->db_query("UPDATE `users`
                             SET fname = '$fname', lname='$lname', email = '$email', pass= '$pass', gender='$gender', class = '$class',
                             major='$major', phone = '$phone' , username = '$username', twitter = '$twitter', insta = '$instagram', sexual_orientation = '$sexual_orientation' , dob = '$dob'
                             WHERE Uid = '$id'");
