@@ -54,10 +54,13 @@
         <img src="../../images/sky.jpg" alt="hill top love" style="width: 714px;
 height: 730px">
 
-      </div>
-
     </div>
 
-
+  </div>
+  </div>
+  <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+  <script src="../../js/quickblox.js"></script>
+  <script src="../../js/quickblox-auth.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -165,19 +166,18 @@
         <img src="../../images/sky.jpg" alt="hill top love" style="width: 568px;
 height: 100%;">
 
-      </div>
-
     </div>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
         
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-        <script src='../../js/script.js'>
+        <script src='../../js/script.js'></script>
         <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
         <script src="../../js/quickblox.js"></script>
         <script src="../../js/quickblox-auth.js"></script>
 
+  </div>
 
-          </script>
 </body>
+
 </html>

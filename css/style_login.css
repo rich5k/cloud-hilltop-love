@@ -168,15 +168,9 @@ justify-self: end;
 	text-align: left;
 }
 
-.text{
-	
-	width: 300px;
-	height: 29.31px;
-	
+#logo {
+    width: 70px;
+    height: 60px
+}
 
 	
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 19px;
-}
