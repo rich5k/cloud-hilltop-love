@@ -1,7 +1,10 @@
 <?php
 
+
 require('../controllers/UserController.php');
 session_start();
+//unset($SESSION['error']); 
+//unset($SESSION['errors']);
 
 if(isset($_POST['register'])){
     $email = $_POST['email'];
@@ -20,7 +23,7 @@ if(isset($_POST['register'])){
     $major = $_POST['major'];
     $role = 1;
 
-    if(find_email($email) === true){
+    if(find_email_controller($email)!==null){
         header("Location: register.php?error=Email already exists!");
         die;
     }
@@ -32,7 +35,9 @@ if(isset($_POST['register'])){
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         //die($pass);
         
-        if( add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) === true) {
+        if( add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
+            header('Location: ../view/auth/register.php?error=Data could not be inserted');
+            }
             if (isset($_FILES["file"]["name"])){
                 $Uid = find_user_controller($email);
                 //Get Image Upload path
@@ -57,8 +62,7 @@ if(isset($_POST['register'])){
                             
                     }
                 }
-            }
-            header('Location: ../view/auth/register.php?error=Data could not be inserted');
+            
         }
         //$_SESSION['Uid'] = find_user_id($email);
         //header("Location: ../view/auth/login.php"); 
@@ -73,8 +77,8 @@ if(isset($_POST['signin'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    $result = find_email($email);
-    $result2 = find_user_id($email);
+    $result = find_email_controller($email);
+    $result2 = find_user_id_controller($email);
     var_dump($result2);
     var_dump($result);
     echo $email;
@@ -84,7 +88,7 @@ if(isset($_POST['signin'])){
     //die('home');
     
 
-    if(isset($result['email'])){
+    if($result === true){
         $result1 = find_user_controller($email); 
         if(password_verify($password, $result1['user_password'])){
             $user = find_user_controller($email);

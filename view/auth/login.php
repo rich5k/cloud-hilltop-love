@@ -10,7 +10,9 @@ session_start();
     $errors ="<div class = 'error'>
               Password is incorrect
               </div>";
+             
   }
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +70,10 @@ session_start();
         <script src="../../js/quickblox-auth.js"></script>
         <script src="../../js/login_validation.js"></script>
   
-      <?php unset($error); unset($errors)?>
 
+  
 </body>
 
 </html>
+
+<?php  ?>
