@@ -42,6 +42,30 @@ if(isset($_POST['register'])){
         // var_dump(add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone));
         // die;
         if( add_user_controller($fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone) !== true) 
+            if (isset($_FILES["file"]["name"])){
+                //Get Image Upload path
+                $targetDir = "../assets/avis/";
+                $fileName = basename($_FILES["file"]["name"]);
+                $targetFilePath = $targetDir . $fileName;
+        
+                //Get file type
+                $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+        
+                //Check if file is an image and upload it to the server
+                $allowTypes = array('jpg', 'JPG', 'png','jpeg','JPEG', 'PNG');
+        
+                if(in_array($fileType, $allowTypes)){
+        
+                    // Upload file to server
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                        //echo "true";
+                        add_image_controller($fileName);
+                        $_SESSION['avi'] = $fileName;
+                        header('Location: ../view/profile.php');
+                            
+                    }
+                }
+            }
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
         //$_SESSION['Uid'] = find_user_id($email);
         header("Location: ../view/auth/login.php"); 
@@ -66,7 +90,9 @@ if(isset($_POST['login'])){
             $role = $user['user_role'];
             //var_dump($role);
             if($role === '1' ){
-                header("Location: ../index.php");
+                $image = getAllUserImages($user['Uid']);
+                $_SESSION['avi'] = $image;
+                header("Location: ../view/profile.php");
             }else if ($role === '0'){
                 $_SESSION['user_role'] = 0;
                 header("Location: ../admin/index.php");
