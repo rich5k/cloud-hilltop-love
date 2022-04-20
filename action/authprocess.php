@@ -23,7 +23,7 @@ if(isset($_POST['register'])){
     $major = $_POST['major'];
     $role = 1;
 
-    if(find_email_controller($email)!==null){
+    if(find_email_controller($email)===true){
         header("Location: register.php?error=Email already exists!");
         die;
     }
@@ -37,31 +37,36 @@ if(isset($_POST['register'])){
         
         if( add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
-            }
-            if (isset($_FILES["file"]["name"])){
-                $Uid = find_user_controller($email);
-                //Get Image Upload path
-                $targetDir = "../assets/avis/";
-                $fileName = basename($_FILES["file"]["name"]);
-                $targetFilePath = $targetDir . $fileName;
-        
-                //Get file type
-                $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-        
-                //Check if file is an image and upload it to the server
-                $allowTypes = array('jpg', 'JPG', 'png','jpeg','JPEG', 'PNG');
-        
-                if(in_array($fileType, $allowTypes)){
-        
-                    // Upload file to server
-                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                        //echo "true";
-                        add_image_controller($Uid['Uid'], $fileName);
-                        $_SESSION['avi'] = $fileName;
-                        header('Location: ../view/profile.php');
-                            
-                    }
+        }
+       
+        if (isset($_FILES["file"]["name"])){
+            $Uid = find_user_controller($email);
+            //Get Image Upload path
+            $targetDir = "../assets/avis/";
+            
+            //var_dump($Uid['Uid']);
+            $fileName = basename($_FILES["file"]["name"]);
+            $targetFilePath = $targetDir . $fileName;
+            //die;
+            
+            
+            //Get file type
+            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    
+            //Check if file is an image and upload it to the server
+            $allowTypes = array('jpg', 'JPG', 'png','jpeg','JPEG', 'PNG');
+    
+            if(in_array($fileType, $allowTypes)){
+                //echo $fileName.'<br>';
+                // Upload file to server
+                if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                    //echo "true";
+                    add_image_controller($Uid['Uid'], $fileName);
+                    $_SESSION['avi'] = $fileName;
+                    header('Location: ../view/profile.php');
+                        
                 }
+            }
             
         }
         //$_SESSION['Uid'] = find_user_id($email);
@@ -78,36 +83,35 @@ if(isset($_POST['signin'])){
     $password = $_POST['password'];
     
     $result = find_email_controller($email);
-    $result2 = find_user_id_controller($email);
-    var_dump($result2);
-    var_dump($result);
-    echo $email;
-    //echo $password;
-    die;
+    // var_dump($result);
+    // die;
     
     //die('home');
     
 
-    if($result === true){
+    if(isset($result['email'])){
         $result1 = find_user_controller($email); 
-        if(password_verify($password, $result1['user_password'])){
+        var_dump($result1);
+        echo "Email there<br>";
+        var_dump(password_verify($password, $result1['pass']));
+        //die;
+        if(password_verify($password, $result1['pass']) === true){
+            echo "password there";
+            //die;
             $user = find_user_controller($email);
             $_SESSION['Uid'] = $user['Uid'];
-            $role = $user['user_role'];
+            //$role = $user['user_role'];
             //var_dump($role);
-            if($role === '1' ){
-                $image = getAllUserImages($user['Uid']);
-                $_SESSION['avi'] = $image;
-                header("Location: ../view/profile.php");
-            }else if ($role === '0'){
-                $_SESSION['user_role'] = 0;
-                header("Location: ../admin/index.php");
-            }
+            $image = get_all_user_images_controller($user['Uid']);
+            $_SESSION['avi'] = $image;
+            header("Location: ../view/profile.php");
+        
         }else{
             $_SESSION['error'] = 'password is incorrect'; 
             
             header("Location: ../view/auth/login.php");
         }
+        
     }else{
         $_SESSION['errors'] = 'Email or password is incorrect'; 
         header("Location: ../view/auth/login.php");

@@ -8,14 +8,14 @@ class User extends db_connection
     
     function adduser($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone)
     {
-        return $this->db_query("INSERT INTO `users`(fname, lname, username, email, pass, gender, twitter, insta, class, sexual_orientation, dob, major, phone)
+        return $this->query("INSERT INTO `users`(fname, lname, username, email, pass, gender, twitter, insta, class, sexual_orientation, dob, major, phone)
                                                     values ('$fname', '$lname', '$username', '$email', '$pass','$gender', '$twitter','$instagram','$class', '$sexual_orientation', '$dob', '$major',
                                                     '$phone')");
     }
 
     function edituser($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone)
     {
-        return $this->db_query("UPDATE `users`
+        return $this->query("UPDATE `users`
                             SET fname = '$fname', lname='$lname', email = '$email', pass= '$pass', gender='$gender', class = '$class',
                             major='$major', phone = '$phone' , username = '$username', twitter = '$twitter', insta = '$instagram', sexual_orientation = '$sexual_orientation' , dob = '$dob'
                             WHERE Uid = '$id'");
@@ -23,33 +23,17 @@ class User extends db_connection
 
     function deleteuser($id)
     {
-        return $this->db_query("DELETE FROM users WHERE Uid = '$id'");
-    }
-
-
-    function finduser($email)
-    {
-        return $this->db_fetch_one("SELECT Uid, email, pass from `users` WHERE email = '$email'");
-    }
-
-    function findEmail($email)
-    {
-        return $this->db_fetch_one("SELECT email from `users` WHERE email = '$email'");
-    }
-
-    function findID($email)
-    {
-        return $this->db_fetch_one("SELECT Uid FROM `users` WHERE email = '$email'");
+        return $this->query("DELETE FROM 'users' WHERE Uid = '$id'");
     }
 
     function addImage($Uid, $image_1)
     {
-        return $this->db_query("INSERT INTO pictures(Uid, pic_name) values ('$Uid','$image_1')");
+        return $this->query("INSERT INTO pictures(Uid, pic_name) values ('$Uid','$image_1')");
     }
 
     function updateImage($id, $image_1)
     {
-        return $this->db_query("UPDATE pictures
+        return $this->query("UPDATE pictures
                                 SET pic_name = '$image_1', 
                                 WHERE pic_id = '$id' ");
     }
@@ -58,9 +42,25 @@ class User extends db_connection
         return $this->fetch("SELECT * FROM pictures where Uid = '$id'");
     }
 
+
+    function finduser($email)
+    {
+        return $this->fetchOne("SELECT Uid, email, pass FROM `users` WHERE email = '$email'");
+    }
+
+    function findEmail($email)
+    {
+        return $this->fetchOne("SELECT email FROM `users` WHERE email = '$email'");
+    }
+
+    function findID($email)
+    {
+        return $this->fetchOne("SELECT Uid FROM `users` WHERE email = '$email'");
+    }
+
     function getUser($id)
     {
-        return $this->db_fetch_one("SELECT * 
+        return $this->fetchOne("SELECT * 
                                 FROM users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid");
@@ -70,7 +70,7 @@ class User extends db_connection
     {
         if ($sexual_orientation = 'hetorosexual') {
             if ($gender = 'm') {
-                return $this->db_fetch_all('SELECT users.Uid, username, interest_name, image_1
+                return $this->fetch('SELECT users.Uid, username, interest_name, image_1
                                     FROM users
                                     INNER JOIN user_interest
                                     ON users.Uid = user_interest.Uid
@@ -80,7 +80,7 @@ class User extends db_connection
                                     ON pictures.Uid = users.Uid
                                     WHERE gender = "f" and sexual_orientation = ' . $sexual_orientation . ' ');
             } else {
-                return $this->db_fetch_all('SELECT users.Uid, username, interest_name, image_1
+                return $this->fetch('SELECT users.Uid, username, interest_name, image_1
                                         FROM users
                                         INNER JOIN user_interest
                                         ON users.Uid = user_interest.Uid
@@ -91,7 +91,7 @@ class User extends db_connection
                                         WHERE gender = "m" and sexual_orientation = ' . $sexual_orientation . '');
             }
         } elseif ($sexual_orientation = 'bisexual') {
-            return $this->db_fetch_all('SELECT users.Uid, username, interest_name, image_1
+            return $this->fetch('SELECT users.Uid, username, interest_name, image_1
                                 FROM users
                                 INNER JOIN user_interest
                                 ON users.Uid = user_interest.Uid
@@ -101,7 +101,7 @@ class User extends db_connection
                                 ON pictures.Uid = users.Uid
                                 WHERE gender = "m" or gender = "f" ');
         } elseif ($sexual_orientation = 'homosexual') {
-            return $this->db_fetch_all('SELECT users.Uid, username, interest_name, image_1
+            return $this->fetch('SELECT users.Uid, username, interest_name, image_1
                                 FROM users
                                 INNER JOIN user_interest
                                 ON users.Uid = user_interest.Uid
@@ -111,7 +111,7 @@ class User extends db_connection
                                 ON pictures.Uid = users.Uid
                                 WHERE gender = ' . $gender . ' and sexual_orientation = ' . $sexual_orientation . '');
         } elseif ($sexual_orientation = 'pansexual') {
-            return $this->db_fetch_all('SELECT users.Uid, username, interest_name, image_1
+            return $this->fetch('SELECT users.Uid, username, interest_name, image_1
                                 FROM users
                                 INNER JOIN user_interest
                                 ON users.Uid = user_interest.Uid

@@ -22,7 +22,7 @@
     <div class="program_container" style="display:flex;">
 
       <div class="form_side" style="width:65%">
-        <form name="registration" id="msform" action="../../action/authprocess.php" method='post' >
+        <form name="registration" id="msform" action="../../action/authprocess.php" method='post' enctype="multipart/form-data">
           <!-- progressbar -->
           <ul id="progressbar">
             <li class="active">Account Setup</li>
@@ -119,7 +119,7 @@
           <fieldset id='social_details' class='fieldset'>
             <h2 class="fs-title">Social Profiles</h2>
             <div class='form-group'>
-              <label for="class"  >Year Group</label>
+              <label for="class">Year Group</label>
               <select id="class" name="class">
                 <option value="1">Freshman</option>
                 <option value="2">Sophomore</option>
@@ -152,7 +152,7 @@
             <div class='form-group'>
               <div id="pictures_here">
                 <label for="filefield">Pictures</label>
-                <input type="file" name="filefield" id='filefield' multiple="multiple" onchange="preview_image()">
+                <input type="file" name="file" id='filefield' multiple="multiple" onchange="preview_image()">
                 <div id="image_preview" style="display:flex;"></div>
               </div>
             </div>

@@ -1,186 +1,82 @@
-<?php
-//database
+<?php 
 
-//database credentials
 require('db_cred.php');
 
-/**
- *@author David Sampah
- *@version 1.1
- */
 class db_connection
 {
-	//properties
+
+	// db connection
 	public $db = null;
+	// query results
 	public $results = null;
 
-	//connect
-	/**
-	*Database connection
-	*@return bolean
-	**/
-	function db_connect(){
-		
-		//connection
-		$this->db = mysqli_connect(SERVER,USERNAME,PASSWD,DATABASE);
-		
-		//test the connection
-		if (mysqli_connect_errno()) {
-			return false;
-		}else{
-			return true;
-		}
-	}
 
-	//execute a query
-	/**
-	*Query the Database
-	*@param takes a connection and sql query
-	*@return bolean
-	**/
-	function db_query($sqlQuery){
-		
-		if (!$this->db_connect()) {
-			return false;
-		} 
-		elseif ($this->db==null) {
+
+	// method used to connect to the database
+	function connection(){
+
+		// connect to the database
+		$this->db = mysqli_connect(SERVER, USERNAME, PASSWD, DATABASE);
+
+		// if there are errors, return false
+		if(mysqli_connect_errno()){
 			return false;
 		}
 
-		//run query 
-		$this->results = mysqli_query($this->db,$sqlQuery);
-		
-		if ($this->results == false) {
-			return false;
-		}else{
-			return true;
-		}
-	}
-
-	//execute a query with mysqli real escape string
-	//to saveguard from sql injection
-	/**
-	*Query the Database
-	*@param takes a connection and sql query
-	*@return bolean
-	**/
-	function db_query_escape_string($sqlQuery){
-		
-		//run query 
-		$this->results = mysqli_query($this->db,$sqlQuery);
-		
-		if ($this->results == false) {
-			return false;
-		}else{
-			return true;
-		}
-	}
-
-	//fetch a data
-	/**
-	*get select data
-	*@return a record
-	**/
-	function db_fetch_one(){
-		
-		//check if result was set
-		if ($this->results == null) {
-			return false;
-		}
-		elseif ($this->results == false) {
-			return false;
-		}
-		
-		//return a record
-		return mysqli_fetch_assoc($this->results);
+		// else return true
+		return true;
 
 	}
 
-	//fetch all data
-	/**
-	*get select data
-	*@return all record
-	**/
-	function db_fetch_all(){
-		
-		//check if result was set
-		if ($this->results == null) {
+	// execute database sql statements (insert, update, and delete)
+	function query($query){
+
+		// check if the connection was successful
+		if($this->connection() == false){
 			return false;
 		}
-		elseif ($this->results == false) {
+
+		// else execute the query
+		$this->results = mysqli_query($this->db, $query);
+
+		// check if results is returning false
+		if($this->results !=true){
 			return false;
 		}
-		
-		//return a record
-		return mysqli_fetch_all($this->results, MYSQLI_ASSOC);
+
+		// else return true
+		return true;
 
 	}
 
 
-	//count data
-	/**
-	*get select data
-	*@return a count
-	**/
-	function db_count(){
-		
-		//check if result was set
-		if ($this->results == null) {
-			return false;
-		}
-		elseif ($this->results == false) {
-			return false;
-		}
-		
-		//return a record
-		return mysqli_num_rows($this->results);
+	// method to fetch multiple rows from database (select)
+	function fetch($query){
 
+		// if query executes successfully
+		if($this->query($query)) {
+			// return all the rows
+			return mysqli_fetch_all($this->results, MYSQLI_ASSOC);
+		}
+		// else return false
+		return false;
+		
 	}
 
-	//execute a query that returns the just inserted id
-	/**
-	*Query the Database
-	*@param takes a connection and sql query
-	*@return returns the just inserted id
-	**/
-	function db_query_id($sqlQuery){
-		
-		if (!$this->db_connect()) {
-			return false;
-		} 
-		elseif ($this->db==null) {
-			return false;
-		}
 
-		//run query 
-		$this->results = mysqli_query($this->db,$sqlQuery);
-		
-		if ($this->results == false) {
-			return false;
-		}else{
-			//get the just inserted id
-			return mysqli_insert_id($this->db);
+	// method to fetch one row from database (select)
+	function fetchOne($query){
+
+		// if query executes successfully
+		if($this->query($query)) {
+			// return one row
+			return mysqli_fetch_assoc($this->results);
 		}
+		// else return false
+		return false;
 	}
 
-	//execute a query with mysqli real escape string and return the just inserted id
-	//to saveguard from sql injection
-	/**
-	*Query the Database
-	*@param takes a connection and sql query
-	*@return bolean
-	**/
-	function db_query_escape_string_id($sqlQuery){
-		
-		//run query 
-		$this->results = mysqli_query($this->db,$sqlQuery);
-		
-		if ($this->results == false) {
-			return false;
-		}else{
-			//get the just inserted id
-			return mysqli_insert_id($this->db);
-		}
-	}
+
 }
+
 ?>
