@@ -63,60 +63,44 @@ class User extends db_connection
         return $this->fetchOne("SELECT * 
                                 FROM users
                                 INNER JOIN pictures
-                                ON pictures.Uid = users.Uid");
+                                ON pictures.Uid = users.Uid
+                                INNER JOIN courses
+                                ON courses.course_id = users.major
+                                INNER JOIN sexual_orientation
+                                ON sexual_orientation.id = users.sexual_orientation");
     }
 
     function getPartner($id, $gender, $sexual_orientation)
     {
-        if ($sexual_orientation = 'hetorosexual') {
+        if ($sexual_orientation = '1') {
             if ($gender = 'm') {
-                return $this->fetch('SELECT users.Uid, username, interest_name, image_1
+                return $this->fetch('SELECT *
                                     FROM users
-                                    INNER JOIN user_interest
-                                    ON users.Uid = user_interest.Uid
-                                    INNER JOIN interest
-                                    ON interest.int_id = user_interest.interest_id
                                     INNER JOIN pictures
                                     ON pictures.Uid = users.Uid
                                     WHERE gender = "f" and sexual_orientation = ' . $sexual_orientation . ' ');
             } else {
-                return $this->fetch('SELECT users.Uid, username, interest_name, image_1
+                return $this->fetch('SELECT *
                                         FROM users
-                                        INNER JOIN user_interest
-                                        ON users.Uid = user_interest.Uid
-                                        INNER JOIN interest
-                                        ON interest.int_id = user_interest.interest_id
                                         INNER JOIN pictures
                                         ON pictures.Uid = users.Uid
                                         WHERE gender = "m" and sexual_orientation = ' . $sexual_orientation . '');
             }
-        } elseif ($sexual_orientation = 'bisexual') {
-            return $this->fetch('SELECT users.Uid, username, interest_name, image_1
+        } elseif ($sexual_orientation = '2') {
+            return $this->fetch('SELECT *
                                 FROM users
-                                INNER JOIN user_interest
-                                ON users.Uid = user_interest.Uid
-                                INNER JOIN interest
-                                ON interest.int_id = user_interest.interest_id
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
                                 WHERE gender = "m" or gender = "f" ');
-        } elseif ($sexual_orientation = 'homosexual') {
-            return $this->fetch('SELECT users.Uid, username, interest_name, image_1
+        } elseif ($sexual_orientation = '3') {
+            return $this->fetch('SELECT *
                                 FROM users
-                                INNER JOIN user_interest
-                                ON users.Uid = user_interest.Uid
-                                INNER JOIN interest
-                                ON interest.int_id = user_interest.interest_id
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
                                 WHERE gender = ' . $gender . ' and sexual_orientation = ' . $sexual_orientation . '');
-        } elseif ($sexual_orientation = 'pansexual') {
-            return $this->fetch('SELECT users.Uid, username, interest_name, image_1
+        } elseif ($sexual_orientation = '4') {
+            return $this->fetch('SELECT *
                                 FROM users
-                                INNER JOIN user_interest
-                                ON users.Uid = user_interest.Uid
-                                INNER JOIN interest
-                                ON interest.int_id = user_interest.interest_id
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid');
         }
