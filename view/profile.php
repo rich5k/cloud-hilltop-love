@@ -9,7 +9,9 @@
 </head>
 
 <body>
-
+    <div class="container">
+        
+    </div>
     <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
 </body>
 

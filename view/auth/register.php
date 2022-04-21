@@ -132,12 +132,12 @@
           <div class='form-group'>
             <label for="major">Offering Major</label>
             <select id="major" name="major">
-              <option value="BA">Buisness Administration</option>
-              <option value="Cs">Computer Science</option>
-              <option value="MIS">Management Information Studies</option>
-              <option value="EE">Electrical Engineering</option>
-              <option value="CE">Computer Engineering</option>
-              <option value="ME">Mechanical Engineering</option>
+              <option value="6">Buisness Administration</option>
+              <option value="2">Computer Science</option>
+              <option value="5">Management Information Studies</option>
+              <option value="4">Electrical Engineering</option>
+              <option value="1">Computer Engineering</option>
+              <option value="3">Mechanical Engineering</option>
             </select>
           </div>
           <div class='form-group'>
