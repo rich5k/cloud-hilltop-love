@@ -2,8 +2,9 @@
 require('../settings/core.php');
 require('../controllers/UserController.php');
 
-// $user = get_user_controller($_SESSION['Uid']);
-// $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
+$user = get_user_controller($_SESSION['Uid']);
+
+$partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
 
 ?>
@@ -24,6 +25,7 @@ require('../controllers/UserController.php');
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
+        <a href="./auth/logout.php" class="btn">Logout</a>
     </div>
     <div class="tinder">
         <div class="tinder--status">
@@ -32,39 +34,19 @@ require('../controllers/UserController.php');
         </div>
 
         <div class="tinder--cards">
-            <div class="tinder--card">
-                <img src="https://placeimg.com/600/300/people">
-                <h3>Demo card 1</h3>
-                <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-                <img src="https://placeimg.com/600/300/animals">
-                <h3>Demo card 2</h3>
-                <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-                <img src="https://placeimg.com/600/300/nature">
-                <h3>Demo card 3</h3>
-                <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-                <img src="https://placeimg.com/600/300/tech">
-                <h3>Demo card 4</h3>
-                <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <div class="tinder--card">
-                <img src="https://placeimg.com/600/300/arch">
-                <h3>Demo card 5</h3>
-                <p>This is a demo for Tinder like swipe cards</p>
-            </div>
-            <?php //foreach($partners as $partner) {
-            //echo '<div class="tinder--card">
-            //<img src="../images/'.$partner['image_1'].'">
-            //<h3>'.$partner['username'].'</h3>
-            //<p>This is a demo for Tinder like swipe cards</p>
-            //</div>';
-            //}
+            
+            <?php 
+            foreach($partners as $partner) { 
+            echo '<div class="tinder--card">
+            <img src="../assets/avis/'.$partner['pic_name'].'">
+            <h3>'.$partner['username'].'</h3>
+            <p></p>
+            </div>';
+            
+            }
+            //var_dump($user);
             ?>
+          
 
 
         </div>

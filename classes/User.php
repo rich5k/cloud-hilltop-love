@@ -67,38 +67,39 @@ class User extends db_connection
                                 INNER JOIN courses
                                 ON courses.course_id = users.major
                                 INNER JOIN sexual_orientation
-                                ON sexual_orientation.id = users.sexual_orientation");
+                                ON sexual_orientation.id = users.sexual_orientation
+                                WHERE users.Uid = '$id'");
     }
 
     function getPartner($id, $gender, $sexual_orientation)
     {
-        if ($sexual_orientation = '1') {
-            if ($gender = 'm') {
-                return $this->fetch('SELECT *
+        if ($sexual_orientation === '1') {
+            if ($gender === 'm') {
+                return $this->fetch("SELECT *
                                     FROM users
                                     INNER JOIN pictures
                                     ON pictures.Uid = users.Uid
-                                    WHERE gender = "f" and sexual_orientation = ' . $sexual_orientation . ' ');
-            } else {
-                return $this->fetch('SELECT *
-                                        FROM users
-                                        INNER JOIN pictures
-                                        ON pictures.Uid = users.Uid
-                                        WHERE gender = "m" and sexual_orientation = ' . $sexual_orientation . '');
+                                    WHERE gender = 'f' and sexual_orientation = '$sexual_orientation' ");
+            }else if($gender === 'f') {
+                return $this->fetch("SELECT *
+                                    FROM users
+                                    INNER JOIN pictures
+                                    ON pictures.Uid = users.Uid
+                                    WHERE gender = 'm' and sexual_orientation = '$sexual_orientation' ");
             }
-        } elseif ($sexual_orientation = '2') {
+        } elseif ($sexual_orientation === '2') {
             return $this->fetch('SELECT *
                                 FROM users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
                                 WHERE gender = "m" or gender = "f" ');
-        } elseif ($sexual_orientation = '3') {
+        } elseif ($sexual_orientation === '3') {
             return $this->fetch('SELECT *
                                 FROM users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
                                 WHERE gender = ' . $gender . ' and sexual_orientation = ' . $sexual_orientation . '');
-        } elseif ($sexual_orientation = '4') {
+        } elseif ($sexual_orientation === '4') {
             return $this->fetch('SELECT *
                                 FROM users
                                 INNER JOIN pictures
