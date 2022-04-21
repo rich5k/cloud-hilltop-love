@@ -32,9 +32,11 @@ if (isset($_POST['register'])) {
     } else {
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         //die($pass);
-
-        if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
+        echo "passed email and password auth";
+        if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) != true) {
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
+        } else {
+            echo "can't add user";
         }
 
         if (isset($_FILES["file"]["name"])) {
@@ -69,6 +71,8 @@ if (isset($_POST['register'])) {
         //header("Location: ../view/auth/login.php"); 
 
     }
+} else {
+    echo "register post not working";
 }
 //die("ERROR: Could not execute");
 //echo $_POST['signin'];
@@ -111,4 +115,6 @@ if (isset($_POST['signin'])) {
         $_SESSION['errors'] = 'Email or password is incorrect';
         header("Location: ../view/auth/login.php");
     }
+} else {
+    echo "login post not working";
 }

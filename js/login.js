@@ -71,7 +71,7 @@ function Login() {
 
 }
 
-Register.prototype.init = async function() {
+Login.prototype.init = async function() {
     var self = this;
 
     var user = localStorage.getItem('user');
@@ -90,7 +90,7 @@ Register.prototype.init = async function() {
 
 };
 
-Register.prototype.login = async function (user) {
+Login.prototype.login = async function (user) {
     var self = this;
 
     window.qbConnect = new self.qbConnect(user);
@@ -126,10 +126,10 @@ Register.prototype.login = async function (user) {
 
 };
 
-Register.prototype.renderRegisterPage = function(){
-    helpers.clearView(app.page);
+Login.prototype.renderLoginPage = function(){
+    // helpers.clearView(app.page);
 
-    this.isRegisterPageRendered = true;
+    this.isLoginPageRendered = true;
     this.setListeners();
 };
 
@@ -137,32 +137,18 @@ Register.prototype.renderRegisterPage = function(){
 
 Login.prototype.setListeners = function(){
     var self = this,
-        registerForm = document.forms.registerForm,
-        formInputs = [registerForm.email, registerForm.fname, registerForm.lname, registerForm.username, registerForm.password],
-        registerBtn = registerForm.register;
+        loginForm = document.forms.loginForm,
+        loginBtn = loginForm.signin;
 
-    registerForm.addEventListener('submit', function(e){
-        e.preventDefault();
+    loginForm.addEventListener('submit', function(e){
+        // e.preventDefault();
 
-        if(
-            !app.checkInternetConnection() ||
-            registerForm.hasAttribute('disabled') ||
-            !registerForm.userName.isValid ||
-            !registerForm.userLogin.isValid) {
-            return false;
-        } else {
-            registerForm.setAttribute('disabled', true);
-        }
-
-        var email = registerForm.email.value,
-            full_name= registerForm.fname.value+" "+registerForm.lname.value,
-            login= registerForm.username.value,
-            password = registerForm.password.value;
+        
+        var email = loginForm.email.value,
+            password = loginForm.password.value;
 
         var user = {
             email: email,
-            full_name: full_name,
-            login: login,
             password: password
         };
 
@@ -172,46 +158,17 @@ Login.prototype.setListeners = function(){
             // router.navigate('/dashboard');
         }).catch(function(error){
             alert('lOGIN ERROR\n open console to get more info');
-            registerBtn.removeAttribute('disabled');
+            loginBtn.removeAttribute('disabled');
             console.error(error);
-            registerForm.login_submit.innerText = 'LOGIN';
+            loginForm.login_submit.innerText = 'LOGIN';
         });
     });
 
-    // add event listeners for each input;
-    _.each(formInputs, function(i){
-        i.addEventListener('focus', function(e){
-            if(e.target.isValid){
-                e.target.nextElementSibling.classList.remove('filled');
-            }else{
-                e.target.nextElementSibling.classList.add('filled');
-            }
-        });
-
-        i.addEventListener('focusout', function(e){
-            var elem = e.currentTarget;
-            if (!elem.value.length || elem.isValid) {
-                elem.nextElementSibling.classList.remove('filled');
-            }
-        });
-
-        i.addEventListener('input', function(e){
-            
-
-            if(e.target.isValid){
-                e.target.nextElementSibling.classList.remove('filled');
-            }else{
-                e.target.nextElementSibling.classList.add('filled');
-            }
-
-            if(registerForm.userName.isValid && loginForm.userLogin.isValid){
-                registerBtn.removeAttribute('disabled');
-            }else{
-                registerBtn.setAttribute('disabled', true);
-            }
-
-        })
-    });
+    
 };
 
 var loginModule = new Login();
+
+window.onload=function(){
+    loginModule.renderLoginPage();
+}

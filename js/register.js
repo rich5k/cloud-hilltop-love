@@ -94,7 +94,7 @@ function Register() {
 
 }
 
-Login.prototype.init = async function() {
+Register.prototype.init = async function() {
     var self = this;
 
     var user = localStorage.getItem('user');
@@ -114,47 +114,46 @@ Login.prototype.init = async function() {
 };
 
 
-Login.prototype.renderLoginPage = function(){
-    helpers.clearView(app.page);
+Register.prototype.renderRegisterPage = function(){
+    // helpers.clearView(app.page);
 
-    app.page.innerHTML = helpers.fillTemplate('tpl_login', {
-        version: QB.version + ':' + QB.buildNumber
-    });
-    this.isLoginPageRendered = true;
+    // app.page.innerHTML = helpers.fillTemplate('tpl_login', {
+    //     version: QB.version + ':' + QB.buildNumber
+    // });
+    this.isRegisterPageRendered = true;
     this.setListeners();
 };
 
-Login.prototype.renderLoadingPage = function(){
-    helpers.clearView(app.page);
-    app.page.innerHTML = helpers.fillTemplate('tpl_loading');
-};
 
-Login.prototype.setListeners = function(){
+Register.prototype.setListeners = function(){
     var self = this,
-        loginForm = document.forms.loginForm,
-        formInputs = [loginForm.userName, loginForm.userLogin],
-        loginBtn = loginForm.login_submit;
+        registerForm = document.forms.registerForm,
+        formInputs = [registerForm.email, registerForm.fname, registerForm.lname, registerForm.username, registerForm.password],
+        loginBtn = registerForm.register;
 
-    loginForm.addEventListener('submit', function(e){
-        e.preventDefault();
+    registerForm.addEventListener('submit', function(e){
+        // e.preventDefault();
 
         if(
             !app.checkInternetConnection() ||
-            loginForm.hasAttribute('disabled') ||
-            !loginForm.userName.isValid ||
-            !loginForm.userLogin.isValid) {
+            registerForm.hasAttribute('disabled') ||
+            !registerForm.userName.isValid ||
+            !registerForm.userLogin.isValid) {
             return false;
         } else {
-            loginForm.setAttribute('disabled', true);
+            registerForm.setAttribute('disabled', true);
         }
 
-        var userName = loginForm.userName.value,
-            userLogin = loginForm.userLogin.value;
+        var email = registerForm.email.value,
+            full_name= registerForm.fname.value+" "+registerForm.lname.value,
+            login= registerForm.username.value,
+            password = registerForm.password.value;
 
         var user = {
-            login: userLogin,
-            password: 'quickblox',
-            full_name: userName
+            email: email,
+            full_name: full_name,
+            login: login,
+            password: password
         };
 
         localStorage.setItem('user', JSON.stringify(user));
@@ -165,57 +164,15 @@ Login.prototype.setListeners = function(){
             alert('lOGIN ERROR\n open console to get more info');
             loginBtn.removeAttribute('disabled');
             console.error(error);
-            loginForm.login_submit.innerText = 'LOGIN';
+            registerForm.login_submit.innerText = 'LOGIN';
         });
     });
 
-    // add event listeners for each input;
-    _.each(formInputs, function(i){
-        i.addEventListener('focus', function(e){
-            if(e.target.isValid){
-                e.target.nextElementSibling.classList.remove('filled');
-            }else{
-                e.target.nextElementSibling.classList.add('filled');
-            }
-        });
 
-        i.addEventListener('focusout', function(e){
-            var elem = e.currentTarget;
-            if (!elem.value.length || elem.isValid) {
-                elem.nextElementSibling.classList.remove('filled');
-            }
-        });
-
-        i.addEventListener('input', function(e){
-            var userName = loginForm.userName.value,
-                userLogin = loginForm.userLogin.value;
-
-            loginForm.userName.isValid = 20 >= userName.length && userName.length >=3 &&
-                (userName.match(/^[a-zA-Z][a-zA-Z0-9 ]{1,18}[a-zA-Z0-9]$/)!=null);
-            loginForm.userLogin.isValid = 50 >= userLogin.length && userLogin.length >= 3 &&
-                (userLogin.match(/[@]/g)==null || userLogin.match(/[@]/g).length <= 1) &&
-                (userLogin.match(/^[a-zA-Z][a-zA-Z0-9@\-_.]{1,48}[a-zA-Z0-9]$/)!=null);
-
-            userName.split(" ").forEach(function (str) {
-                if(str.length < 1){
-                    loginForm.userName.isValid = false;
-                }
-            });
-
-            if(e.target.isValid){
-                e.target.nextElementSibling.classList.remove('filled');
-            }else{
-                e.target.nextElementSibling.classList.add('filled');
-            }
-
-            if(loginForm.userName.isValid && loginForm.userLogin.isValid){
-                loginBtn.removeAttribute('disabled');
-            }else{
-                loginBtn.setAttribute('disabled', true);
-            }
-
-        })
-    });
+    
 };
 
 var registerModule = new Register();
+window.onload=function(){
+    registerModule.renderRegisterPage();
+}
