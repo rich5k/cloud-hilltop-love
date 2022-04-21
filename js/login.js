@@ -193,19 +193,18 @@ Login.prototype.setListeners = function(){
             loginForm.setAttribute('disabled', true);
         }
 
-        var userName = loginForm.userName.value,
-            userLogin = loginForm.userLogin.value;
+        var email = loginForm.email.value,
+            password = loginForm.password.value;
 
         var user = {
-            login: userLogin,
-            password: 'quickblox',
-            full_name: userName
+            email: email,
+            password: password
         };
 
         localStorage.setItem('user', JSON.stringify(user));
 
         self.login(user).then(function(){
-            router.navigate('/dashboard');
+            // router.navigate('/dashboard');
         }).catch(function(error){
             alert('lOGIN ERROR\n open console to get more info');
             loginBtn.removeAttribute('disabled');
@@ -232,20 +231,7 @@ Login.prototype.setListeners = function(){
         });
 
         i.addEventListener('input', function(e){
-            var userName = loginForm.userName.value,
-                userLogin = loginForm.userLogin.value;
-
-            loginForm.userName.isValid = 20 >= userName.length && userName.length >=3 &&
-                (userName.match(/^[a-zA-Z][a-zA-Z0-9 ]{1,18}[a-zA-Z0-9]$/)!=null);
-            loginForm.userLogin.isValid = 50 >= userLogin.length && userLogin.length >= 3 &&
-                (userLogin.match(/[@]/g)==null || userLogin.match(/[@]/g).length <= 1) &&
-                (userLogin.match(/^[a-zA-Z][a-zA-Z0-9@\-_.]{1,48}[a-zA-Z0-9]$/)!=null);
-
-            userName.split(" ").forEach(function (str) {
-                if(str.length < 1){
-                    loginForm.userName.isValid = false;
-                }
-            });
+            
 
             if(e.target.isValid){
                 e.target.nextElementSibling.classList.remove('filled');

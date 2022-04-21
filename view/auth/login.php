@@ -68,7 +68,7 @@ if (isset($_SESSION['error'])) {
   <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
   <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
   <script src="../../js/quickblox.js"></script>
-  <script src="../../js/quickblox-auth.js"></script>
+  <script src="../../js/login.js"></script>
   <script src="../../js/login_validation.js"></script>
 
 

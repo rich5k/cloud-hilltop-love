@@ -87,7 +87,7 @@ App.prototype.loadWelcomeTpl = function () {
     var content = document.querySelector('.j-content'),
         welcomeTpl = helpers.fillTemplate('tpl_welcome');
     console.log(welcomeTpl);
-    // helpers.clearView(content);
+    helpers.clearView(content);
     content.innerHTML = welcomeTpl;
 };
 
