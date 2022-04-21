@@ -144,11 +144,11 @@ Modal.prototype.setListeners = function () {
 
     var
         self = this,
-        menu = document.querySelector('.menu'),
-        menuList = document.querySelector('.menuList'),
+        // menu = document.querySelector('.menu'),
+        // menuList = document.querySelector('.menuList'),
         createChat = document.querySelector('.menuList li:nth-child(1)'),
         deleteChats = document.querySelector('.menuList li:nth-child(2)'),
-        menuListInfo = document.querySelector('.menuList li:nth-child(3)'),
+        // menuListInfo = document.querySelector('.menuList li:nth-child(3)'),
         logout = document.querySelector('.menuList li:nth-child(4)'),
         more = document.querySelector('.more'),
         moreList = document.querySelector('.moreList'),
