@@ -3,4 +3,5 @@ window.onload= function(){
     app.renderDashboard()
     app.loadWelcomeTpl();
     app.sidebar.classList.add('active');
+    // app.loadChatList();
 }
