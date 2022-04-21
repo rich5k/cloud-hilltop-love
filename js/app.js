@@ -56,12 +56,12 @@ App.prototype.renderDashboard = function (activeTabName) {
 
     // helpers.clearView(app.page);
 
-    document.querySelector('#user-name').innerHTML = this.user.name;
+    // document.querySelector('#user-name').innerHTML = this.user.name;
 
     self.page.innerHTML = helpers.fillTemplate('tpl_dashboardContainer', renderParams);
 
     /*var logoutBtn = document.querySelector('.j-logout');*/
-    loginModule.isLoginPageRendered = false;
+    // loginModule.isLoginPageRendered = false;
     self.isDashboardLoaded = true;
     self.content = document.querySelector('.j-content');
     self.sidebar = document.querySelector('.j-sidebar');
@@ -82,12 +82,12 @@ App.prototype.renderDashboard = function (activeTabName) {
 
 App.prototype.loadWelcomeTpl = function () {
 
-    document.querySelector('.login__logo').classList.remove("show");
+    // document.querySelector('.login__logo').classList.remove("show");
 
     var content = document.querySelector('.j-content'),
         welcomeTpl = helpers.fillTemplate('tpl_welcome');
-
-    helpers.clearView(content);
+    console.log(welcomeTpl);
+    // helpers.clearView(content);
     content.innerHTML = welcomeTpl;
 };
 

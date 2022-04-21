@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/dialogs.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
+    <script src="../js/quickblox.min.js" defer></script>
     <script type="text/javascript">
         var logData = [];
         (function(console) {
@@ -93,6 +94,11 @@
             <div id="page">
 
             </div>
+            <!-- Modal -->
+            <div id="substrate">
+                <!--<img class="close" src="./img/close.png" alt="close">-->
+            </div>
+            <div class="modal"></div>
         </div>
         <div class="contact-info col-lg-2">
             <div class="your-match-pics">
@@ -445,13 +451,14 @@
                     </div>
                 </script>
     <script src="../js/QBconfig.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
     <script src="../js/helpers.js" defer></script>
     <script src="../js/user.js" defer></script>
     <script src="../js/dialog.js" defer></script>
     <script src="../js/message.js" defer></script>
     <script src="../js/listeners.js" defer></script>
-    <script src="../js/app.js" defer></script>
-    <script src="../js/modal.js" defer></script>
+    <!-- <script src="../js/modal.js" defer></script> -->
 </body>
 
 </html>

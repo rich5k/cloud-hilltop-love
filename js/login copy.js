@@ -177,8 +177,8 @@ Login.prototype.renderLoadingPage = function(){
 Login.prototype.setListeners = function(){
     var self = this,
         loginForm = document.forms.loginForm,
-        formInputs = [loginForm.email, loginForm.password],
-        loginBtn = loginForm.signin;
+        formInputs = [loginForm.userName, loginForm.userLogin],
+        loginBtn = loginForm.login_submit;
 
     loginForm.addEventListener('submit', function(e){
         e.preventDefault();

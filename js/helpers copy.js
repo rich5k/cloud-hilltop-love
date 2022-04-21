@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 function Helpers() {
 }
@@ -8,12 +8,12 @@ Helpers.prototype.fillTemplate = function (name, options) {
     return tpl(options);
 };
 
-// Helpers.prototype.clearView = function (view) {
-//     var nodeList = view.childNodes;
-//     for (var i = nodeList.length; i > 0; i--) {
-//         view.removeChild(nodeList[i - 1]);
-//     }
-// };
+Helpers.prototype.clearView = function (view) {
+    var nodeList = view.childNodes;
+    for (var i = nodeList.length; i > 0; i--) {
+        view.removeChild(nodeList[i - 1]);
+    }
+};
 
 
 Helpers.prototype.checkIsMessageReadedByMe = function(message){

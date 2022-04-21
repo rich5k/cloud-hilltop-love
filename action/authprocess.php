@@ -104,7 +104,8 @@ if(isset($_POST['signin'])){
             //var_dump($role);
             $image = get_all_user_images_controller($user['Uid']);
             $_SESSION['avi'] = $image;
-            header("Location: ../view/profile.php");
+            // header("Location: ../view/profile.php");
+            header("Location: ../view/swipe_page.php");
         
         }else{
             $_SESSION['error'] = 'password is incorrect'; 
@@ -118,7 +119,3 @@ if(isset($_POST['signin'])){
     }
 
 }
-
-    
-
-?>
