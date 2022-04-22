@@ -33,16 +33,16 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="loginForm" id="msform" action="../../action/authprocess.php" method='post' style="margin-left:auto; margin-right:auto;">
+      <form name="loginForm" id="msform" action="../../action/authprocess" method='post' style="margin-left:auto; margin-right:auto;">
         <!-- progressbar here -->
         <fieldset>
           <h2 class="fs-title">Sign In</h2>
-          <?php 
+          <?php
           // if (isset($error))
           //   echo $error;
           // if (isset($errors))
           //   echo $error 
-            ?>
+          ?>
           <div class="form-group">
             <label for="email">Email</label>
             <input type="text" name="email" placeholder="Email" required />

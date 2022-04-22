@@ -5,7 +5,8 @@ require('../controllers/UserController.php');
 session_start();
 //unset($SESSION['error']); 
 //unset($SESSION['errors']);
-
+// $email = $_POST['email'];
+// echo $email;
 if (isset($_POST['register'])) {
     $email = $_POST['email'];
     $fname = $_POST['fname'];
@@ -72,7 +73,7 @@ if (isset($_POST['register'])) {
 
     }
 } else {
-    echo "register post not working";
+    // echo "register post not working";
 }
 //die("ERROR: Could not execute");
 //echo $_POST['signin'];
@@ -116,5 +117,5 @@ if (isset($_POST['signin'])) {
         header("Location: ../view/auth/login.php");
     }
 } else {
-    echo "login post not working";
+    // echo "login post not working";
 }

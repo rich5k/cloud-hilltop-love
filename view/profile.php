@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-$pImage= $_SESSION['avi'];
-//echo $pImage;
-$imageUrl="../assets/".$pImage;
+$pImage = $_SESSION['avi'];
+// echo $pImage;
+$imageUrl = "../assets/" . $pImage;
 
 ?>
 
@@ -24,63 +24,61 @@ $imageUrl="../assets/".$pImage;
 </head>
 
 <body>
-<div class="top-buttons">
+    <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
     </div>
     <div class="userProfile">
 
         <div class="pic_session">
-            <div class="avatar" >
-                <img alt="" src=<?php echo $imageUrl;?>>
-            </div>  
-
-        </div>
-         
-        
-
-    <div class="row">
-		<div class="col-lg-3" id="user_card">
-
-            <div class="card hovercard">
-                
-                
-                <div class="info">
-                    <div class="title">
-                        <a target="_blank">Username</a>
-                    </div>
-                    <div class="desc">Name</div>
-                    <div class="desc">Age</div>
-                    <div class="desc">Major</div>
-                    <span class="desc">Intrest 1</span>
-                    <span class="desc">Intrest 2</span>
-                    <span class="desc">Intrest 3</span>
-                </div>
-                <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher"
-                       href="https://plus.google.com/+ahmshahnuralam">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm" rel="publisher"
-                       href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
-                    </a>
-                </div>
+            <div class="avatar">
+                <img alt="" src=<?php echo $imageUrl; ?>>
             </div>
 
         </div>
 
-	</div>
 
-    
 
-        
+        <div class="row">
+            <div class="col-lg-3" id="user_card">
+
+                <div class="card hovercard">
+
+
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank">Username</a>
+                        </div>
+                        <div class="desc">Name</div>
+                        <div class="desc">Age</div>
+                        <div class="desc">Major</div>
+                        <span class="desc">Intrest 1</span>
+                        <span class="desc">Intrest 2</span>
+                        <span class="desc">Intrest 3</span>
+                    </div>
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/+ahmshahnuralam">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
     </div>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
