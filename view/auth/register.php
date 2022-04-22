@@ -11,10 +11,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous"></script>-->
   <link rel="stylesheet" href="../../css/style_signUP.css">
-  <link rel="stylesheet" href="yearpicker.css">
+  <!-- <link rel="stylesheet" href="yearpicker.css"> -->
   <script src="/path/to/cdn/jquery.slim.min.js"></script>
-  <script src="yearpicker.js" async></script>
-  <script src="../js/quickblox.min.js" defer></script>
+  <!-- <script src="yearpicker.js" async></script> -->
+  <script src="../../js/quickblox.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
 
 </head>
 
@@ -23,7 +24,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registerForm" id="msform" action="../../action/authprocess" method='post' enctype="multipart/form-data">
+      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess">
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>
@@ -186,8 +187,10 @@ height: 100%;">
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src='../../js/script.js'></script>
+    <script src="../../js/QBconfig.js" defer></script>
     <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
-    <script src="../../js/quickblox.js"></script>
+    <script src="../../js/helpers.js" defer></script>
+    <script src="../../js/app.js" defer></script>
     <script src="../../js/register.js"></script>
     <!-- <script src="../../js/quickblox-auth.js"></script> -->
 

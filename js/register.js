@@ -128,22 +128,12 @@ Register.prototype.renderRegisterPage = function(){
 Register.prototype.setListeners = function(){
     var self = this,
         registerForm = document.forms.registerForm,
-        formInputs = [registerForm.email, registerForm.fname, registerForm.lname, registerForm.username, registerForm.password],
         loginBtn = registerForm.register;
 
     registerForm.addEventListener('submit', function(e){
-        // e.preventDefault();
+        e.preventDefault();
 
-        if(
-            !app.checkInternetConnection() ||
-            registerForm.hasAttribute('disabled') ||
-            !registerForm.userName.isValid ||
-            !registerForm.userLogin.isValid) {
-            return false;
-        } else {
-            registerForm.setAttribute('disabled', true);
-        }
-
+        
         var email = registerForm.email.value,
             full_name= registerForm.fname.value+" "+registerForm.lname.value,
             login= registerForm.username.value,
@@ -158,13 +148,14 @@ Register.prototype.setListeners = function(){
 
         localStorage.setItem('user', JSON.stringify(user));
 
-        self.login(user).then(function(){
-            router.navigate('/dashboard');
+        self.userCreate(user).then(function(){
+            console.log("registered user");
+            // router.navigate('/dashboard');
         }).catch(function(error){
             alert('lOGIN ERROR\n open console to get more info');
             loginBtn.removeAttribute('disabled');
             console.error(error);
-            registerForm.login_submit.innerText = 'LOGIN';
+            // registerForm.login_submit.innerText = 'LOGIN';
         });
     });
 
