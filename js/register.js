@@ -113,6 +113,18 @@ Register.prototype.init = async function() {
 
 };
 
+function userCreate(user) {
+            return new Promise(function (resolve, reject) {
+                QB.users.create(user, function (error, result) {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(result);
+                    }
+                });
+            });
+        };
+
 
 Register.prototype.renderRegisterPage = function(){
     // helpers.clearView(app.page);
@@ -126,12 +138,12 @@ Register.prototype.renderRegisterPage = function(){
 
 
 Register.prototype.setListeners = function(){
-    var self = this,
-        registerForm = document.forms.registerForm,
-        loginBtn = registerForm.register;
+    var self = this;
+    var registerForm = document.forms.registerForm;
+    var registerBtn = registerForm.register;
 
-    registerForm.addEventListener('submit', function(e){
-        e.preventDefault();
+    registerForm.addEventListener('submit', ()=>{
+        // e.preventDefault();
 
         
         var email = registerForm.email.value,
@@ -148,12 +160,12 @@ Register.prototype.setListeners = function(){
 
         localStorage.setItem('user', JSON.stringify(user));
 
-        self.userCreate(user).then(function(){
+        userCreate(user).then(function(){
             console.log("registered user");
             // router.navigate('/dashboard');
         }).catch(function(error){
-            alert('lOGIN ERROR\n open console to get more info');
-            loginBtn.removeAttribute('disabled');
+            alert('register ERROR\n open console to get more info');
+            registerBtn.removeAttribute('disabled');
             console.error(error);
             // registerForm.login_submit.innerText = 'LOGIN';
         });
