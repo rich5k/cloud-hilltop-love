@@ -126,7 +126,7 @@ function userCreate(user) {
         };
 
 
-Register.prototype.renderRegisterPage = function(){
+Register.prototype.renderRegisterPage = async function(){
     // helpers.clearView(app.page);
 
     // app.page.innerHTML = helpers.fillTemplate('tpl_login', {
@@ -137,27 +137,32 @@ Register.prototype.renderRegisterPage = function(){
 };
 
 
-Register.prototype.setListeners = function(){
+Register.prototype.setListeners = async function(){
     var self = this;
     var registerForm = document.forms.registerForm;
     var registerBtn = registerForm.register;
-
-    registerForm.addEventListener('submit', ()=>{
+    
+    registerForm.addEventListener('submit', async ()=>{
         // e.preventDefault();
-
+        
         
         var email = registerForm.email.value,
-            full_name= registerForm.fname.value+" "+registerForm.lname.value,
-            login= registerForm.username.value,
-            password = registerForm.password.value;
-
+        full_name= registerForm.fname.value+" "+registerForm.lname.value,
+        login= registerForm.username.value,
+        password = registerForm.password.value;
+        
         var user = {
             email: email,
             full_name: full_name,
             login: login,
             password: password
         };
-
+        
+        window.qbConnect = new self.qbConnect(user);
+    
+        var session = await window.qbConnect.createSession();
+    
+        app.token = session.token;
         localStorage.setItem('user', JSON.stringify(user));
 
         userCreate(user).then(function(){
@@ -166,7 +171,7 @@ Register.prototype.setListeners = function(){
         }).catch(function(error){
             alert('register ERROR\n open console to get more info');
             registerBtn.removeAttribute('disabled');
-            console.error(error);
+            console.log(error);
             // registerForm.login_submit.innerText = 'LOGIN';
         });
     });
@@ -176,6 +181,6 @@ Register.prototype.setListeners = function(){
 };
 
 var registerModule = new Register();
-window.onload=function(){
+window.onload= async function(){
     registerModule.renderRegisterPage();
 }

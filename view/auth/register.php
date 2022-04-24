@@ -24,7 +24,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" onsubmit="return false;">
+      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess">
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>
@@ -191,7 +191,6 @@ height: 100%;">
     <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
     <script src="../../js/helpers.js" defer></script>
     <script src="../../js/app.js" defer></script>
-    <script src="../../js/login.js"></script>
     <script src="../../js/register.js"></script>
     <!-- <script src="../../js/quickblox-auth.js"></script> -->
 
