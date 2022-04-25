@@ -9,12 +9,13 @@ html {
 	/*Image only BG fallback*/
 
 	/*background = gradient + image pattern combo*/
-	background-color: #0C0D0F;
+	
 }
 
 body {
 	font-family: montserrat, arial, verdana;
 	min-height: 100%;
+	background-color: #1f7ce3;
 }
 /*form styles*/
 #msform {
@@ -55,13 +56,13 @@ body {
 	width: 100%;
 	box-sizing: border-box;
 	font-family: montserrat;
-	color: #2C3E50;
+	color: #1a4168;
 	font-size: 13px;
 }
 /*buttons*/
 #msform .action-button {
 	width: 100px;
-	background: #C3E5EF;
+	background: #2C3E50;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -71,13 +72,13 @@ body {
 	margin: 10px 5px;
 }
 #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px #C3E5EF;
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #2C3E50;
 }
 /*headings*/
 .fs-title {
 	font-size: 15px;
 	text-transform: uppercase;
-	color: #C3E5EF;
+	color: #2C3E50;
 	margin-bottom: 10px;
 }
 .fs-subtitle {
@@ -132,7 +133,7 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-	background:#C3E5EF;
+	background:#2C3E50;
 	color: white;
 }
 

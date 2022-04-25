@@ -1,88 +1,4 @@
-.from-me {
-  align-self: flex-end;
-  background-color: #248bf5;
-  color: #fff; 
-}
-.from-them {
-  align-items: flex-start;
- background-color: #e5e5ea;
-  color: #000;
-} 
 
-.talk-bubble {
-	margin: 40px;
-  display: inline-block;
-  position: relative;
-	width: 20%;
-	height: auto;
-	/* background-color: lightyellow; */
-}
-
-/* talk bubble contents */
-.talktext{
-  padding: 1em;
-	text-align: left;
-  line-height: 1.5em;
-  width: 20%;
-}
-.talktext p{
-  /* remove webkit p margins */
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-}
-
-/* Right triangle, right side slightly down*/
-.tri-right.border.right-in:before {
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: -40px;
-  top: 30px;
-	bottom: auto;
-	border: 20px solid;
-	border-color: #248bf5 transparent transparent #248bf5;
-  background-color: #248bf5;
-}
-.tri-right.right-in:after{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: -20px;
-  top: 38px;
-	bottom: auto;
-	border: 12px solid;
-	border-color: lightyellow transparent transparent lightyellow;
-}
-/* Right triangle, left side slightly down */
-.tri-right.border.left-in:before {
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: -40px;
-	right: auto;
-  top: 30px;
-	bottom: auto;
-	border: 20px solid;
-	border-color: #e5e5ea #e5e5ea transparent transparent;
-  background-color: #e5e5ea;
-}
-.tri-right.left-in:after{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: -20px;
-	right: auto;
-  top: 38px;
-	bottom: auto;
-	border: 12px solid;
-	border-color: lightyellow lightyellow transparent transparent;
-}
 .profile-banner{
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   color: white;
@@ -121,14 +37,15 @@
 }
 
 .your-match-title, .your-match-bio, .micro-caption {
-  font-size:14px;
+  /* font-size:14px; */
   display: block;
   color: grey;
   margin-left: 5px
 }
 
 .current-chat, .contact-info, .matches-page{
-  background-color: #EDF4F5
+  background-color: #EDF4F5;
+  height: 100vh;
 }
 
 .matches-page button{

@@ -1,4 +1,3 @@
 <?php
 	//redirect to index
-	header('Location: ./view/swipe_page.php');
-?>
+	header('Location: ./view/auth/login.php');
