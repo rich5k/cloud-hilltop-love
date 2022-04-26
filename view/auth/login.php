@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 // if (isset($_SESSION['errors'])) {
 //   $error = "<div class = 'error'>
@@ -12,6 +12,9 @@
 //               </div>";
 // }
 
+if(isset($_SESSION['Uid'])){
+  header('Location: ./swipe_page.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
