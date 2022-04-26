@@ -1,19 +1,9 @@
 <?php
 session_start();
 
-// if (isset($_SESSION['errors'])) {
-//   $error = "<div class = 'error'>
-//               Email or password is incorrect
-//               </div>";
-// }
-// if (isset($_SESSION['error'])) {
-//   $errors = "<div class = 'error'>
-//               Password is incorrect
-//               </div>";
-// }
-
 if(isset($_SESSION['Uid'])){
-  header('Location: ./swipe_page.php');
+  header('Location: ../swipe_page.php');
+  exit;
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +27,7 @@ if(isset($_SESSION['Uid'])){
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="loginForm" id="msform" action="../../action/authprocess" method='post' style="margin-left:auto; margin-right:auto;">
+      <form name="loginForm" id="msform" action="../../action/authprocess.php" method='post' style="margin-left:auto; margin-right:auto;">
         <!-- progressbar here -->
         <fieldset>
           <h2 class="fs-title">Sign In</h2>
@@ -74,11 +64,11 @@ if(isset($_SESSION['Uid'])){
   <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"> </script>
   <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
   <!-- <script src="https://unpkg.com/quickblox/quickblox.min.js"></script> -->
-  <script src="../../js/QBconfig.js" defer></script>
-  <script src="../../js/login.js" defer></script>
-  <script src="../../js/login_validation.js"></script>
-  <script src="../../js/helpers.js" defer></script>
-  <script src="../../js/app.js" defer></script>
+  <script src="../js/QBconfig.js" defer></script>
+  <script src="../js/login.js" defer></script>
+  <script src="../js/login_validation.js"></script>
+  <script src="../js/helpers.js" defer></script>
+  <script src="../js/app.js" defer></script>
 
 
 </body>

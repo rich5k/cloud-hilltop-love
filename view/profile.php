@@ -5,14 +5,15 @@ require('../controllers/UserController.php');
 
 $user = get_user_controller($_SESSION['Uid']);
 if(!isset($user)){
-    header('Location: ./auth/login.php');
+    header('Location: /auth/login.php');
+    exit;
 }
+$interests = get_interest_controller();
 
-$user = 
 
-$pImage = $_SESSION['avi'];
+$pImage = $user['pic_name'];
 // echo $pImage;
-$imageUrl = "../assets/" . $pImage;
+$imageUrl = "../assets/avis/" . $pImage;
 
 
 ?>
@@ -37,7 +38,7 @@ $imageUrl = "../assets/" . $pImage;
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-        <form action="./auth/logout" method="post">
+        <form action="./auth/logout.php" method="post">
             <input type="submit" class="btn" value="Logout" name="logout">
         </form>
     </div>
@@ -57,32 +58,41 @@ $imageUrl = "../assets/" . $pImage;
 
                 <div class="card hovercard">
 
+                    <form action="" method="post">
+                        <div class="info">
+                            <div class="title">
+                                <a target="_blank"><?php echo $user['username'] ?></a>
+                            </div>
+                            <div class="desc"><input type="text" value = "<?php echo $user['fname'] ?> " > </div>
+                            <div class="desc"><input type="text" value = "<?php echo $user['lname'] ?> " > </div>
+                            
+                            <div class="desc"><input type="text" value = "<?php echo $user['course_name'] ?> " >  </div>
+                            <?php foreach($interests as $interest){
+                                echo "<input type='checkbox' name='interest[]' id='' >
+                                      <label for=''>".$interest['interest_name']."</label><br>";
+                            }
+                            
 
-                    <div class="info">
-                        <div class="title">
-                            <a target="_blank">Username</a>
+                            ?>
+                            
+                            
                         </div>
-                        <div class="desc">Name</div>
-                        <div class="desc">Age</div>
-                        <div class="desc">Major</div>
-                        <span class="desc">Intrest 1</span>
-                        <span class="desc">Intrest 2</span>
-                        <span class="desc">Intrest 3</span>
-                    </div>
-                    <div class="bottom">
-                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/+ahmshahnuralam">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                        <a class="btn btn-primary btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
+                        <div class="bottom">
+                            <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/+ahmshahnuralam">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                                <i class="fa fa-behance"></i>
+                            </a>
+                        </div>
+                        <input type="submit" value="Update" name="Update">
+                    </form>
                 </div>
 
             </div>

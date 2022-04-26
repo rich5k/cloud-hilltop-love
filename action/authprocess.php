@@ -1,6 +1,5 @@
 <?php
 
-
 require('../controllers/UserController.php');
 session_start();
 //unset($SESSION['error']); 
@@ -65,6 +64,7 @@ if (isset($_POST['register'])) {
                     add_image_controller($Uid['Uid'], $fileName);
                     $_SESSION['avi'] = $fileName;
                     header('Location: ../view/auth/login.php');
+                    exit;
                 }
             }
         }
@@ -92,7 +92,7 @@ if (isset($_POST['signin'])) {
 
     if (isset($result['email'])) {
         $result1 = find_user_controller($email);
-        var_dump($result1);
+        //var_dump($result1);
         echo "Email there<br>";
         var_dump(password_verify($password, $result1['pass']));
         //die;
@@ -114,7 +114,7 @@ if (isset($_POST['signin'])) {
         }
     } else {
         $_SESSION['errors'] = 'Email or password is incorrect';
-        header("Location: ../view/auth/login.php");
+        header("Location: ../view/login.php");
     }
 } else {
     // echo "login post not working";

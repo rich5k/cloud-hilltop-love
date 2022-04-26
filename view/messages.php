@@ -4,12 +4,8 @@ require('../controllers/UserController.php');
 session_start();
 $user = $_SESSION['Uid'];
 if(!isset($user)){
-    header('Location: ./auth/login.php');
+    header('Location: /auth/login.php');
 }
-
-
-
-
 
 
 ?>

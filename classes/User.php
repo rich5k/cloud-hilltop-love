@@ -112,4 +112,16 @@ class User extends db_connection
                              WHERE sender_id = '$id' or receiver_id = '$id'
                              ORDER BY mess_time DESC ");
     }
+
+    function getInterests(){
+        return $this->fetch("SELECT * FROM interest");
+    }
+
+    function deleteInterests($id){
+        return $this->query("DELETE FROM user_interest WHERE Uid = '$id' ");
+    }
+
+    function add_user_interest($id, $Iid){
+        return $this->query("INSERT INTO user_interest(Uid, Iid) values('$id', '$Iid')");
+    }
 }

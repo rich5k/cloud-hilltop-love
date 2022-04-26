@@ -61,3 +61,19 @@ function get_user_messages($id){
     $user_instance = new User();
     return $user_instance->getUserMessages($id);
 }
+
+function get_interest_controller(){
+    $user_instance = new User();
+    return $user_instance->getInterests();
+}
+
+function delete_interest_controller($id){
+    $user_instance = new User();
+    return $user_instance->deleteInterests($id);
+}
+
+
+function add_user_interest_controller($id, $Iid){
+    $user_instance = new User();
+    return $user_instance->add_user_interest($id, $Iid);
+}

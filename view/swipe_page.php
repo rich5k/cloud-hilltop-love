@@ -1,12 +1,14 @@
 <?php
-require('../settings/core.php');
-require('../controllers/UserController.php');
 
+require('../controllers/UserController.php');
+session_start();
 $user = get_user_controller($_SESSION['Uid']);
 
-if(!isset($user)){
+if(!isset($_SESSION['Uid'])){
     header('Location: ./auth/login.php');
+    exit;
 }
+//var_dump($_SESSION['Uid']);
 
 $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
@@ -49,7 +51,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             </div>';
             
             }
-            var_dump($user);
+            //var_dump($user);
             //var_dump($user);
             ?>
           

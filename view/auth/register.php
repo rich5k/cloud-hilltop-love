@@ -1,3 +1,13 @@
+<?php
+ session_start();
+
+if(isset($_SESSION['Uid'])){
+  header('Location: ../swipe_page.php');
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
