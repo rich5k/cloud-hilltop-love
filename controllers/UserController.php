@@ -56,3 +56,8 @@ function get_all_user_images_controller($id){
     $user_instance = new User();
     return $user_instance->getAllUserImages($id);
 }
+
+function get_user_messages($id){
+    $user_instance = new User();
+    return $user_instance->getUserMessages($id);
+}

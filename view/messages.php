@@ -1,3 +1,19 @@
+<?php
+
+require('../controllers/UserController.php');
+session_start();
+$user = $_SESSION['Uid'];
+if(!isset($user)){
+    header('Location: ./auth/login.php');
+}
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

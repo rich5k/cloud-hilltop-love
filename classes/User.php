@@ -106,4 +106,10 @@ class User extends db_connection
                                 ON pictures.Uid = users.Uid');
         }
     }
+    function getUserMessages($id){
+        return $this->fetch("SELECT * 
+                             FROM conversation 
+                             WHERE sender_id = '$id' or receiver_id = '$id'
+                             ORDER BY mess_time DESC ");
+    }
 }

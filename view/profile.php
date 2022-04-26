@@ -1,9 +1,19 @@
 <?php
 
 session_start();
+require('../controllers/UserController.php');
+
+$user = get_user_controller($_SESSION['Uid']);
+if(!isset($user)){
+    header('Location: ./auth/login.php');
+}
+
+$user = 
+
 $pImage = $_SESSION['avi'];
 // echo $pImage;
 $imageUrl = "../assets/" . $pImage;
+
 
 ?>
 
@@ -27,6 +37,9 @@ $imageUrl = "../assets/" . $pImage;
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
+        <form action="./auth/logout" method="post">
+            <input type="submit" class="btn" value="Logout" name="logout">
+        </form>
     </div>
     <div class="userProfile">
 
