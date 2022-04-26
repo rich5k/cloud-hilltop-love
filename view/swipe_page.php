@@ -49,7 +49,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             </div>';
             
             }
-            var_dump($user);
+            //var_dump($user);
             //var_dump($user);
             ?>
           
