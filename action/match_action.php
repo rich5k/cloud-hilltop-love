@@ -1,11 +1,11 @@
 <?php
 
 //if swiped yes populate user_like table
-if (isset($_POST["swipe_like"])) {
+if (isset($_POST["love"])) {
 
     //get username of both parties.
-    $likee_username = $_GET['likee_username'];
-    $liker_username = $_GET['liker_username'];
+    $likee_username = $_GET['liked_users_id'];
+    $liker_username = $_SESSION['Uid'];
 
     //populate user likes table with who you like.
     $record_like = recordLikeController( $likee_username,  $liker_username);
@@ -19,10 +19,9 @@ if (isset($_POST["swipe_like"])) {
         // insert record into match table
         record_success_match_controller($likee_username,  $liker_username);
         // send successful match notification
+        // header("Location: ../view/auth/login.php");     
         exit;
-    } else {
-        // not a match event
-    
+        
     }
 
 

@@ -42,10 +42,23 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             
             <?php 
             foreach($partners as $partner) { 
-            echo '<div class="tinder--card">
+            echo '
+            <form method="GET" action="../action/match_action.php">
+
+            <div class="tinder--card">
             <img src="../assets/avis/'.$partner['pic_name'].'">
             <h3>'.$partner['username'].'</h3>
-            <p></p>
+            //check value
+            <input type="hidden" name="liked_users_id" value="$partner["Uid"]">
+
+            <div class="tinder--buttons">
+            <button id="nope"><i class="fa fa-remove"></i></button>
+            <button type="submit" id="love"><i class="fa fa-heart"></i></button>
+            </div>
+
+            </form>
+
+
             </div>';
             
             }
@@ -57,10 +70,6 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
         </div>
 
-        <div class="tinder--buttons">
-            <button id="nope"><i class="fa fa-remove"></i></button>
-            <button id="love"><i class="fa fa-heart"></i></button>
-        </div>
     </div>
 
     <script src="../js/hammer.min.js"></script>
