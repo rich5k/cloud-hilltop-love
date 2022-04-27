@@ -73,4 +73,10 @@ function checkMatchController ($likee_username,  $liker_username){
 function record_success_match_controller($likee_username,  $liker_username){
     $user_instance = new User();
     return $user_instance->record_success_match( $likee_username,  $liker_username);
+
+}
+
+function get_user_messages($id){
+    $user_instance = new User();
+    return $user_instance->getUserMessages($id);
 }

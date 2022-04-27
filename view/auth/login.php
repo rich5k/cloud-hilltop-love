@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 // if (isset($_SESSION['errors'])) {
 //   $error = "<div class = 'error'>
@@ -12,6 +12,9 @@
 //               </div>";
 // }
 
+if (isset($_SESSION['Uid'])) {
+  header('Location: ./swipe_page.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +58,7 @@
           </div>
 
           <span>
-            <input type="submit" name="signin" class="submit action-button" value="Login" onclick="loginUser();">
+            <input type="submit" name="signin" class="submit action-button" value="Login">
             <p class='text'>Dont have an Account? <a href="./register.php">Sign Up here</a></p>
           </span>
 
@@ -73,8 +76,9 @@
   <!-- <script src="https://unpkg.com/quickblox/quickblox.min.js"></script> -->
   <script src="../../js/QBconfig.js" defer></script>
   <script src="../../js/login.js" defer></script>
-  <script src="../../js/login_validation.js"></script>
+  <script src="../../js/login_validations.js"></script>
   <script src="../../js/helpers.js" defer></script>
+  <script src="../../js/user.js" defer></script>
   <script src="../../js/app.js" defer></script>
 
 

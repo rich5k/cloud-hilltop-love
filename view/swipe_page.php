@@ -4,6 +4,10 @@ require('../controllers/UserController.php');
 
 $user = get_user_controller($_SESSION['Uid']);
 
+if(!isset($user)){
+    header('Location: ./auth/login.php');
+}
+
 $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
 
@@ -25,7 +29,8 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-        <a href="./auth/logout.php" class="btn">Logout</a>
+        
+       
     </div>
     <div class="tinder">
         <div class="tinder--status">
@@ -44,6 +49,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             </div>';
             
             }
+            //var_dump($user);
             //var_dump($user);
             ?>
           

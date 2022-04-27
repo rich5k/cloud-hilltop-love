@@ -10,7 +10,7 @@ function Login() {
             self = this,
             timer,
             userRequiredParams = {
-                'login': data.login,
+                'email': data.email,
                 'password': data.password ? data.password : 'quickblox'
             };
 
@@ -140,7 +140,7 @@ Login.prototype.setListeners = function(){
         loginForm = document.forms.loginForm,
         loginBtn = loginForm.signin;
 
-    loginForm.addEventListener('submit', function(e){
+    loginForm.addEventListener('submit', async function(){
         // e.preventDefault();
 
         
@@ -152,15 +152,21 @@ Login.prototype.setListeners = function(){
             password: password
         };
 
+        window.qbConnect = new self.qbConnect(user);
+    
+        var session = await window.qbConnect.createSession();
+    
+        app.token = session.token;
+
         localStorage.setItem('user', JSON.stringify(user));
 
         self.login(user).then(function(){
-            // router.navigate('/dashboard');
+            console.log('logged in user');
         }).catch(function(error){
-            alert('lOGIN ERROR\n open console to get more info');
+            // alert('lOGIN ERROR\n open console to get more info');
             loginBtn.removeAttribute('disabled');
-            console.error(error);
-            loginForm.login_submit.innerText = 'LOGIN';
+            console.log(error);
+            // loginForm.login_submit.innerText = 'LOGIN';
         });
     });
 
