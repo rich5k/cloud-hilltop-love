@@ -61,3 +61,19 @@ function get_user_messages($id){
     $user_instance = new User();
     return $user_instance->getUserMessages($id);
 }
+
+function get_likes($id){
+    $user_instance = new User();
+    return $user_instance->getUserLikes($id);
+}
+
+function add_matches($id, $lid){
+    $user_instance = new User();
+    return $user_instance->addMatches($id,$lid);
+}
+
+function get_Number_of_Likes($id){
+    $user_instance = new User();
+    return $user_instance->getNumberofLikes($id);
+
+}

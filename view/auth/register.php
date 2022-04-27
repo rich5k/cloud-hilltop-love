@@ -24,7 +24,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess">
+      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess.php">
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>

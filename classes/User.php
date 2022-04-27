@@ -42,6 +42,18 @@ class User extends db_connection
         return $this->fetch("SELECT * FROM pictures where Uid = '$id'");
     }
 
+    function getUserLikes($id){
+        return $this->fetch("SELECT lid FROM user_likes where Uid = '$id'");
+    }
+
+    function addMatches($Uid, $lid){
+        return $this->fetch("INSERT INTO user_matches(Uid, lid) values ('$Uid','$lid')" );
+    }
+
+    function getNumberofLikes($Uid){
+        return $this->fetch("SELECT COUNT lid FROM user_likes where Uid ='$Uid");
+    }
+
 
     function finduser($email)
     {
