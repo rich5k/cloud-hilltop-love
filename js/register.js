@@ -12,6 +12,7 @@ function Register() {
             userRequiredParams = {
                 'login': data.login,
                 'email': data.email,
+                'full_name':data.full_name,
                 'password': data.password ? data.password : 'quickblox'
             };
 
@@ -132,55 +133,77 @@ Register.prototype.renderRegisterPage = async function(){
     // app.page.innerHTML = helpers.fillTemplate('tpl_login', {
     //     version: QB.version + ':' + QB.buildNumber
     // });
-    this.isRegisterPageRendered = true;
-    this.setListeners();
+    // this.isRegisterPageRendered = true;
+    // this.setListeners();
 };
 
 
-Register.prototype.setListeners = async function(){
+// function registerfxn(email,fname,lname,username,user_class,cpass,dob,instagram,twitter,gender,sexual_orientation,phone,major,password){
+// $.ajax({
+// 				type: 'post',
+// 				url: '../../action/authprocess',
+// 				data: {
+// 					'register': true,
+//                     'email': email,
+//                     'fname': fname,
+//                     'lname': lname,
+//                     'password': password,
+//                     'username': username,
+//                     'class': user_class,
+//                     'cpass': cpass,
+//                     'dob': dob,
+//                     'instagram': instagram,
+//                     'twitter': twitter,
+//                     'gender': gender,
+//                     'sexual_orientation': sexual_orientation,
+//                     'phone': phone,
+//                     'major': major
+// 				},
+// 				cache: false,
+// 				success: function(data) {
+// 					console.log('added user to db');
+//                     window.location.replace("./login");
+// 				}
+// 			});
+// }
+
+Register.prototype.setListeners = async function(email, fname, lname, username, password){
     var self = this;
-    var registerForm = document.forms.registerForm;
-    var registerBtn = registerForm.register;
+    // var registerForm = document.forms.registerForm;
+    // var registerBtn = registerForm.register;
+    console.log(email);
+    console.log(fname+" "+lname);
+    console.log(username);
+    console.log(password);
+    var user = {
+        email: email,
+        full_name: fname+" "+lname,
+        login: username,
+        password: password
+    };
     
-    registerForm.addEventListener('submit', async ()=>{
-        // e.preventDefault();
-        
-        
-        var email = registerForm.email.value,
-        full_name= registerForm.fname.value+" "+registerForm.lname.value,
-        login= registerForm.username.value,
-        password = registerForm.password.value;
-        
-        var user = {
-            email: email,
-            full_name: full_name,
-            login: login,
-            password: password
-        };
-        
-        window.qbConnect = new self.qbConnect(user);
-    
-        var session = await window.qbConnect.createSession();
-    
-        app.token = session.token;
-        localStorage.setItem('user', JSON.stringify(user));
+    window.qbConnect = new self.qbConnect(user);
 
-        userCreate(user).then(function(){
-            console.log("registered user");
-            // router.navigate('/dashboard');
-        }).catch(function(error){
-            alert('register ERROR\n open console to get more info');
-            registerBtn.removeAttribute('disabled');
-            console.log(error);
-            // registerForm.login_submit.innerText = 'LOGIN';
-        });
+    var session = await window.qbConnect.createSession();
+
+    app.token = session.token;
+    localStorage.setItem('user', JSON.stringify(user));
+
+    userCreate(user).then(function(){
+        console.log("registered user");
+        window.location.replace("../view/auth/login");
+        // router.navigate('/dashboard');
+    }).catch(function(error){
+        alert('register ERROR\n open console to get more info');
+        // registerBtn.removeAttribute('disabled');
+        console.log(error);
+        // registerForm.login_submit.innerText = 'LOGIN';
     });
-
-
+    
     
 };
 
 var registerModule = new Register();
-window.onload= async function(){
-    registerModule.renderRegisterPage();
-}
+// window.onload= async function(){
+//     registerModule.renderRegisterPage();
+// }

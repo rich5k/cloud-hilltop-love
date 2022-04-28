@@ -33,11 +33,11 @@ if (isset($_POST['register'])) {
     } else {
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         //die($pass);
-        echo "passed email and password auth";
+        // echo "passed email and password auth";
         if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) != true) {
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
         } else {
-            echo "can't add user";
+            // echo "can't add user";
         }
 
         if (isset($_FILES["file"]["name"])) {
@@ -64,10 +64,29 @@ if (isset($_POST['register'])) {
                     //echo "true";
                     add_image_controller($Uid['Uid'], $fileName);
                     $_SESSION['avi'] = $fileName;
-                    header('Location: ../view/auth/login.php');
+                    echo '
+                    <script src="../js/quickblox.min.js" ></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+                    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+                    <script src="../js/QBconfig.js"></script>
+                    <script src="../js/helpers.js" ></script>
+                    <script src="../js/app.js" ></script>
+                    <script src="../js/register.js" ></script>
+                    <script>
+                        var email="' . $email . '";
+                        var fname="' . $fname . '";
+                        var lname="' . $lname . '";
+                        var username="' . $username . '";
+                        var password="' . $confirmPass . '";
+                        registerModule.setListeners(email, fname, lname, username,password);
+                        
+                    </script>
+                    ';
+                    // header('Location: ../view/auth/login.php');
                 }
             }
         }
+
         //$_SESSION['Uid'] = find_user_id($email);
         //header("Location: ../view/auth/login.php"); 
 
@@ -92,12 +111,12 @@ if (isset($_POST['signin'])) {
 
     if (isset($result['email'])) {
         $result1 = find_user_controller($email);
-        var_dump($result1);
-        echo "Email there<br>";
+        // var_dump($result1);
+        // echo "Email there<br>";
         var_dump(password_verify($password, $result1['pass']));
         //die;
         if (password_verify($password, $result1['pass']) === true) {
-            echo "password there";
+            // echo "password there";
             //die;
             $user = find_user_controller($email);
             $_SESSION['Uid'] = $user['Uid'];
@@ -105,6 +124,21 @@ if (isset($_POST['signin'])) {
             //var_dump($role);
             $image = get_all_user_images_controller($user['Uid']);
             $_SESSION['avi'] = $image;
+            echo '
+                    <script src="../js/quickblox.min.js" ></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+                    <script src="../js/QBconfig.js"></script>
+                    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+                    <script src="../js/user.js"></script>
+                    <script src="../js/helpers.js"></script>
+                    <script src="../js/app.js" ></script>
+                    <script src="../js/login.js"></script>
+                    <script>
+                        var email="' . $email . '";
+                        var password="' . $password . '";
+                        loginModule.setListeners(email,password);
+                    </script>
+                    ';
             // header("Location: ../view/profile.php");
             header("Location: ../view/swipe_page.php");
         } else {

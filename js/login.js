@@ -133,19 +133,28 @@ Login.prototype.renderLoginPage = function(){
     this.setListeners();
 };
 
+// function loginfxn(email,password){
+//     $.ajax({
+// 				type: 'post',
+// 				url: '../../action/authprocess',
+// 				data: {
+// 					'signin': true,
+//                     'email': email,
+//                     'password': password
+                    
+// 				},
+// 				cache: false,
+// 				success: function(data) {
+// 					console.log('logged user in');
+//                     window.location.replace("../swipe_page");
+// 				}
+// 			});
+// }
 
-
-Login.prototype.setListeners = function(){
-    var self = this,
-        loginForm = document.forms.loginForm,
-        loginBtn = loginForm.signin;
-
-    loginForm.addEventListener('submit', async function(){
-        // e.preventDefault();
-
-        
-        var email = loginForm.email.value,
-            password = loginForm.password.value;
+Login.prototype.setListeners = async function(email,password){
+    var self = this;
+        // loginForm = document.forms.loginForm,
+        // loginBtn = loginForm.signin;
 
         var user = {
             email: email,
@@ -162,19 +171,28 @@ Login.prototype.setListeners = function(){
 
         self.login(user).then(function(){
             console.log('logged in user');
+            // window.location.replace("../view/swipe_page");
         }).catch(function(error){
             // alert('lOGIN ERROR\n open console to get more info');
-            loginBtn.removeAttribute('disabled');
+            // loginBtn.removeAttribute('disabled');
             console.log(error);
             // loginForm.login_submit.innerText = 'LOGIN';
         });
-    });
+    // loginForm.addEventListener('submit', async function(s){
+    //     // e.preventDefault();
+
+        
+    //     var email = loginForm.email.value,
+    //         password = loginForm.password.value;
+
+    //     // loginfxn(email,password);
+    // });
 
     
 };
 
 var loginModule = new Login();
 
-window.onload=function(){
-    loginModule.renderLoginPage();
-}
+// window.onload=function(){
+//     loginModule.renderLoginPage();
+// }
