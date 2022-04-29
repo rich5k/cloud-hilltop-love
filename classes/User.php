@@ -130,18 +130,18 @@ class User extends db_connection
                              ORDER BY mess_time DESC ");
     }
     // record user like of other users.
-    function recordLike($likee_username,  $liker_username)
+    function recordLike($likee_username,  $liker_username, $like_dis)
     {
-        return $this->query("INSERT INTO user_likes(Uid, lid) values ('$likee_username','$liker_username')");
+        return $this->query("INSERT INTO user_likes(Uid, Iid,like_dis) values ('$liker_username','$likee_username','$like_dis')");
     }
 
     function checkMatch($likee_username,  $liker_username)
     {
-        return $this->fetchOne("SELECT * from users_likes WHERE Uid = '$likee_username' AND lid = '$liker_username");
+        return $this->fetchOne("SELECT * from user_likes WHERE Uid = '$likee_username' AND Iid = '$liker_username' AND like_dis='l'");
     }
 
     function record_success_match($likee_username,  $liker_username)
     {
-        return $this->query("INSERT INTO user_match(Uid, lid) values ('$liker_username','$likee_username')");
+        return $this->query("INSERT INTO user_match(Uid, Iid) values ('$liker_username','$likee_username')");
     }
 }

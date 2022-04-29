@@ -92,17 +92,17 @@ function get_Number_of_Likes($id)
     return $user_instance->getNumberofLikes($id);
 }
 
-function recordLikeController($likee_username,  $liker_username)
+function recordLikeController($likee_username,  $liker_username, $like_dis)
 {
     $user_instance = new User();
-    return $user_instance->recordLike($likee_username,  $liker_username);
+    return $user_instance->recordLike($likee_username,  $liker_username, $like_dis);
 }
 
 
 function checkMatchController($likee_username,  $liker_username)
 {
     $user_instance = new User();
-    return $user_instance->recordLike($likee_username,  $liker_username);
+    return $user_instance->checkMatch($likee_username,  $liker_username);
 }
 
 function record_success_match_controller($likee_username,  $liker_username)
