@@ -65,6 +65,40 @@ function Login() {
             });
         };
 
+        this.connect = async function () {
+            self.stopReconnecting();
+            app.user = null;
+            /*app.init(app._config);*/
+
+            var user = localStorage.getItem('user');
+
+            var savedUser = JSON.parse(user);
+            app.room = savedUser.tag_list;
+
+            try {
+                var isLogin = await loginModule.login(savedUser);
+            }catch (e) {
+                app.init(app._config);
+                isLogin = await loginModule.login(savedUser);
+            }
+
+            listeners.setListeners();
+
+            if(!isLogin) {
+                router.navigate('/login');
+            }
+
+            return Promise.resolve();
+
+        };
+
+        this.reconnecting = function(interval) {
+            timer = setInterval(this.connect, interval);
+        };
+
+        this.stopReconnecting = function() {
+            clearInterval(timer);
+        }
         
 
     }
@@ -160,6 +194,7 @@ Login.prototype.setListeners = async function(email,password){
             email: email,
             password: password
         };
+        localStorage.setItem('user', JSON.stringify(user));
 
         window.qbConnect = new self.qbConnect(user);
     
@@ -167,13 +202,12 @@ Login.prototype.setListeners = async function(email,password){
     
         app.token = session.token;
 
-        localStorage.setItem('user', JSON.stringify(user));
 
         self.login(user).then(function(){
             console.log('logged in user');
-            // window.location.replace("../view/swipe_page");
+            window.location.replace("../view/swipe_page");
         }).catch(function(error){
-            // alert('lOGIN ERROR\n open console to get more info');
+            alert('lOGIN ERROR\n open console to get more info');
             // loginBtn.removeAttribute('disabled');
             console.log(error);
             // loginForm.login_submit.innerText = 'LOGIN';

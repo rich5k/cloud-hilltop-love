@@ -140,7 +140,7 @@ if (isset($_POST['signin'])) {
                     </script>
                     ';
             // header("Location: ../view/profile.php");
-            header("Location: ../view/swipe_page.php");
+            // header("Location: ../view/swipe_page.php");
         } else {
             $_SESSION['error'] = 'password is incorrect';
 
