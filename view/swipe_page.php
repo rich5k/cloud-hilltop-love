@@ -4,7 +4,7 @@ require('../controllers/UserController.php');
 
 $user = get_user_controller($_SESSION['Uid']);
 
-if(!isset($user)){
+if (!isset($user)) {
     header('Location: ./auth/login.php');
 }
 
@@ -29,8 +29,8 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-        
-       
+
+
     </div>
     <div class="tinder">
         <div class="tinder--status">
@@ -38,24 +38,28 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             <i class="fa fa-heart"></i>
         </div>
 
-        <div class="tinder--cards">
+        <form class="tinder--cards">
+
+
+            <?php
+            foreach ($partners as $partner) {
+                echo
+
+                '<div class="tinder--card">
+            <img src="../assets/avis/' . $partner['pic_name'] . '">
+            <h3>' . $partner['username'] . '</h3>
             
-            <?php 
-            foreach($partners as $partner) { 
-            echo '<div class="tinder--card">
-            <img src="../assets/avis/'.$partner['pic_name'].'">
-            <h3>'.$partner['username'].'</h3>
+            <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
             <p></p>
             </div>';
-            
             }
             //var_dump($user);
             //var_dump($user);
             ?>
-          
 
 
-        </div>
+
+        </form>
 
         <div class="tinder--buttons">
             <button id="nope"><i class="fa fa-remove"></i></button>
