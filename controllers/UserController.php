@@ -110,3 +110,9 @@ function record_success_match_controller($likee_username,  $liker_username)
     $user_instance = new User();
     return $user_instance->record_success_match($likee_username,  $liker_username);
 }
+
+function getLikeeEmail($likee_id)
+{
+    $user_instance = new User();
+    return $user_instance->getLikeeEmail($likee_id);
+}

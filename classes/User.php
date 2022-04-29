@@ -144,4 +144,9 @@ class User extends db_connection
     {
         return $this->query("INSERT INTO user_match(Uid, Iid) values ('$liker_username','$likee_username')");
     }
+
+    function getLikeeEmail($likee_id)
+    {
+        return $this->fetchOne("SELECT email FROM `users` WHERE Uid = '$likee_id'");
+    }
 }
