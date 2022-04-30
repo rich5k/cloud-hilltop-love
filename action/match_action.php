@@ -25,9 +25,21 @@ if (isset($_POST["love"])) {
     if ($check_for_match) {
         // insert record into match table
         record_success_match_controller($likee_username,  $liker_username);
-        // send successful match notification
-        // header("Location: ../view/auth/login.php");     
-        // exit;
+        $likeeEmail = getLikeeEmail($likee_username);
+        echo '
+        <script>
+        <script src="../js/quickblox.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+        <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+        <script src="../js/QBconfig.js"></script>
+        var likerEmail = JSON.parse(localStorage.getItem("user")).email;
+        var searchParams = {email: likerEmail};
+        
+        QB.users.get(searchParams, function(error, user) {
+            
+        });
+        </script>
+        ';
         echo 'you matched ' . $likee_username . '!';
     } else {
         if ($_POST['love'])

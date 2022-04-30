@@ -113,7 +113,7 @@ if (isset($_POST['signin'])) {
         $result1 = find_user_controller($email);
         // var_dump($result1);
         // echo "Email there<br>";
-        var_dump(password_verify($password, $result1['pass']));
+        // var_dump(password_verify($password, $result1['pass']));
         //die;
         if (password_verify($password, $result1['pass']) === true) {
             // echo "password there";
@@ -153,3 +153,27 @@ if (isset($_POST['signin'])) {
 } else {
     // echo "login post not working";
 }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Processing auth ...</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+
+</html>
