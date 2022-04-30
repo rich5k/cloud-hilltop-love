@@ -3,7 +3,7 @@
 require('../controllers/UserController.php');
 session_start();
 $user = $_SESSION['Uid'];
-if(!isset($user)){
+if (!isset($user)) {
     header('Location: ./auth/login.php');
 }
 
@@ -470,6 +470,7 @@ if(!isset($user)){
     <script src="../js/dashboard.js" defer></script>
     <script src="../js/helpers.js" defer></script>
     <script src="../js/user.js" defer></script>
+    <script src="../js/login.js" defer></script>
     <script src="../js/dialog.js" defer></script>
     <script src="../js/message.js" defer></script>
     <script src="../js/listeners.js" defer></script>

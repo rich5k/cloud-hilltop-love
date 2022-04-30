@@ -33,14 +33,14 @@ if (isset($_POST["love"])) {
         <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
         <script src="../js/QBconfig.js"></script>
         var likerEmail = JSON.parse(localStorage.getItem("user")).email;
-        var searchParams = {email: likerEmail};
+        // var searchParams = {email: likerEmail};
         
-        QB.users.get(searchParams, function(error, user) {
-            
-        });
+        userModule.getUserIdByEmail("' . $likeeEmail["email"] . '").
+        then(result=>document.write(result.id));
+       
         </script>
         ';
-        echo 'you matched ' . $likee_username . '!';
+        echo '<br> you matched ' . $likee_username . '!';
     } else {
         if ($_POST['love'])
             echo 'you liked ' . $likee_username;

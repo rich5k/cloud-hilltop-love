@@ -136,19 +136,19 @@ Login.prototype.login = async function (user) {
     try {
         var userData = await window.qbConnect.login();
     }catch (e) {
-        await userModule.create(user);
-        userData = await window.qbConnect.login();
+        alert('user account does not exist')
+        window.location.replace("./register");
     }
 
-    if(userData.user_tags !== user.tag_list || userData.full_name !== user.full_name) {
-        userData = await userModule.update(userData.id,{
-            'full_name': user.full_name,
-            'tag_list': user.tag_list
-        });
-    }
+    // if(userData.user_tags !== user.tag_list || userData.full_name !== user.full_name) {
+    //     userData = await userModule.update(userData.id,{
+    //         'full_name': user.full_name,
+    //         'tag_list': user.tag_list
+    //     });
+    // }
     
     app.user = userModule.addToCache(userData);
-    app.user.user_tags = userData.user_tags;
+    // app.user.user_tags = userData.user_tags;
 
     await window.qbConnect.chatConnect().then(function () {
         self.isLogin = true;

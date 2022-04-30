@@ -246,6 +246,31 @@ User.prototype.addToCache = function(user) {
     return self._cache[id];
 };
 
+User.prototype.getUserIdByEmail = async function (userEmail) {
+    var self = this,
+        params = {
+            email: userEmail
+        };
+    var user=localStorage.getItem('user');
+    window.qbConnect = new loginModule.qbConnect(user);
+
+    var session = await window.qbConnect.createSession();
+
+    app.token = session.token;
+    return new Promise(function(resolve, reject) {
+        self._isFetching = true;
+        QB.users.get(params, function (err, result) {
+            if (err) {
+                self._isFetching = false;
+                reject(err);
+            } else {
+                self._isFetching = false;
+                resolve(result);
+            }
+        });
+    });
+};
+
 User.prototype.getUsersByIds = function (userList) {
     var self = this,
         params = {
