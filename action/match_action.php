@@ -26,21 +26,9 @@ if (isset($_POST["love"])) {
         // insert record into match table
         record_success_match_controller($likee_username,  $liker_username);
         $likeeEmail = getLikeeEmail($likee_username);
-        echo '
-        <script>
-        <script src="../js/quickblox.min.js" ></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
-        <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
-        <script src="../js/QBconfig.js"></script>
-        var likerEmail = JSON.parse(localStorage.getItem("user")).email;
-        // var searchParams = {email: likerEmail};
-        
-        userModule.getUserIdByEmail("' . $likeeEmail["email"] . '").
-        then(result=>document.write(result.id));
-       
-        </script>
-        ';
-        echo '<br> you matched ' . $likee_username . '!';
+
+
+        echo 'true ' . $likeeEmail['email'];
     } else {
         if ($_POST['love'])
             echo 'you liked ' . $likee_username;

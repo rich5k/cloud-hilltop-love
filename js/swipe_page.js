@@ -17,8 +17,15 @@ function swipe_action(id,love) {
 					'liked_users_id': id
 				},
 				cache: false,
-				success: function(data) {
-					console.log(data);
+				success:async function(data) {
+          if(data.substring(0,4)=="true"){
+					var match_id=await userModule.getUserIdByEmail(data.substring(5)).
+            then(result=> {return parseInt(result.id)});
+            
+            dialogModule.createDialog(match_id);
+          }else{
+            console.log(data);
+          }
 				}
 			});
 		}

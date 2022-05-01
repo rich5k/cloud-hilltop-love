@@ -257,6 +257,7 @@ User.prototype.getUserIdByEmail = async function (userEmail) {
     var session = await window.qbConnect.createSession();
 
     app.token = session.token;
+    
     return new Promise(function(resolve, reject) {
         self._isFetching = true;
         QB.users.get(params, function (err, result) {

@@ -451,37 +451,90 @@ Dialog.prototype.beforeCreateDialog = function () {
 
 };
 
-Dialog.prototype.createDialog = async function (match_id) {
+Dialog.prototype.createDialog = function () {
 
     var
         self = this,
-        
-        params = {
-        type: 3,
-        occupants_ids: [match_id]
-        };
+        occupants_ids = userModule.selectedUserIds,
+        type = occupants_ids.length > 1 ? 2 : 3,
+        name = document.forms.create_dialog.dialog_name.value,
+        params = this.params;
 
-    
+    if (type !== 3 && name) {
+        params.name = this.params.name =  name;
+    }
 
     if (!app.checkInternetConnection()) {
         return false;
     }
-    var user=localStorage.getItem('user');
-    var savedUser = JSON.parse(user);
-    await loginModule.login(savedUser);
-    // if(isLogin)
+
+    this.params.name = name;
+
     QB.chat.dialog.create(params, function (err, createdDialog) {
         if (err) {
             console.error(err);
         } else {
-            console.log('you have a match!')
-            console.log('new dialog created');
-            // resolve(createdDialog);
+
+            var
+                id = createdDialog._id,
+                occupants = createdDialog.occupants_ids,
+                typeChat = (createdDialog.type === CONSTANTS.DIALOG_TYPES.GROUPCHAT) ? ' the group' : '',
+                message_body = (app.user.name || app.user.login) + ' created'+typeChat+' chat "'+createdDialog.name+'"',
+                systemMessage = {
+                    extension: {
+                        notification_type: 1,
+                        dialog_id: createdDialog._id
+                    }
+                },
+                notificationMessage = {
+                    type: 'groupchat',
+                    body: message_body,
+                    extension: {
+                        save_to_history: 1,
+                        dialog_id: createdDialog._id,
+                        notification_type: 1
+                        //date_sent: Date.now()
+                    }
+                },
+                newOccupantsIds = occupants.filter(function (item) {
+                    return item != app.user.id
+                });
+
+            /* Check dialog in cache */
+            if (!self._cache[id]) {
+                self._cache[id] = helpers.compileDialogParams(createdDialog);
+            }
+
+            (new Promise(function (resolve) {
+                if (createdDialog.type === CONSTANTS.DIALOG_TYPES.CHAT) {
+                    resolve();
+                }
+                self.joinToDialog(id).then(function () {
+                    if (createdDialog.type === CONSTANTS.DIALOG_TYPES.GROUPCHAT) {
+                        messageModule.sendMessage(id, notificationMessage);
+                    }
+                    resolve();
+                });
+            })).then(function () {
+                for (var i = 0; i < newOccupantsIds.length; i++) {
+                    QB.chat.sendSystemMessage(newOccupantsIds[i], systemMessage);
+                }
+                /* Check active tab [chat / public] */
+                var type = params.type === CONSTANTS.DIALOG_TYPES.PUBLICCHAT ? 'public' : 'chat',
+                    activeTab = document.querySelector('.j-sidebar__tab_link.active');
+                if (activeTab && type !== activeTab.dataset.type) {
+                    app.loadChatList().then(function () {
+                        self.renderDialog(self._cache[id], true);
+                    }).catch(function (error) {
+                        console.error(error);
+                    });
+                } else {
+                    self.renderDialog(self._cache[id], true);
+                    router.navigate('/dialog/' + id);
+                }
+            });
         }
     });
-    // return new Promise(function(resolve,reject){
-
-    // })
 };
 
 Dialog.prototype.getDialogById = function (id) {

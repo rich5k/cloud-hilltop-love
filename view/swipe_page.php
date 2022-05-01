@@ -24,6 +24,8 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/swipe_page.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
+    <script src="../js/quickblox.min.js" defer></script>
 </head>
 
 <body>
@@ -69,8 +71,15 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
     </div>
 
     <script src="../js/hammer.min.js"></script>
+    <script src="../js/QBconfig.js" defer></script>
     <script src="../js/swipe_page.js"></script>
     <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/helpers.js" defer></script>
+    <script src="../js/user.js" defer></script>
+    <script src="../js/login.js" defer></script>
+    <script src="../js/dialog.js" defer></script>
+    <script src="../js/listeners.js" defer></script>
 </body>
 
 </html>
