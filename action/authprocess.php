@@ -34,7 +34,7 @@ if (isset($_POST['register'])) {
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         //die($pass);
         // echo "passed email and password auth";
-        if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) != true) {
+        if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
         } else {
             // echo "can't add user";

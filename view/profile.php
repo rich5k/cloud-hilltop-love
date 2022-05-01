@@ -1,18 +1,23 @@
 <?php
 
-session_start();
-require('../controllers/UserController.php');
-
-$user = get_user_controller($_SESSION['Uid']);
-if(!isset($user)){
+require('../settings/core.php');
+if(check_login() ===  false){
     header('Location: ./auth/login.php');
 }
+require('../controllers/UserController.php');
 
-$user = 
+//var_dump($_SESSION['Uid']);
 
-$pImage = $_SESSION['avi'];
+$user = get_user_controller($_SESSION['Uid']);
+
+//header('Location: ./auth/login.php');
+$interest = get_user_interests($_SESSION['Uid']);
+
+
+//var_dump($user);
+//die;
 // echo $pImage;
-$imageUrl = "../assets/" . $pImage;
+$imageUrl = "../assets/avis/" . $user['pic_name'];
 
 
 ?>
@@ -31,13 +36,15 @@ $imageUrl = "../assets/" . $pImage;
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/swipe_page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 <body>
+        
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-        <form action="./auth/logout" method="post">
+        <form action="./auth/logout.php" method="post">
             <input type="submit" class="btn" value="Logout" name="logout">
         </form>
     </div>
@@ -60,14 +67,20 @@ $imageUrl = "../assets/" . $pImage;
 
                     <div class="info">
                         <div class="title">
-                            <a target="_blank">Username</a>
+                            <a target="_blank"><?php echo $user['username'] ?></a>
                         </div>
-                        <div class="desc">Name</div>
+                        <div class="desc"><?php echo $user['fname']. ' '. $user['lname'] ?></div>
                         <div class="desc">Age</div>
-                        <div class="desc">Major</div>
-                        <span class="desc">Intrest 1</span>
-                        <span class="desc">Intrest 2</span>
-                        <span class="desc">Intrest 3</span>
+                        <div class="desc"><?php echo $user['course_title'] ?></div>
+                        <?php 
+                            if(isset($interest)){
+                                foreach($interest as $int){
+                                    echo "
+                                    <span class='desc'>".$int['interest_name']."</span>";
+                                }
+                            }
+                        ?>
+                        
                     </div>
                     <div class="bottom">
                         <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
@@ -83,20 +96,29 @@ $imageUrl = "../assets/" . $pImage;
                             <i class="fa fa-behance"></i>
                         </a>
                     </div>
+                    <div class="btn" ><a href="updateprofile.php">
+                        Update
+                        </a></div>
+
+
                 </div>
 
-            </div>
-
-        </div>
 
 
 
+               
 
-    </div>
+                
+
+                
+                
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
     <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+    <script>
+        
+    </script>
 </body>
 
 </html>

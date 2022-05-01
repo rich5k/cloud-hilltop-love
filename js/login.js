@@ -137,7 +137,7 @@ Login.prototype.login = async function (user) {
         var userData = await window.qbConnect.login();
     }catch (e) {
         alert('user account does not exist')
-        window.location.replace("./register");
+        window.location.replace("../view/auth/register.php");
     }
 
     // if(userData.user_tags !== user.tag_list || userData.full_name !== user.full_name) {
@@ -205,7 +205,7 @@ Login.prototype.setListeners = async function(email,password){
 
         self.login(user).then(function(){
             console.log('logged in user');
-            window.location.replace("../view/swipe_page");
+            window.location.replace("../view/swipe_page.php");
         }).catch(function(error){
             alert('lOGIN ERROR\n open console to get more info');
             // loginBtn.removeAttribute('disabled');

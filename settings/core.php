@@ -11,7 +11,7 @@ $current_file = $_SERVER['SCRIPT_NAME'];
 //funtion to check for login
 function check_login(){
 	//check if login session exit
-	if (!isset($_SESSION['user_id'])) 
+	if (!isset($_SESSION['Uid'])) 
 	{
 		//redirect to login page
     	return false;
@@ -20,15 +20,7 @@ function check_login(){
 	return true;
 }
 
-//function to check for permission 
-function check_permission(){
-	//get session role
-	if (isset($_SESSION['user_role'])) {
-		//assign session to an array
-		return $_SESSION['user_role'];
-	}
-	return false;
-}
+
 
 
 ?>

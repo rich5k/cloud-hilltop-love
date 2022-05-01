@@ -116,3 +116,8 @@ function getLikeeEmail($likee_id)
     $user_instance = new User();
     return $user_instance->getLikeeEmail($likee_id);
 }
+
+function get_user_interests($id){
+    $user_instance = new User();
+    return $user_instance->getInterests($id);
+}

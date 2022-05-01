@@ -149,4 +149,12 @@ class User extends db_connection
     {
         return $this->fetchOne("SELECT email FROM `users` WHERE Uid = '$likee_id'");
     }
+
+    function getInterests($id){
+        return $this->fetch("SELECT * 
+                             from user_interest 
+                             inner join interest
+                             on interest.int_id = user_interest.interest_id
+                             where Uid = '$id'");
+    }
 }
