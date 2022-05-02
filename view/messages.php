@@ -104,8 +104,9 @@ if (!isset($user)) {
 
 <body>
     <div class="row messages-page">
-        <div class="contacts col-lg-10">
+        <div class="contacts col-lg-10 col-sm-12">
             <div id="user-name"></div>
+            <div id="dialogName"></div>
             <div id="page">
 
             </div>
@@ -115,7 +116,7 @@ if (!isset($user)) {
             </div>
             <div class="modal"></div>
         </div>
-        <div class="contact-info col-lg-2">
+        <div class="contact-info col-lg-2 col-sm-12">
             <div class="your-match-pics">
                 <img src="../images/person1.jpg" alt="Alex's pic">
             </div>

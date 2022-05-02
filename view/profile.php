@@ -1,7 +1,7 @@
 <?php
 
 require('../settings/core.php');
-if(check_login() ===  false){
+if (check_login() ===  false) {
     header('Location: ./auth/login.php');
 }
 require('../controllers/UserController.php');
@@ -40,11 +40,11 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
 </head>
 
 <body>
-        
+
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-        <form action="./auth/logout.php" method="post">
+        <form action="./auth/logout" method="post">
             <input type="submit" class="btn" value="Logout" name="logout">
         </form>
     </div>
@@ -69,18 +69,18 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
                         <div class="title">
                             <a target="_blank"><?php echo $user['username'] ?></a>
                         </div>
-                        <div class="desc"><?php echo $user['fname']. ' '. $user['lname'] ?></div>
+                        <div class="desc"><?php echo $user['fname'] . ' ' . $user['lname'] ?></div>
                         <div class="desc">Age</div>
                         <div class="desc"><?php echo $user['course_title'] ?></div>
-                        <?php 
-                            if(isset($interest)){
-                                foreach($interest as $int){
-                                    echo "
-                                    <span class='desc'>".$int['interest_name']."</span>";
-                                }
+                        <?php
+                        if (isset($interest)) {
+                            foreach ($interest as $int) {
+                                echo "
+                                    <span class='desc'>" . $int['interest_name'] . "</span>";
                             }
+                        }
                         ?>
-                        
+
                     </div>
                     <div class="bottom">
                         <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
@@ -96,8 +96,8 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
                             <i class="fa fa-behance"></i>
                         </a>
                     </div>
-                    <div class="btn" ><a href="updateprofile.php">
-                        Update
+                    <div class="btn"><a href="updateprofile.php">
+                            Update
                         </a></div>
 
 
@@ -106,19 +106,19 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
 
 
 
-               
 
-                
 
-                
-                
 
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    
-    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
-    <script>
-        
-    </script>
+
+
+
+
+                <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+                <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+                <script>
+
+                </script>
 </body>
 
 </html>

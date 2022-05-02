@@ -137,7 +137,14 @@ Login.prototype.login = async function (user) {
         var userData = await window.qbConnect.login();
     }catch (e) {
         alert('user account does not exist')
-        window.location.replace("../view/auth/register.php");
+        var currentUrl= window.location.href;
+        //if currently on messages page
+        if(currentUrl=currentUrl.substring(currentUrl.length - 3, str.length)){
+            window.location.replace("./auth/register.php");
+        }else{
+            window.location.replace("../view/auth/register.php");
+
+        }
     }
 
     // if(userData.user_tags !== user.tag_list || userData.full_name !== user.full_name) {
@@ -167,23 +174,7 @@ Login.prototype.renderLoginPage = function(){
     this.setListeners();
 };
 
-// function loginfxn(email,password){
-//     $.ajax({
-// 				type: 'post',
-// 				url: '../../action/authprocess',
-// 				data: {
-// 					'signin': true,
-//                     'email': email,
-//                     'password': password
-                    
-// 				},
-// 				cache: false,
-// 				success: function(data) {
-// 					console.log('logged user in');
-//                     window.location.replace("../swipe_page");
-// 				}
-// 			});
-// }
+
 
 Login.prototype.setListeners = async function(email,password){
     var self = this;
@@ -212,15 +203,7 @@ Login.prototype.setListeners = async function(email,password){
             console.log(error);
             // loginForm.login_submit.innerText = 'LOGIN';
         });
-    // loginForm.addEventListener('submit', async function(s){
-    //     // e.preventDefault();
-
-        
-    //     var email = loginForm.email.value,
-    //         password = loginForm.password.value;
-
-    //     // loginfxn(email,password);
-    // });
+   
 
     
 };
