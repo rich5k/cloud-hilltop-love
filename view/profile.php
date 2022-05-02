@@ -44,7 +44,7 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
     <div class="top-buttons">
         <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
         <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-        <form action="./auth/logout" method="post">
+        <form action="./auth/logout.php" method="post">
             <input type="submit" class="btn" value="Logout" name="logout">
         </form>
     </div>

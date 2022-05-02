@@ -139,7 +139,7 @@ Login.prototype.login = async function (user) {
         alert('user account does not exist')
         var currentUrl= window.location.href;
         //if currently on messages page
-        if(currentUrl=currentUrl.substring(currentUrl.length - 3, str.length)){
+        if('messages'==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
             window.location.replace("./auth/register.php");
         }else{
             window.location.replace("../view/auth/register.php");
@@ -196,7 +196,15 @@ Login.prototype.setListeners = async function(email,password){
 
         self.login(user).then(function(){
             console.log('logged in user');
-            window.location.replace("../view/swipe_page.php");
+            setTimeout(() =>{
+                var currentUrl= window.location.href;
+                //if currently on messages page
+                if('messages'!==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
+                    window.location.replace("../view/swipe_page.php");
+                    
+                }
+
+            } , 3000);
         }).catch(function(error){
             alert('lOGIN ERROR\n open console to get more info');
             // loginBtn.removeAttribute('disabled');

@@ -23,10 +23,12 @@ if (!isset($user)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Messages</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/messages.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://unpkg.com/navigo@7.1.2/lib/navigo.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
     <script src="../js/quickblox.min.js" defer></script>
     <script type="text/javascript">
@@ -108,7 +110,11 @@ if (!isset($user)) {
             <div id="user-name"></div>
             <div id="dialogName"></div>
             <div id="page">
-
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
             <!-- Modal -->
             <div id="substrate">
@@ -475,7 +481,9 @@ if (!isset($user)) {
     <script src="../js/dialog.js" defer></script>
     <script src="../js/message.js" defer></script>
     <script src="../js/listeners.js" defer></script>
-    <!-- <script src="../js/modal.js" defer></script> -->
+    <script src="../js/modal.js" defer></script>
+    <script src="../js/router.js" defer></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

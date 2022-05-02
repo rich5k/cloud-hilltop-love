@@ -159,130 +159,130 @@ Modal.prototype.setListeners = function () {
         params = app._config;
     params.version = QB.version;
 
-    menuListInfo.addEventListener('click', function (e) {
-        info.click();
-    });
+    // menuListInfo.addEventListener('click', function (e) {
+    //     info.click();
+    // });
 
-    info.addEventListener('click', function (e) {
-        app.modal.innerHTML = helpers.fillTemplate('tpl_info', params);
-        document.querySelector("#about-sample-close").addEventListener('click', function (e) {
-            self.substrate.dispatchEvent(new Event("click"));
-        });
-        self.substrate.classList.add('show');
-        self.watch();
-    });
+    // info.addEventListener('click', function (e) {
+    //     app.modal.innerHTML = helpers.fillTemplate('tpl_info', params);
+    //     document.querySelector("#about-sample-close").addEventListener('click', function (e) {
+    //         self.substrate.dispatchEvent(new Event("click"));
+    //     });
+    //     self.substrate.classList.add('show');
+    //     self.watch();
+    // });
 
-    createChat.addEventListener('click', function (e) {
-        router.navigate('#!/dialog/create');
-        self.substrate.classList.add('show');
-        self.watch();
-    });
+    // createChat.addEventListener('click', function (e) {
+    //     router.navigate('#!/dialog/create');
+    //     self.substrate.classList.add('show');
+    //     self.watch();
+    // });
 
-    deleteChats.addEventListener('click', function (e) {
+    // deleteChats.addEventListener('click', function (e) {
 
-        helpers.clearView(app.modal);
+    //     helpers.clearView(app.modal);
 
-        app.modal.innerHTML = helpers.fillTemplate('tpl_deleteChats');
-        modal.substrate.classList.add('show');
-        window.modal.watch();
+    //     app.modal.innerHTML = helpers.fillTemplate('tpl_deleteChats');
+    //     modal.substrate.classList.add('show');
+    //     window.modal.watch();
 
-        dialogModule.selectedDialogIds = [];
+    //     dialogModule.selectedDialogIds = [];
 
-        var container = app.modal.querySelector('.j-group_chat__dialog_list');
-        container.addEventListener('scroll', function loadMoreDialogs() {
-            var position = container.scrollHeight - (container.scrollTop + container.offsetHeight);
-            if (container.classList.contains('full')) {
-                return false;
-            }
-            if (position <= 50 && !container.classList.contains('loading')) {
-                dialogModule.getDialogs();
-            }
-        });
+    //     var container = app.modal.querySelector('.j-group_chat__dialog_list');
+    //     container.addEventListener('scroll', function loadMoreDialogs() {
+    //         var position = container.scrollHeight - (container.scrollTop + container.offsetHeight);
+    //         if (container.classList.contains('full')) {
+    //             return false;
+    //         }
+    //         if (position <= 50 && !container.classList.contains('loading')) {
+    //             dialogModule.getDialogs();
+    //         }
+    //     });
 
-        document.forms.delete_dialog.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (!app.checkInternetConnection()) {
-                return false;
-            }
-            if (document.forms.delete_dialog.create_dialog_submit.disabled) return false;
+    //     document.forms.delete_dialog.addEventListener('submit', function (e) {
+    //         e.preventDefault();
+    //         if (!app.checkInternetConnection()) {
+    //             return false;
+    //         }
+    //         if (document.forms.delete_dialog.create_dialog_submit.disabled) return false;
 
 
-            dialogModule.dialogId = null;
+    //         dialogModule.dialogId = null;
 
-            function timer(i) {
-                return dialogModule.quitFromTheDialog(dialogModule.selectedDialogIds[i]);
-            }
+    //         function timer(i) {
+    //             return dialogModule.quitFromTheDialog(dialogModule.selectedDialogIds[i]);
+    //         }
 
-            async function load () {
-                for (var i = 0; i < dialogModule.selectedDialogIds.length; i++) {
-                    await timer(i);
-                }
-            }
+    //         async function load () {
+    //             for (var i = 0; i < dialogModule.selectedDialogIds.length; i++) {
+    //                 await timer(i);
+    //             }
+    //         }
 
-            load().then(function (i) {
-                modal.substrate.click();
-                if(dialogModule.dialogId === null) {
-                    router.navigate('/dashboard');
-                }
-            });
+    //         load().then(function (i) {
+    //             modal.substrate.click();
+    //             if(dialogModule.dialogId === null) {
+    //                 router.navigate('/dashboard');
+    //             }
+    //         });
 
-        });
+    //     });
 
-        dialogModule.initGettingDialogs('.j-group_chat__dialog_list', null, {
-            selected: false
-        }).then(function () {
-            modal.substrate.classList.add('show');
-            window.modal.watch();
-        });
-    });
+    //     dialogModule.initGettingDialogs('.j-group_chat__dialog_list', null, {
+    //         selected: false
+    //     }).then(function () {
+    //         modal.substrate.classList.add('show');
+    //         window.modal.watch();
+    //     });
+    // });
 
-    chatInfo.addEventListener('click', function (e) {
-        document.querySelector('.j-add_to_dialog').click();
-        self.substrate.classList.add('show');
-        self.watch();
-    });
+    // chatInfo.addEventListener('click', function (e) {
+    //     document.querySelector('.j-add_to_dialog').click();
+    //     self.substrate.classList.add('show');
+    //     self.watch();
+    // });
 
-    leaveChat.addEventListener('click', function (e) {
-        dialogModule.quitFromTheDialog(dialogModule.dialogId).then(function () {
-            router.navigate('/dashboard');
-        });
-    });
+    // leaveChat.addEventListener('click', function (e) {
+    //     dialogModule.quitFromTheDialog(dialogModule.dialogId).then(function () {
+    //         router.navigate('/dashboard');
+    //     });
+    // });
 
-    logout.addEventListener('click', function (e) {
+    // logout.addEventListener('click', function (e) {
 
-        if(!app.checkInternetConnection()){
-            return;
-        }
+    //     if(!app.checkInternetConnection()){
+    //         return;
+    //     }
 
-        menuList.classList.remove('active');
-        loginModule.isLogin = false;
-        app.isDashboardLoaded = false;
-        localStorage.removeItem('user');
-        helpers.clearCache();
-        QB.chat.disconnect();
-        QB.destroySession(() => null);
-        router.navigate('#!/login');
-    });
+    //     menuList.classList.remove('active');
+    //     loginModule.isLogin = false;
+    //     app.isDashboardLoaded = false;
+    //     localStorage.removeItem('user');
+    //     helpers.clearCache();
+    //     QB.chat.disconnect();
+    //     QB.destroySession(() => null);
+    //     router.navigate('#!/login');
+    // });
 
     document.addEventListener('click', e => {
         var
             target = e.target,
             messageSidebar = document.querySelector('.open_sidebar'),
-            messageMenuActive = document.querySelectorAll(".message-menu.active"),
-            menuIsActive = menuList.classList.contains('active'),
-            moreIsActive = moreList.classList.contains('active');
+            messageMenuActive = document.querySelectorAll(".message-menu.active");
+            // menuIsActive = menuList.classList.contains('active'),
+            // moreIsActive = moreList.classList.contains('active');
 
-        if (menu.contains(target) && !menuList.classList.contains('active')) {
-            menuList.classList.add('active');
-        } else if (menuIsActive) {
-            menuList.classList.remove('active');
-        }
+        // if (menu.contains(target) && !menuList.classList.contains('active')) {
+        //     menuList.classList.add('active');
+        // } else if (menuIsActive) {
+        //     menuList.classList.remove('active');
+        // }
 
-        if (more.contains(target) && !moreList.classList.contains('active')) {
-            moreList.classList.add('active');
-        } else if (moreIsActive) {
-            moreList.classList.remove('active');
-        }
+        // if (more.contains(target) && !moreList.classList.contains('active')) {
+        //     moreList.classList.add('active');
+        // } else if (moreIsActive) {
+        //     moreList.classList.remove('active');
+        // }
 
         if(messageSidebar !==null && messageSidebar.contains(target)) {
             router.navigate('/dashboard');
