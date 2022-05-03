@@ -196,15 +196,15 @@ Login.prototype.setListeners = async function(email,password){
 
         self.login(user).then(function(){
             console.log('logged in user');
-            setTimeout(() =>{
-                var currentUrl= window.location.href;
-                //if currently on messages page
-                if('messages'!==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
-                    window.location.replace("../view/swipe_page.php");
+            window.location.replace("../view/swipe_page.php");
+            // setTimeout(() =>{
+            //     var currentUrl= window.location.href;
+            //     //if currently on messages page
+            //     if('messages'!==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
                     
-                }
+            //     }
 
-            } , 3000);
+            // } , 3000);
         }).catch(function(error){
             alert('lOGIN ERROR\n open console to get more info');
             // loginBtn.removeAttribute('disabled');
