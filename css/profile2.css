@@ -1,0 +1,45 @@
+.userCol{
+    border-style:dashed 2px;
+}
+.row{
+    margin:25px;
+
+}
+.imaginaryCont{
+    margin-left: 30px;
+}
+img{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 100px;
+    height: 100px;
+    
+}
+.card{
+    background-color: white;
+}
+.card-body{
+    text-align: center;
+
+}
+h4{
+    font-size: 50px;
+}
+.btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+
+.useDetails{
+    margin-top: 50px;
+    margin-left: 10px;
+}
+h5{
+    margin-top: 50px;
+}
+.btn-success{
+    width: 150px;
+} 
+.body{
+    background-color: #ccfbfe;
+    width: 100%;
+    height: fit-content;
+}
