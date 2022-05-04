@@ -45,7 +45,7 @@ class User extends db_connection
 
     function getUserLikes($id)
     {
-        return $this->fetch("SELECT lid FROM user_likes where Uid = '$id'");
+        return $this->fetch("SELECT Iid FROM user_likes where Uid = '$id'");
     }
 
     function addMatches($Uid, $lid)
@@ -157,4 +157,9 @@ class User extends db_connection
                              on interest.int_id = user_interest.interest_id
                              where Uid = '$id'");
     }
+
+    function getUserMatch1($id){
+        return $this->fetch("SELECT Iid FROM user_match where Uid='$id'");
+    }
+    
 }
