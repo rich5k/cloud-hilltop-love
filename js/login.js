@@ -196,7 +196,56 @@ Login.prototype.setListeners = async function(email,password){
 
         self.login(user).then(function(){
             console.log('logged in user');
+            // window.location.replace("../view/swipe_page.php");
+            // setTimeout(() =>{
+            //     var currentUrl= window.location.href;
+            //     //if currently on messages page
+            //     if('messages'!==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
+                    
+            //     }
+
+            // } , 3000);
+        }).catch(function(error){
+            if(!loginModule.isLogin){
+                alert('lOGIN ERROR\n open console to get more info');
+                // loginBtn.removeAttribute('disabled');
+                console.log(error);
+
+            }
+            // loginForm.login_submit.innerText = 'LOGIN';
+        });
+   
+
+    
+};
+
+Login.prototype.primarySetListeners = async function(email,password){
+    var self = this;
+        // loginForm = document.forms.loginForm,
+        // loginBtn = loginForm.signin;
+
+        var user = {
+            email: email,
+            password: password
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+
+        window.qbConnect = new self.qbConnect(user);
+    
+        var session = await window.qbConnect.createSession();
+    
+        app.token = session.token;
+
+
+        self.login(user).then(function(){
+            console.log('logged in user');
+            QB.chat.disconnect();
+            QB.chat.onDisconnectedListener = onDisconnectedListener;
+
+            function onDisconnectedListener() {
+            alert("onDisconnected");
             window.location.replace("../view/swipe_page.php");
+            }
             // setTimeout(() =>{
             //     var currentUrl= window.location.href;
             //     //if currently on messages page

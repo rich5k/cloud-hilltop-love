@@ -120,6 +120,8 @@ if (isset($_POST['signin'])) {
             //die;
             $user = find_user_controller($email);
             $_SESSION['Uid'] = $user['Uid'];
+            // $_SESSION['email'] = $email;
+            // $_SESSION['password'] = $password;
             //$role = $user['user_role'];
             //var_dump($role);
             $image = get_all_user_images_controller($user['Uid']);
@@ -136,7 +138,12 @@ if (isset($_POST['signin'])) {
                     <script>
                         var email="' . $email . '";
                         var password="' . $password . '";
-                        loginModule.setListeners(email,password);
+                        var chatAuth={
+                            email: email,
+                            password: password,
+                        }
+                        localStorage.setItem("chatAuth", JSON.stringify(chatAuth));
+                        loginModule.primarySetListeners(email,password);
                     </script>
                     ';
             // header("Location: ../view/profile.php");

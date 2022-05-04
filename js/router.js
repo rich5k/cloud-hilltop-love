@@ -5,7 +5,10 @@ var router = new Navigo(null, true, '#!');
 router.on({
     '': function(){
         if(!loginModule.isLogin) {
-            window.location.replace("./auth/login.php");
+            var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
+            console.log(chatAuth.email);
+            loginModule.setListeners(chatAuth.email, chatAuth.password);
+            router.navigate('/dashboard');
         } else {
             router.navigate('/dashboard');
         }
@@ -31,10 +34,12 @@ router.on({
         document.querySelectorAll('.j-dialog__item').forEach(function (element) {
             element.classList.remove('selected');
         });
+        var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
+        console.log(chatAuth.email);
+         loginModule.setListeners(chatAuth.email, chatAuth.password);
+         router.navigate('/dashboard');
 
-        if(!loginModule.isLogin && !(await loginModule.init())) {
-            router.navigate('/login');
-        } else if(app.isDashboardLoaded) {
+        if(app.isDashboardLoaded) {
             app.loadWelcomeTpl();
             app.sidebar.classList.add('active');
         } else {
@@ -68,8 +73,11 @@ router.on({
         dialogModule.prevDialogId = dialogModule.dialogId;
         dialogModule.dialogId = dialogId;
 
-        if (!loginModule.isLogin && !(await loginModule.init())){
-            window.location.replace("./auth/login.php");
+        if (!loginModule.isLogin){
+            var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
+            console.log(chatAuth.email);
+            loginModule.setListeners(chatAuth.email, chatAuth.password);
+            router.navigate('/dashboard');
             return;
         }
 
@@ -89,8 +97,8 @@ router.on({
 
         dialogModule.getDialogById(dialogId).then(async function(dialog) {
 
-            document.querySelector('.info').style.display = "none";
-            document.querySelector('.more').style.display = "block";
+            // document.querySelector('.info').style.display = "none";
+            // document.querySelector('.more').style.display = "block";
 
             if(document.querySelector('.attachments_preview') !== null) {
                 dialogModule._cache[dialogModule.prevDialogId].draft.attachments = {};
@@ -143,8 +151,11 @@ router.on({
             var dialogId = params.dialogId;
             var currentDialog = null;
 
-            if (!loginModule.isLogin && !(await loginModule.init())){
-                router.navigate('/login');
+            if (!loginModule.isLogin){
+                var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
+                console.log(chatAuth.email);
+                loginModule.setListeners(chatAuth.email, chatAuth.password);
+                router.navigate('/dashboard');
                 return;
             }
 

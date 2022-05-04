@@ -482,7 +482,7 @@ if (!isset($user)) {
     <script src="../js/message.js" defer></script>
     <script src="../js/listeners.js" defer></script>
     <script src="../js/modal.js" defer></script>
-    <script src="../js/router.js" defer></script>
+    <script src="../js/route3.js" defer></script>
     <script src="../js/bootstrap.min.js"></script>
 </body>
 
