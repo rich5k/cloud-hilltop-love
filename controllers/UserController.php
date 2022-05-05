@@ -130,6 +130,15 @@ function getUserMatch($id){
     return $user_instance->getUserMatch1($id);
 }
 
+function get_all_interest_controller(){
+    $user_instance = new User();
+    return $user_instance->getAllInterests();
+}
+
+function get_major_controller(){
+    $user_instance= new User();
+    return $user_instance->getMajors();
+}
 
 
 /*function addlike($first){

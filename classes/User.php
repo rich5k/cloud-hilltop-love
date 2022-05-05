@@ -159,21 +159,29 @@ class User extends db_connection
                              where Uid = '$id'");
     }
 
+    function getAllInterests(){
+        return $this->fetch("SELECT * FROM interest");
+    }
+
     function getUserMatch1($id){
         return $this->fetch("SELECT Iid FROM user_match where Uid='$id'");
+    }
+
+    function getMajors(){
+        return $this->fetch("SELECT * FROM courses");
     }
     
 }
 
-// record user like of other users.
-function recordLike( $likee_username,  $liker_username){
-    return $this->db_query("INSERT INTO user_likes(Uid, lid) values ('$likee_username','$liker_username')");
-}
+    // record user like of other users.
+    function recordLike( $likee_username,  $liker_username){
+        return $this->db_query("INSERT INTO user_likes(Uid, lid) values ('$likee_username','$liker_username')");
+    }
 
-function checkMatch ($likee_username,  $liker_username){
-    return $this->db_fetch_one("SELECT * from users_likes WHERE Uid = '$likee_username' AND lid = '$liker_username");
-}
+    function checkMatch ($likee_username,  $liker_username){
+        return $this->db_fetch_one("SELECT * from users_likes WHERE Uid = '$likee_username' AND lid = '$liker_username");
+    }
 
-function record_success_match( $likee_username,  $liker_username){
-    return $this->db_query("INSERT INTO user_match(Uid, lid) values ('$liker_username','$likee_username')");
-}
+    function record_success_match( $likee_username,  $liker_username){
+        return $this->db_query("INSERT INTO user_match(Uid, lid) values ('$liker_username','$likee_username')");
+    }
