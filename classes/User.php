@@ -91,35 +91,36 @@ class User extends db_connection
     {
         if ($sexual_orientation === '1') {
             if ($gender === 'm') {
-                return $this->fetch("SELECT *
-                                    FROM users
-                                    INNER JOIN pictures
-                                    ON pictures.Uid = users.Uid
-                                    WHERE gender = 'f' and sexual_orientation = '$sexual_orientation' ");
+                return $this->fetch("SELECT users.Uid, fname, lname, gender, class, major, phone, twitter, insta, sexual_orientation, username, pic_name
+                                     FROM user_likes, users 
+                                     INNER JOIN pictures
+                                     ON pictures.Uid = users.Uid
+                                     WHERE users.Uid != user_likes.Iid and gender = 'f' and sexual_orientation != 2 ");
             } else if ($gender === 'f') {
-                return $this->fetch("SELECT *
-                                    FROM users
-                                    INNER JOIN pictures
-                                    ON pictures.Uid = users.Uid
-                                    WHERE gender = 'm' and sexual_orientation = '$sexual_orientation' ");
+                return $this->fetch("SELECT users.Uid, fname, lname, gender, class, major, phone, twitter, insta, sexual_orientation, username, pic_name
+                                     FROM user_likes, users 
+                                     INNER JOIN pictures
+                                     ON pictures.Uid = users.Uid
+                                     WHERE users.Uid != user_likes.Iid and gender = 'm' and sexual_orientation != 2  ");
             }
-        } elseif ($sexual_orientation === '2') {
-            return $this->fetch('SELECT *
-                                FROM users
-                                INNER JOIN pictures
-                                ON pictures.Uid = users.Uid
-                                WHERE gender = "m" or gender = "f" ');
         } elseif ($sexual_orientation === '3') {
-            return $this->fetch('SELECT *
-                                FROM users
+            return $this->fetch("SELECT *
+                                FROM user_likes, users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
-                                WHERE gender = ' . $gender . ' and sexual_orientation = ' . $sexual_orientation . '');
+                                WHERE users.Uid != user_likes.Iid and users.Uid != '$id'  ");
+        } elseif ($sexual_orientation === '2') {
+            return $this->fetch("SELECT *
+                                FROM user_likes, users
+                                INNER JOIN pictures
+                                ON pictures.Uid = users.Uid
+                                WHERE users.Uid != user_likes.Iid and gender = '$gender' and sexual_orientation = '$sexual_orientation' or sexual_orientation = 3 and users.Uid != '$id' ");
         } elseif ($sexual_orientation === '4') {
             return $this->fetch('SELECT *
-                                FROM users
+                                FROM user_likes, users
                                 INNER JOIN pictures
-                                ON pictures.Uid = users.Uid');
+                                ON pictures.Uid = users.Uid
+                                WHERE users.Uid != user_likes.Iid');
         }
     }
     function getUserMessages($id)
