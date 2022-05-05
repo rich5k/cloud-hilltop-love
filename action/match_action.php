@@ -7,13 +7,14 @@ if (isset($_POST["love"])) {
     // echo $_POST['love'];
     $isLove = $_POST['love'];
     //get username of both parties.
-    $likee_username = $_POST['liked_users_id'];
+    $likee_id = $_POST['liked_users_id'];
+    $likee_username = $_POST['liked_users_name'];
     $liker_username = $_SESSION['Uid'];
     if ($isLove == 1) {
-        $record_like = recordLikeController($likee_username,  $liker_username, 'l');
+        $record_like = recordLikeController($likee_id,  $liker_username, 'l');
         // echo 'passed here';
     } else {
-        $record_like = recordLikeController($likee_username,  $liker_username, 'd');
+        $record_like = recordLikeController($likee_id,  $liker_username, 'd');
         // echo 'passed here too';
     }
     //populate user likes table with who you like.
@@ -23,12 +24,12 @@ if (isset($_POST["love"])) {
     // check if there exists a record with both id but with likee in the position of liker
 
 
-    $check_for_match = checkMatchController($likee_username,  $liker_username);
+    $check_for_match = checkMatchController($likee_id,  $liker_username);
 
     if ($check_for_match) {
         // insert record into match table
-        record_success_match_controller($likee_username,  $liker_username);
-        $likeeEmail = getLikeeEmail($likee_username);
+        record_success_match_controller($likee_id,  $liker_username);
+        $likeeEmail = getLikeeEmail($likee_id);
 
 
         echo 'true ' . $likeeEmail['email'];
@@ -39,4 +40,3 @@ if (isset($_POST["love"])) {
             echo 'you disliked ' . $likee_username;
     }
 }
-

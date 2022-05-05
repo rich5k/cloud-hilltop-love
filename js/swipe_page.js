@@ -6,7 +6,7 @@ var nope = document.getElementById('nope');
 var love = document.getElementById('love');
 
 //ajax call to like, dislike or match users
-function swipe_action(id,love) {
+function swipe_action(id,username,love) {
 			
 			// alert(id);
 			$.ajax({
@@ -14,16 +14,22 @@ function swipe_action(id,love) {
 				url: '../action/match_action',
 				data: {
           'love': love,
-					'liked_users_id': id
+					'liked_users_id': id,
+          'liked_users_name': username
 				},
 				cache: false,
 				success:async function(data) {
           if(data.substring(0,4)=="true"){
 					var match_id=await userModule.getUserIdByEmail(data.substring(5)).
             then(result=> {return parseInt(result.id)});
-            
+            alertify.notify('you matched '+username, 'success', 5, function() {
+                console.log('dismissed');
+            });
             dialogModule.createDialog(match_id);
           }else{
+            alertify.notify(data, 'message', 5, function() {
+                console.log('dismissed');
+            });
             console.log(data);
           }
 				}
@@ -87,12 +93,13 @@ allCards.forEach(function (el) {
       var cards = document.querySelectorAll('.tinder--card:not(.removed)');
       var card = cards[0];
       var cardID= el.children[2].value;
+      var cardname= el.children[3].value;
       if(event.deltaX>80){
-        console.log('liked person '+cardID);
-        swipe_action(cardID,1);
+        console.log('liked person '+cardname);
+        swipe_action(cardID,cardname,1);
       }else if(event.deltaX<-80){
-        console.log('disliked person '+cardID);
-        swipe_action(cardID,0);
+        console.log('disliked person '+cardname);
+        swipe_action(cardID, cardname,0);
       }
       event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
       initCards();
@@ -113,16 +120,17 @@ function createButtonListener(love) {
     card.classList.add('removed');
     //gets the id of the card in front of pile
     let cardId= card.children[2].value;
+    let cardname= card.children[3].value;
     if (love) {
       //keep card at the far right of screen=> out the width of the browser screen
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-      console.log('liked person '+cardId);
-      swipe_action(cardId,1);
+      console.log('liked person '+cardname);
+      swipe_action(cardId,cardname,1);
     } else {
       //keep card at the far left of screen=> out the width of the browser screen
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-      console.log('not my type '+cardId);
-      swipe_action(cardId,0);
+      console.log('not my type '+cardname);
+      swipe_action(cardId,cardname,0);
     }
 
     initCards();

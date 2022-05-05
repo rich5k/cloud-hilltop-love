@@ -23,9 +23,11 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
     <title>Swipe Page-Meet someone new!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/swipe_page.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
     <script src="../js/quickblox.min.js" defer></script>
+    <link rel="stylesheet" href="../css/alertify.min.css">
+    <script src="../js/alertify.min.js"></script>
+    <link rel="stylesheet" href="../css/swipe_page.css">
 </head>
 
 <body>
@@ -54,6 +56,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             
 
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
+            <input type="hidden" name="liked_users_name" value="' . $partner["username"] . '">
             <p></p>
 
             </div>';
@@ -66,7 +69,13 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
         </form>
 
+        <div class="tinder--buttons">
+            <button id="nope"><i class="fa fa-remove"></i></button>
+            <button id="love"><i class="fa fa-heart"></i></button>
+        </div>
+
     </div>
+
 
     <script src="../js/hammer.min.js"></script>
     <script src="../js/QBconfig.js" defer></script>

@@ -198,3 +198,10 @@ body {
   font-size: 32px;
   vertical-align: middle;
 }
+
+.ajs-message { 
+  color: #000;  
+  background-color: #fff;  
+  border-color: #31708f; 
+  text-align: center;
+}
