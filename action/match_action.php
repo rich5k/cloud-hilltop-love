@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require('../controllers/UserController.php');
 //if swiped yes populate user_like table
@@ -17,8 +18,10 @@ if (isset($_POST["love"])) {
     }
     //populate user likes table with who you like.
 
+
     //match algo
     // check if there exists a record with both id but with likee in the position of liker
+
 
     $check_for_match = checkMatchController($likee_username,  $liker_username);
 
@@ -36,3 +39,4 @@ if (isset($_POST["love"])) {
             echo 'you disliked ' . $likee_username;
     }
 }
+

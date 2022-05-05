@@ -158,7 +158,7 @@ if (isset($_POST['signin'])) {
         header("Location: ../view/auth/login.php");
     }
 } else {
-    // echo "login post not working";
+    echo "login post not working";
 }
 
 ?>

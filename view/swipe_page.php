@@ -52,8 +52,10 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             <img src="../assets/avis/' . $partner['pic_name'] . '">
             <h3>' . $partner['username'] . '</h3>
             
+
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
             <p></p>
+
             </div>';
             }
             //var_dump($user);
@@ -64,10 +66,6 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
         </form>
 
-        <div class="tinder--buttons">
-            <button id="nope"><i class="fa fa-remove"></i></button>
-            <button id="love"><i class="fa fa-heart"></i></button>
-        </div>
     </div>
 
     <script src="../js/hammer.min.js"></script>
