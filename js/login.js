@@ -65,6 +65,40 @@ function Login() {
             });
         };
 
+        this.connect = async function () {
+            self.stopReconnecting();
+            app.user = null;
+            /*app.init(app._config);*/
+
+            var user = localStorage.getItem('user');
+
+            var savedUser = JSON.parse(user);
+            app.room = savedUser.tag_list;
+
+            try {
+                var isLogin = await loginModule.login(savedUser);
+            }catch (e) {
+                app.init(app._config);
+                isLogin = await loginModule.login(savedUser);
+            }
+
+            listeners.setListeners();
+
+            if(!isLogin) {
+                router.navigate('/login');
+            }
+
+            return Promise.resolve();
+
+        };
+
+        this.reconnecting = function(interval) {
+            timer = setInterval(this.connect, interval);
+        };
+
+        this.stopReconnecting = function() {
+            clearInterval(timer);
+        }
         
 
     }
@@ -102,19 +136,26 @@ Login.prototype.login = async function (user) {
     try {
         var userData = await window.qbConnect.login();
     }catch (e) {
-        await userModule.create(user);
-        userData = await window.qbConnect.login();
+        alert('user account does not exist')
+        var currentUrl= window.location.href;
+        //if currently on messages page
+        if('messages'==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
+            window.location.replace("./auth/register.php");
+        }else{
+            window.location.replace("../view/auth/register.php");
+
+        }
     }
 
-    if(userData.user_tags !== user.tag_list || userData.full_name !== user.full_name) {
-        userData = await userModule.update(userData.id,{
-            'full_name': user.full_name,
-            'tag_list': user.tag_list
-        });
-    }
+    // if(userData.user_tags !== user.tag_list || userData.full_name !== user.full_name) {
+    //     userData = await userModule.update(userData.id,{
+    //         'full_name': user.full_name,
+    //         'tag_list': user.tag_list
+    //     });
+    // }
     
     app.user = userModule.addToCache(userData);
-    app.user.user_tags = userData.user_tags;
+    // app.user.user_tags = userData.user_tags;
 
     await window.qbConnect.chatConnect().then(function () {
         self.isLogin = true;
@@ -135,22 +176,16 @@ Login.prototype.renderLoginPage = function(){
 
 
 
-Login.prototype.setListeners = function(){
-    var self = this,
-        loginForm = document.forms.loginForm,
-        loginBtn = loginForm.signin;
-
-    loginForm.addEventListener('submit', async function(){
-        // e.preventDefault();
-
-        
-        var email = loginForm.email.value,
-            password = loginForm.password.value;
+Login.prototype.setListeners = async function(email,password){
+    var self = this;
+        // loginForm = document.forms.loginForm,
+        // loginBtn = loginForm.signin;
 
         var user = {
             email: email,
             password: password
         };
+        localStorage.setItem('user', JSON.stringify(user));
 
         window.qbConnect = new self.qbConnect(user);
     
@@ -158,23 +193,31 @@ Login.prototype.setListeners = function(){
     
         app.token = session.token;
 
-        localStorage.setItem('user', JSON.stringify(user));
 
         self.login(user).then(function(){
             console.log('logged in user');
+            window.location.replace("../view/swipe_page.php");
+            // setTimeout(() =>{
+            //     var currentUrl= window.location.href;
+            //     //if currently on messages page
+            //     if('messages'!==currentUrl.substring(currentUrl.length - 8, currentUrl.length)){
+                    
+            //     }
+
+            // } , 3000);
         }).catch(function(error){
-            // alert('lOGIN ERROR\n open console to get more info');
-            loginBtn.removeAttribute('disabled');
+            alert('lOGIN ERROR\n open console to get more info');
+            // loginBtn.removeAttribute('disabled');
             console.log(error);
             // loginForm.login_submit.innerText = 'LOGIN';
         });
-    });
+   
 
     
 };
 
 var loginModule = new Login();
 
-window.onload=function(){
-    loginModule.renderLoginPage();
-}
+// window.onload=function(){
+//     loginModule.renderLoginPage();
+// }

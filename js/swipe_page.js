@@ -5,9 +5,33 @@ var allCards = document.querySelectorAll('.tinder--card');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
 
+//ajax call to like, dislike or match users
+function swipe_action(id,love) {
+			
+			// alert(id);
+			$.ajax({
+				type: 'post',
+				url: '../action/match_action',
+				data: {
+          'love': love,
+					'liked_users_id': id
+				},
+				cache: false,
+				success:async function(data) {
+          if(data.substring(0,4)=="true"){
+					var match_id=await userModule.getUserIdByEmail(data.substring(5)).
+            then(result=> {return parseInt(result.id)});
+            
+            dialogModule.createDialog(match_id);
+          }else{
+            console.log(data);
+          }
+				}
+			});
+		}
 function initCards(card, index) {
   var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
-
+  //arrange cards in order of their index
   newCards.forEach(function (card, index) {
     card.style.zIndex = allCards.length - index;
     card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
@@ -21,7 +45,7 @@ initCards();
 
 allCards.forEach(function (el) {
   var hammertime = new Hammer(el);
-
+  //moves object in the direction of swipe
   hammertime.on('pan', function (event) {
     el.classList.add('moving');
   });
@@ -60,7 +84,16 @@ allCards.forEach(function (el) {
       var xMulti = event.deltaX * 0.03;
       var yMulti = event.deltaY / 80;
       var rotate = xMulti * yMulti;
-
+      var cards = document.querySelectorAll('.tinder--card:not(.removed)');
+      var card = cards[0];
+      var cardID= el.children[2].value;
+      if(event.deltaX>80){
+        console.log('liked person '+cardID);
+        swipe_action(cardID,1);
+      }else if(event.deltaX<-80){
+        console.log('disliked person '+cardID);
+        swipe_action(cardID,0);
+      }
       event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
       initCards();
     }
@@ -70,6 +103,7 @@ allCards.forEach(function (el) {
 function createButtonListener(love) {
   return function (event) {
     var cards = document.querySelectorAll('.tinder--card:not(.removed)');
+    //body.clientWidth is the entire width of the browser
     var moveOutWidth = document.body.clientWidth * 1.5;
 
     if (!cards.length) return false;
@@ -77,11 +111,18 @@ function createButtonListener(love) {
     var card = cards[0];
 
     card.classList.add('removed');
-
+    //gets the id of the card in front of pile
+    let cardId= card.children[2].value;
     if (love) {
+      //keep card at the far right of screen=> out the width of the browser screen
       card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+      console.log('liked person '+cardId);
+      swipe_action(cardId,1);
     } else {
+      //keep card at the far left of screen=> out the width of the browser screen
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+      console.log('not my type '+cardId);
+      swipe_action(cardId,0);
     }
 
     initCards();

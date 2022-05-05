@@ -33,11 +33,11 @@ if (isset($_POST['register'])) {
     } else {
         $pass = password_hash($pass, PASSWORD_DEFAULT);
         //die($pass);
-        echo "passed email and password auth";
-        if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) != true) {
+        // echo "passed email and password auth";
+        if (add_user_controller($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
             header('Location: ../view/auth/register.php?error=Data could not be inserted');
         } else {
-            echo "can't add user";
+            // echo "can't add user";
         }
 
         if (isset($_FILES["file"]["name"])) {
@@ -64,10 +64,29 @@ if (isset($_POST['register'])) {
                     //echo "true";
                     add_image_controller($Uid['Uid'], $fileName);
                     $_SESSION['avi'] = $fileName;
-                    header('Location: ../view/auth/login.php');
+                    echo '
+                    <script src="../js/quickblox.min.js" ></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+                    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+                    <script src="../js/QBconfig.js"></script>
+                    <script src="../js/helpers.js" ></script>
+                    <script src="../js/app.js" ></script>
+                    <script src="../js/register.js" ></script>
+                    <script>
+                        var email="' . $email . '";
+                        var fname="' . $fname . '";
+                        var lname="' . $lname . '";
+                        var username="' . $username . '";
+                        var password="' . $confirmPass . '";
+                        registerModule.setListeners(email, fname, lname, username,password);
+                        
+                    </script>
+                    ';
+                    // header('Location: ../view/auth/login.php');
                 }
             }
         }
+
         //$_SESSION['Uid'] = find_user_id($email);
         //header("Location: ../view/auth/login.php"); 
 
@@ -92,12 +111,12 @@ if (isset($_POST['signin'])) {
 
     if (isset($result['email'])) {
         $result1 = find_user_controller($email);
-        var_dump($result1);
-        echo "Email there<br>";
-        var_dump(password_verify($password, $result1['pass']));
+        // var_dump($result1);
+        // echo "Email there<br>";
+        // var_dump(password_verify($password, $result1['pass']));
         //die;
         if (password_verify($password, $result1['pass']) === true) {
-            echo "password there";
+            // echo "password there";
             //die;
             $user = find_user_controller($email);
             $_SESSION['Uid'] = $user['Uid'];
@@ -105,8 +124,23 @@ if (isset($_POST['signin'])) {
             //var_dump($role);
             $image = get_all_user_images_controller($user['Uid']);
             $_SESSION['avi'] = $image;
-            // header("Location: ../view/profile.php");
-            header("Location: ../view/swipe_page.php");
+            echo '
+                    <script src="../js/quickblox.min.js" ></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+                    <script src="../js/QBconfig.js"></script>
+                    <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+                    <script src="../js/user.js"></script>
+                    <script src="../js/helpers.js"></script>
+                    <script src="../js/app.js" ></script>
+                    <script src="../js/login.js"></script>
+                    <script>
+                        var email="' . $email . '";
+                        var password="' . $password . '";
+                        loginModule.setListeners(email,password);
+                    </script>
+                    ';
+            //header("Location: ../view/profile.php");
+            // header("Location: ../view/swipe_page.php");
         } else {
             $_SESSION['error'] = 'password is incorrect';
 
@@ -119,3 +153,27 @@ if (isset($_POST['signin'])) {
 } else {
     echo "login post not working";
 }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Processing auth ...</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+
+</html>

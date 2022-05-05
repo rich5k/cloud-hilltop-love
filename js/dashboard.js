@@ -1,7 +1,7 @@
-window.onload= function(){
+window.onload= async function(){
     app.init(app._config);
-    app.renderDashboard()
-    app.loadWelcomeTpl();
-    app.sidebar.classList.add('active');
-    // app.loadChatList();
+    // app.renderDashboard()
+    // app.loadWelcomeTpl();
+    // app.sidebar.classList.add('active');
+    
 }

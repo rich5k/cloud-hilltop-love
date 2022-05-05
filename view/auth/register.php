@@ -24,7 +24,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess">
+      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess.php">
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>
@@ -104,7 +104,7 @@
             <div class="select" style="width:200px">
               <label for="sexual_orient"> Sexual Orientation</label>
               <select name="sexual_orientation" id="sexual_orient" required>
-                <option value="1">Hecterosexual</option>
+                <option value="1">Heterosexual</option>
                 <option value="2">Bisexual</option>
                 <option value="3">Homosexual</option>
                 <option value="4">Pansexual</option>

@@ -1,19 +1,10 @@
 <?php
 session_start();
 
-// if (isset($_SESSION['errors'])) {
-//   $error = "<div class = 'error'>
-//               Email or password is incorrect
-//               </div>";
-// }
-// if (isset($_SESSION['error'])) {
-//   $errors = "<div class = 'error'>
-//               Password is incorrect
-//               </div>";
-// }
+
 
 if (isset($_SESSION['Uid'])) {
-  header('Location: ./swipe_page.php');
+  header('Location: ../swipe_page.php');
 }
 ?>
 <!DOCTYPE html>
@@ -41,12 +32,7 @@ if (isset($_SESSION['Uid'])) {
         <!-- progressbar here -->
         <fieldset>
           <h2 class="fs-title">Sign In</h2>
-          <?php
-          // if (isset($error))
-          //   echo $error;
-          // if (isset($errors))
-          //   echo $error 
-          ?>
+
           <div class="form-group">
             <label for="email">Email</label>
             <input type="text" name="email" placeholder="Email" required />

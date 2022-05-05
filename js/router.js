@@ -5,43 +5,28 @@ var router = new Navigo(null, true, '#!');
 router.on({
     '': function(){
         if(!loginModule.isLogin) {
-            router.navigate('/login');
+            window.location.replace("./auth/login.php");
         } else {
             router.navigate('/dashboard');
         }
     },
-    '/login': async function(){
-
-        document.querySelector('.login__logo').classList.remove("show");
-        document.querySelector('.login__logo').classList.add("show");
-
-        document.querySelector('.info').style.display = "block";
-        document.querySelector('.more').style.display = "none";
-        document.querySelector('.menu').classList.remove("show");
-        document.querySelector('#dialogName').innerHTML = '';
-
-        if(!loginModule.isLogin && !(await loginModule.init()) ) {
-            loginModule.renderLoginPage();
-        } else {
-            router.navigate('/dashboard');
-        }
-    },
+    
     '/dashboard': async function() {
 
         dialogModule.dialogId = null;
 
-        document.querySelector('.info').style.display = "none";
-        document.querySelector('.more').style.display = "none";
-        document.querySelector('.menu').classList.add("show");
+        // document.querySelector('.info').style.display = "none";
+        // document.querySelector('.more').style.display = "none";
+        // document.querySelector('.menu').classList.add("show");
         document.querySelector('#dialogName').innerHTML = '';
 
-        if(document.documentElement.clientWidth < 880) {
-            document.querySelector('#back_to_dashboard').classList.remove('show');
-            document.querySelector('.menu').classList.add('show');
-        }else{
-            document.querySelector('#back_to_dashboard').classList.remove('show');
-            document.querySelector('.menu').classList.add('show');
-        }
+        // if(document.documentElement.clientWidth < 880) {
+        //     document.querySelector('#back_to_dashboard').classList.remove('show');
+        //     document.querySelector('.menu').classList.add('show');
+        // }else{
+        //     document.querySelector('#back_to_dashboard').classList.remove('show');
+        //     document.querySelector('.menu').classList.add('show');
+        // }
 
         document.querySelectorAll('.j-dialog__item').forEach(function (element) {
             element.classList.remove('selected');
@@ -57,44 +42,19 @@ router.on({
             await dialogModule.loadDialogs('chat');
         }
     },
-    '/dialog/create': {
-        uses: async function() {
-
-            if (!loginModule.isLogin && !(await loginModule.init())){
-                router.navigate('/login');
-                return;
-            }
-
-            if(!app.isDashboardLoaded) {
-                app.renderDashboard('chat');
-                await dialogModule.loadDialogs('chat');
-            }
-
-            app.sidebar.classList.remove('active');
-            app.buildCreateDialogTpl();
-            modal.substrate.classList.add('show');
-            window.modal.watch();
-
-        },
-        hooks: {
-            leave: function () {
-                userModule.reset()
-            }
-        }
-    },
     '/dialog/:dialogId': async function(params) {
 
         app.modal.innerHTML = "";
         app.modal.style.width = 'auto';
         app.modal.style.height = 'auto';
 
-        if(document.documentElement.clientWidth < 880) {
-            document.querySelector('#back_to_dashboard').classList.add('show');
-            document.querySelector('.menu').classList.remove('show');
-        }else{
-            document.querySelector('#back_to_dashboard').classList.remove('show');
-            document.querySelector('.menu').classList.add('show');
-        }
+        // if(document.documentElement.clientWidth < 880) {
+        //     document.querySelector('#back_to_dashboard').classList.add('show');
+        //     document.querySelector('.menu').classList.remove('show');
+        // }else{
+        //     document.querySelector('#back_to_dashboard').classList.remove('show');
+        //     document.querySelector('.menu').classList.add('show');
+        // }
 
         modal.substrate.classList.remove('show');
 
@@ -109,7 +69,7 @@ router.on({
         dialogModule.dialogId = dialogId;
 
         if (!loginModule.isLogin && !(await loginModule.init())){
-            router.navigate('/login');
+            window.location.replace("./auth/login.php");
             return;
         }
 

@@ -5,7 +5,7 @@ require("../settings/db_class.php");
 
 class User extends db_connection
 {
-    
+
     function adduser($fname, $lname, $username, $email, $pass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone)
     {
         return $this->query("INSERT INTO `users`(fname, lname, username, email, pass, gender, twitter, insta, class, sexual_orientation, dob, major, phone)
@@ -38,8 +38,24 @@ class User extends db_connection
                                 WHERE pic_id = '$id' ");
     }
 
-    function getAllUserImages($id){
+    function getAllUserImages($id)
+    {
         return $this->fetch("SELECT * FROM pictures where Uid = '$id'");
+    }
+
+    function getUserLikes($id)
+    {
+        return $this->fetch("SELECT Iid FROM user_likes where Uid = '$id'");
+    }
+
+    function addMatches($Uid, $lid)
+    {
+        return $this->fetch("INSERT INTO user_matches(Uid, lid) values ('$Uid','$lid')");
+    }
+
+    function getNumberofLikes($Uid)
+    {
+        return $this->fetch("SELECT COUNT lid FROM user_likes where Uid ='$Uid");
     }
 
 
@@ -80,7 +96,7 @@ class User extends db_connection
                                     INNER JOIN pictures
                                     ON pictures.Uid = users.Uid
                                     WHERE gender = 'f' and sexual_orientation = '$sexual_orientation' ");
-            }else if($gender === 'f') {
+            } else if ($gender === 'f') {
                 return $this->fetch("SELECT *
                                     FROM users
                                     INNER JOIN pictures
@@ -106,12 +122,46 @@ class User extends db_connection
                                 ON pictures.Uid = users.Uid');
         }
     }
-    function getUserMessages($id){
+    function getUserMessages($id)
+    {
         return $this->fetch("SELECT * 
                              FROM conversation 
                              WHERE sender_id = '$id' or receiver_id = '$id'
                              ORDER BY mess_time DESC ");
     }
+    // record user like of other users.
+    function recordLike($likee_username,  $liker_username, $like_dis)
+    {
+        return $this->query("INSERT INTO user_likes(Uid, Iid,like_dis) values ('$liker_username','$likee_username','$like_dis')");
+    }
+
+    function checkMatch($likee_username,  $liker_username)
+    {
+        return $this->fetchOne("SELECT * from user_likes WHERE Uid = '$likee_username' AND Iid = '$liker_username' AND like_dis='l'");
+    }
+
+    function record_success_match($likee_username,  $liker_username)
+    {
+        return $this->query("INSERT INTO user_match(Uid, Iid) values ('$liker_username','$likee_username')");
+    }
+
+    function getLikeeEmail($likee_id)
+    {
+        return $this->fetchOne("SELECT email FROM `users` WHERE Uid = '$likee_id'");
+    }
+
+    function getInterests($id){
+        return $this->fetch("SELECT * 
+                             from user_interest 
+                             inner join interest
+                             on interest.int_id = user_interest.interest_id
+                             where Uid = '$id'");
+    }
+
+    function getUserMatch1($id){
+        return $this->fetch("SELECT Iid FROM user_match where Uid='$id'");
+    }
+    
 }
 
 // record user like of other users.
