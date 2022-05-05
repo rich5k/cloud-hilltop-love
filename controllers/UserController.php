@@ -121,3 +121,33 @@ function get_user_interests($id){
     $user_instance = new User();
     return $user_instance->getInterests($id);
 }
+
+function getUserMatch($id){
+    $user_instance = new User();
+    return $user_instance->getUserMatch1($id);
+}
+
+
+
+/*function addlike($first){
+    $first=$first*3;
+    $size=count(get_likes($id));
+    if ($first < $size){
+        getUserLike($first,$first+3);
+    }else {
+        return;
+        
+    }
+}
+
+function getUserLike($first,$second){
+    $first=first-1;
+    $useLike=get_likes($id);
+    $friends=array();
+    while ($first < $second ){
+        array_push($friends, $useLike['Iid']);
+        $first++;
+    }
+    return $friends;
+
+}*/

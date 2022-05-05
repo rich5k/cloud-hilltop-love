@@ -1,9 +1,9 @@
 <?php
 
 require('../settings/core.php');
-if (check_login() ===  false) {
+/*if (check_login() ===  false) {
     header('Location: ./auth/login.php');
-}
+}*/
 require('../controllers/UserController.php');
 
 //var_dump($_SESSION['Uid']);
@@ -18,6 +18,7 @@ $interest = get_user_interests($_SESSION['Uid']);
 //die;
 // echo $pImage;
 $imageUrl = "../assets/avis/" . $user['pic_name'];
+//require_once "../../action/userlike.php";
 
 ?>
 <!DOCTYPE html>
@@ -79,19 +80,20 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
 
             </div>
         </div>
-        <!-- Intresst and Friends col -->
-        <div class="col-6" style="height: 100%;">
+    </div>
+    <!-- Like By Coloumn -->
+    <div class="col-6" style="height: 100%;">
+        
+      <div class= "row flex-grow-1">
+        <div class="card " style="height: 250px;">
+            <h5><?php echo $user['fname']?></h5>
+            <h5>Age</h5>
+            <h5><?php echo $user['course_title']?></h5>
 
-            <div class="row flex-grow-1">
-                <div class="card " style="height: 250px;">
-                    <h5><?php echo $user['fname'] ?></h5>
-                    <h5>Age</h5>
-                    <h5><?php echo $user['course_title'] ?></h5>
-
-                    <?php
-                    if (isset($interest)) {
-                        foreach ($interest as $int) {
-                            echo "
+            <?php
+                        if (isset($interest)) {
+                            foreach ($interest as $int) {
+                                echo "
                                     <h5 class='desc'>" . $int['interest_name'] . "</h5>";
                         }
                     }
@@ -127,135 +129,39 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
                 <div class="row">
                     <div class="col-9">
                         <h3 class="mb-3">Friends </h3>
-                    </div>
-
-                    <div class="col-3 text-right">
-                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                            <i class="fa fa-arrow-left"></i>
-                        </a>
-                        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                            <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="col-12">
-                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row">
-
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Special title treatment</h4>
-                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    <button type="button" class="btn btn-success">Chat</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Special title treatment</h4>
-                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    <button type="button" class="btn btn-success">Chat</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Special title treatment</h4>
-                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    <button type="button" class="btn btn-success">Chat</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row">
-
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3f317c1f7a16116dec454fbc267dd8e4">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Special title treatment</h4>
-                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    <button type="button" class="btn btn-success">chat</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Special title treatment</h4>
-                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    <button type="button" class="btn btn-success">Chat</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card">
-                                                <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Special title treatment</h4>
-                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                    <button type="button" class="btn btn-success">Chat</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                
+                
+                <div class="col-12">
+                    
 
-            </div>
-        </div>
-        <div class="col-3" style="height: 100%">
+                        
+                            
+                                <div class="row">
 
+                                <?php 
+                                    $friends=getUserMatch($_SESSION['Uid']);
+                                    //echo $friends['Uid'];
+                                    if (isset($friends)){
+                                        for($i=0; $i<count($friends); $i++){
+                                            //echo $friends[$i]['Iid'];
+                                            $user_friends = get_user_controller($friends[$i]['Iid']);
 
-            <h3>Liked By</h3>
-            <div class="" style="margin: 20px; height: 500px; overflow:hidden; overflow-y:auto; ">
+                                            
+                                  
+                                ?>
 
-                <div class="row ">
-                    <div class="card" style="">
-                        <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-                        <div class="card-body">
-                            <h4 class="card-title">Special title treatment</h4>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <button type="button" class="btn btn-success">Chat</button>
-                        </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                            <div class="card-body">
+                                                <h4 class="card-title"><?php echo $user_friends['username']; ?></h4>
+                                                <p class="card-text">User Intrests</p>
+                                                <button type="button" class="btn btn-success">Chat</button>
+                                            </div>
 
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="card">
-                        <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-                        <div class="card-body">
-                            <h4 class="card-title">Special title treatment</h4>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <button type="button" class="btn btn-success">Chat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="card">
-                        <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-                        <div class="card-body">
-                            <h4 class="card-title">Special title treatment</h4>
+                                            </div>
+                                        </div>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             <button type="button" class="btn btn-success">Chat</button>
                         </div>
@@ -263,7 +169,38 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
                 </div>
 
             </div>
+      </div>
+    </div>
+    <div class="col-3" style="height: 100%">
+       
+            
+                <h3>Liked By</h3>
+                <div class="" style="margin: 20px; height: 500px; overflow:hidden; overflow-y:auto; " >
+                <?php 
+                                    $likes=get_likes($_SESSION['Uid']);
+                                    if (!empty($likes)){
+                                        foreach($likes as $uLikes){
+                                            $user_liker = get_user_controller($uLikes['lid']);
 
+                                            
+                                  
+                                ?>
+                                    <div class="row ">
+                                        <div class="card" style="">
+                                            <img class="rounded-circle img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Special title treatment</h4>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                <button type="button" class="btn btn-success">Chat</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                
+                                <?php 
+                                        }
+                                    }
+                                ?>   
 
 
 
@@ -285,5 +222,6 @@ $imageUrl = "../assets/avis/" . $user['pic_name'];
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="ajax-script.js"></script>
 </html>

@@ -146,7 +146,7 @@ if (isset($_POST['signin'])) {
                         loginModule.primarySetListeners(email,password);
                     </script>
                     ';
-            // header("Location: ../view/profile.php");
+            //header("Location: ../view/profile.php");
             // header("Location: ../view/swipe_page.php");
         } else {
             $_SESSION['error'] = 'password is incorrect';
