@@ -13,6 +13,7 @@ $user = get_user_controller($_SESSION['Uid']);
 $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -50,19 +51,30 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
             <?php
             foreach ($partners as $partner) {
+                $interests = get_user_interests($partner['Uid']);
                 echo
 
                 '<div class="tinder--card">
             <img src="../assets/avis/' . $partner['pic_name'] . '">
-            <h3><a href="view_user.php?partner='.$partner['Uid'].' ">' . $partner['username'] . '</a></h3>
-            
+            <h3>' . $partner['username'] . '</h3>
+            <p>Interests</p>
 
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
             <input type="hidden" name="liked_users_name" value="' . $partner["username"] . '">
-            <p></p>
-
-            </div>';
+            ';
+                foreach ($interests as $interest){
+                    echo '
+                        <ul>
+                            <li>'.$interest['interest_name'].'</li>
+                        <ul>
+                        ';
+                }
+            echo '</div>';
             }
+            
+            
+            
+            
             //var_dump($user);
             //var_dump($user);
             ?>
