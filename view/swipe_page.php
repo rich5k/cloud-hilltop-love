@@ -2,12 +2,14 @@
 require('../settings/core.php');
 require('../controllers/UserController.php');
 
-$user = get_user_controller($_SESSION['Uid']);
 
-if (!isset($user)) {
+
+if (check_login() !==  true || check_login() === NULL ) {
     header('Location: ./auth/login.php');
 }
-
+//var_dump($_SESSION['Uid']);
+$user = get_user_controller($_SESSION['Uid']);
+//var_dump($user);
 $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
 
@@ -52,7 +54,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
                 '<div class="tinder--card">
             <img src="../assets/avis/' . $partner['pic_name'] . '">
-            <h3>' . $partner['username'] . '</h3>
+            <h3><a href="view_user.php?partner='.$partner['Uid'].' ">' . $partner['username'] . '</a></h3>
             
 
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">

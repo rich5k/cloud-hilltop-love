@@ -55,7 +55,7 @@ class User extends db_connection
 
     function getNumberofLikes($Uid)
     {
-        return $this->fetch("SELECT COUNT lid FROM user_likes where Uid ='$Uid");
+        return $this->fetchOne("SELECT COUNT(*) FROM user_likes where Iid = '$Uid' and like_dis = 'l'");
     }
 
 
@@ -91,33 +91,33 @@ class User extends db_connection
     {
         if ($sexual_orientation === '1') {
             if ($gender === 'm') {
-                return $this->fetch("SELECT users.Uid, fname, lname, gender, class, major, phone, twitter, insta, sexual_orientation, username, pic_name
-                                     FROM user_likes, users 
+                return $this->fetch("SELECT *
+                                     FROM  users 
                                      INNER JOIN pictures
                                      ON pictures.Uid = users.Uid
-                                     WHERE users.Uid != user_likes.Iid and gender = 'f' and sexual_orientation != 2 ");
+                                     WHERE gender = 'f' and sexual_orientation != 2 ");
             } else if ($gender === 'f') {
-                return $this->fetch("SELECT users.Uid, fname, lname, gender, class, major, phone, twitter, insta, sexual_orientation, username, pic_name
-                                     FROM user_likes, users 
+                return $this->fetch("SELECT *
+                                     FROM  users 
                                      INNER JOIN pictures
                                      ON pictures.Uid = users.Uid
-                                     WHERE users.Uid != user_likes.Iid and gender = 'm' and sexual_orientation != 2  ");
+                                     WHERE gender = 'm' and sexual_orientation != 2  ");
             }
         } elseif ($sexual_orientation === '3') {
             return $this->fetch("SELECT *
-                                FROM user_likes, users
+                                FROM  users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
-                                WHERE users.Uid != user_likes.Iid and users.Uid != '$id'  ");
+                                WHERE users.Uid != '$id'  ");
         } elseif ($sexual_orientation === '2') {
             return $this->fetch("SELECT *
-                                FROM user_likes, users
+                                FROM  users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
-                                WHERE users.Uid != user_likes.Iid and gender = '$gender' and sexual_orientation = '$sexual_orientation' or sexual_orientation = 3 and users.Uid != '$id' ");
+                                WHERE gender = '$gender' and sexual_orientation = '$sexual_orientation' or sexual_orientation = 3 and users.Uid != '$id' ");
         } elseif ($sexual_orientation === '4') {
             return $this->fetch('SELECT *
-                                FROM user_likes, users
+                                FROM  users
                                 INNER JOIN pictures
                                 ON pictures.Uid = users.Uid
                                 WHERE users.Uid != user_likes.Iid');
@@ -156,7 +156,7 @@ class User extends db_connection
                              from user_interest 
                              inner join interest
                              on interest.int_id = user_interest.interest_id
-                             where Uid = '$id'");
+                             where user_interest.Uid = '$id'");
     }
 
     function getAllInterests(){
@@ -171,6 +171,18 @@ class User extends db_connection
         return $this->fetch("SELECT * FROM courses");
     }
     
+    function getSexOrient($orient){
+        return $this->fetchOne("SELECT sex_name FROM sexual_orientation WHERE id='$orient'");
+    }
+
+
+    function check_match($Uid, $Iid){
+        return $this->fetchOne("SELECT Uid, Iid FROM user_match where Uid = '$Uid' and Iid = '$Iid'");
+    }
+
+    function check_likes($Uid, $Iid){
+        return $this->fetchOne("SELECT Uid, Iid FROM user_likes where Uid = '$Uid' and Iid = '$Iid' and like_dis = 'l'");
+    }
 }
 
     // record user like of other users.

@@ -43,20 +43,21 @@ CREATE TABLE `converstion` (
 
 CREATE TABLE `courses` (
   `course_id` tinyint(80) NOT NULL,
-  `course_name` varchar(11) NOT NULL
+  `course_name` varchar(11) NOT NULL,
+  `course_title` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`course_id`, `course_name`) VALUES
-(1, 'CE'),
-(2, 'CS'),
-(3, 'ME'),
-(4, 'EE'),
-(5, 'MIS'),
-(6, 'BA');
+INSERT INTO `courses` (`course_id`, `course_name`, `course_title`) VALUES
+(1, 'CE', 'Computer Engineering'),
+(2, 'CS', 'Computer Science'),
+(3, 'ME', 'Mechanical Engineering'),
+(4, 'EE', 'Electrical Engineering'),
+(5, 'MIS', 'Management Information Systems'),
+(6, 'BA', 'Business Administration');
 
 -- --------------------------------------------------------
 
