@@ -299,6 +299,7 @@ Dialog.prototype.renderMessages = function (dialogId) {
         }
 
         self.editLink.href = '#!/dialog/' + self.dialogId + '/edit';
+        console.log('editted link to : '+self.editLink.href);
         self.quitLink.dataset.dialog = dialogId;
 
         if (dialog.type === CONSTANTS.DIALOG_TYPES.GROUPCHAT) {

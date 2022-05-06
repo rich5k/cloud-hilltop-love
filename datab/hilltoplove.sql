@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2022 at 02:28 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: May 06, 2022 at 07:19 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -88,7 +88,9 @@ CREATE TABLE `pictures` (
 
 INSERT INTO `pictures` (`pic_id`, `Uid`, `pic_name`) VALUES
 (4, 29, 'part1.6.png'),
-(5, 30, 'close-studio-portrait-beautiful-young-260nw-649133968.png');
+(5, 30, 'close-studio-portrait-beautiful-young-260nw-649133968.png'),
+(37, 64, 'github pic.jpg'),
+(38, 65, 'Sayoni Discord.PNG');
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`Uid`, `fname`, `lname`, `username`, `email`, `pass`, `gender`, `dob`, `class`, `major`, `phone`, `twitter`, `insta`, `sexual_orientation`) VALUES
 (10, 'Kwaku', 'Agyeman', 'AgyemanK', 'kwaku.agyeman@ashesi.edu.gh', '$2y$10$JdTIlCoRNVR5flk/uA4YyO3Hz3W0YqT9miEojZobH4fUoHJPR/4Ku', 'm', '2020-05-14', 2022, 3, '0246000307', '@agyeman', '@sdfjksa', 1),
 (29, 'Kofi', 'Omari', 'OmariKofi', 'kwakuayemang.2000@gmail.com', '$2y$10$ZX9Tsfl6T.XOeL2dEp5ZWes4B2vsXucC/pYER.tPqolddr2ngjqeq', 'm', '2002-02-05', 2003, 4, '0243923841', '@kwame_in', '@sdfjksdf', 1),
-(30, 'Afia', 'Ohenewaa', 'OhenewaaAfia', 'ohenewaaAfia@ashesi.edu.gh', 'oiodas23904jk@8q34#8934', 'f', '2000-01-01', 2003, 5, '0273982120', '@ohenewaa', 'afia_ohenewaa', 1);
+(30, 'Afia', 'Ohenewaa', 'OhenewaaAfia', 'ohenewaaAfia@ashesi.edu.gh', 'oiodas23904jk@8q34#8934', 'f', '2000-01-01', 2003, 5, '0273982120', '@ohenewaa', 'afia_ohenewaa', 1),
+(64, 'Richard', 'Anatsui', 'rich5k', 'richard.anatsui@ashesi.edu.gh', '$2y$10$qAKA7EBxVZb5IVXLXrFcbejxeV6tzEN2.mMi5Mo7uufwiAL0m/dRu', 'm', '2001-06-07', 2004, 2, '+233205030128', '@richard', 'https://www.instagram.com/richardkafuianatsui/', 1),
+(65, 'Sayoni', 'Buhari', 'sayoni', 'sayoni.buhari@ashesi.edu.gh', '$2y$10$990PygReXiU5luUDycNEpOoWvB3NuI3Ih/owMbsRpNXWeM2idUjJ6', 'f', '2001-05-08', 2001, 6, '+44205030128', '@sayoni', 'https://www.instagram.com/sayonibuhari', 1);
 
 -- --------------------------------------------------------
 
@@ -163,10 +167,20 @@ CREATE TABLE `user_interest` (
 
 CREATE TABLE `user_likes` (
   `like_id` int(8) NOT NULL,
-  `Uid` int(8) DEFAULT NULL,
-  `Iid` int(8) DEFAULT NULL,
+  `Uid` int(8) NOT NULL,
+  `Iid` int(8) NOT NULL,
   `like_dis` enum('l','d') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_likes`
+--
+
+INSERT INTO `user_likes` (`like_id`, `Uid`, `Iid`, `like_dis`) VALUES
+(84, 64, 30, 'd'),
+(85, 64, 65, 'l'),
+(86, 65, 29, 'd'),
+(87, 65, 64, 'l');
 
 -- --------------------------------------------------------
 
@@ -179,6 +193,13 @@ CREATE TABLE `user_match` (
   `Uid` int(8) DEFAULT NULL,
   `Iid` int(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_match`
+--
+
+INSERT INTO `user_match` (`match_id`, `Uid`, `Iid`) VALUES
+(15, 65, 64);
 
 --
 -- Indexes for dumped tables
@@ -276,7 +297,7 @@ ALTER TABLE `interest`
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `pic_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `pic_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `sexual_orientation`
@@ -288,7 +309,7 @@ ALTER TABLE `sexual_orientation`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Uid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `Uid` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `user_interest`
@@ -300,13 +321,13 @@ ALTER TABLE `user_interest`
 -- AUTO_INCREMENT for table `user_likes`
 --
 ALTER TABLE `user_likes`
-  MODIFY `like_id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `like_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `user_match`
 --
 ALTER TABLE `user_match`
-  MODIFY `match_id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `match_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables

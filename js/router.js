@@ -36,11 +36,9 @@ router.on({
             element.classList.remove('selected');
         });
 
-        if(!loginModule.isLogin && !(await loginModule.init())) {
-            var user=localStorage.getItem('user');
-            var savedUser = JSON.parse(user);
-            await loginModule.setListeners(savedUser.email,savedUser.password);
-            // router.navigate('/dashboard');
+        if(!loginModule.isLogin) {
+            
+            router.navigate('');
         } else if(app.isDashboardLoaded) {
             app.loadWelcomeTpl();
             app.sidebar.classList.add('active');
@@ -76,10 +74,7 @@ router.on({
         dialogModule.dialogId = dialogId;
 
         if (!loginModule.isLogin){
-            var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
-            console.log(chatAuth.email);
-            await loginModule.setListeners(chatAuth.email, chatAuth.password);
-            router.navigate('/dashboard');
+            router.navigate('');
             return;
         }
 
@@ -95,10 +90,11 @@ router.on({
         var currentDialog = dialogModule._cache[dialogId];
         if(currentDialog) {
             dialogModule.selectCurrentDialog(dialogId);
+            console.log("Current Dialog id: "+ dialogId);
         }
 
         dialogModule.getDialogById(dialogId).then(async function(dialog) {
-
+            console.log('got current dialog data');
             // document.querySelector('.info').style.display = "none";
             // document.querySelector('.more').style.display = "block";
 
@@ -131,6 +127,7 @@ router.on({
                     console.error(error);
                 });
             }else if(tabDataType === 'chat') {
+                console.log('current dialog is a private chat');
                 userModule.getUsersByIds(currentDialog.users).then(function () {
                     document.getElementById(dialogId).querySelector('.dialog__name').innerHTML = dialog.name;
                     dialogModule.renderMessages(dialogId);
