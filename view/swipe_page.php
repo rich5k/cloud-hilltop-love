@@ -2,12 +2,14 @@
 require('../settings/core.php');
 require('../controllers/UserController.php');
 
-$user = get_user_controller($_SESSION['Uid']);
 
-if (!isset($user)) {
+
+if (check_login() !==  true || check_login() === NULL ) {
     header('Location: ./auth/login.php');
 }
-
+//var_dump($_SESSION['Uid']);
+$user = get_user_controller($_SESSION['Uid']);
+//var_dump($user);
 $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sexual_orientation']);
 
 

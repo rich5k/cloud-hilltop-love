@@ -1,17 +1,26 @@
 <?php
 require('../settings/core.php');
 if (check_login() ===  false) {
-    //header('Location: ./auth/login.php');
+    header('Location: ./auth/login.php');
 }
 require('../controllers/UserController.php');
 
 //var_dump($_SESSION['Uid']);
-
+//$_SESSION['Uid'] = 10;
+if(!empty($_GET['partner'])){
+  header('Location: swipe_page.php');
+}
 $user = get_user_controller($_GET['partner']);
 $interest = get_user_interests($_GET['partner']);
 
 $sexOrient = get_sex_orient($user['sexual_orientation']);
 //var_dump($user);
+
+$match = check_match_controller($_SESSION['Uid'], $_GET['partner']);
+$like = check_like_controller($_SESSION['Uid'], $_GET['partner']);
+$numLikes = get_Number_of_Likes($_GET['partner']);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -121,8 +130,12 @@ $sexOrient = get_sex_orient($user['sexual_orientation']);
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
-                <a href="swipe_page.php" class="btn btn-sm btn-info mr-4">Connect</a>
-                <a href="messages.php" class="btn btn-sm btn-default float-right">Message</a>
+                <?php if(!empty($like)){ ?>
+                  <a href="" class="btn btn-sm btn-info mr-4">Like</a>
+                <?php }?>
+                <?php if(!empty($match)){ ?>
+                  <a href="messages.php" class="btn btn-sm btn-default float-right">Message</a>
+                <?php }?>
               </div>
             </div>
             <div class="card-body pt-0 pt-md-4">
@@ -130,9 +143,10 @@ $sexOrient = get_sex_orient($user['sexual_orientation']);
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                     <div>
-                      <span class="heading">22</span>
-                      <span class="description">Friends</span>
+                      <span class="heading"><?php echo $numLikes['COUNT(*)'] ?></span>
+                      <span class="description">Likes</span>
                     </div>
+                    
                     
                     
                   </div>

@@ -146,6 +146,16 @@ function get_sex_orient($orient){
     return $user_instance->getSexOrient($orient);
 }
 
+
+function check_match_controller($Uid, $Iid){
+    $user_instance = new User();
+    return $user_instance->check_match($Uid, $Iid);
+}
+
+function check_like_controller($Uid, $Iid){
+    $user_instance = new User();
+    return $user_instance->check_likes($Uid, $Iid);
+}
 /*function addlike($first){
     $first=$first*3;
     $size=count(get_likes($id));
