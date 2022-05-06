@@ -44,7 +44,7 @@ CREATE TABLE `converstion` (
 CREATE TABLE `courses` (
   `course_id` tinyint(80) NOT NULL,
   `course_name` varchar(11) NOT NULL,
-  `course_title` varchar(40) NOT NULL,
+  `course_title` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

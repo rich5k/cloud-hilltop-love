@@ -156,7 +156,7 @@ class User extends db_connection
                              from user_interest 
                              inner join interest
                              on interest.int_id = user_interest.interest_id
-                             where Uid = '$id'");
+                             where user_interest.Uid = '$id'");
     }
 
     function getAllInterests(){
@@ -171,6 +171,9 @@ class User extends db_connection
         return $this->fetch("SELECT * FROM courses");
     }
     
+    function getSexOrient($orient){
+        return $this->fetchOne("SELECT sex_name FROM sexual_orientation WHERE id='$orient'");
+    }
 }
 
     // record user like of other users.

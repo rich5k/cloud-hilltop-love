@@ -141,6 +141,11 @@ function get_major_controller(){
 }
 
 
+function get_sex_orient($orient){
+    $user_instance = new User();
+    return $user_instance->getSexOrient($orient);
+}
+
 /*function addlike($first){
     $first=$first*3;
     $size=count(get_likes($id));

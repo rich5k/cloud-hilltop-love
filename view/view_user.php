@@ -1,7 +1,7 @@
 <?php
 require('../settings/core.php');
 if (check_login() ===  false) {
-    header('Location: ./auth/login.php');
+    //header('Location: ./auth/login.php');
 }
 require('../controllers/UserController.php');
 
@@ -9,6 +9,9 @@ require('../controllers/UserController.php');
 
 $user = get_user_controller($_GET['partner']);
 $interest = get_user_interests($_GET['partner']);
+
+$sexOrient = get_sex_orient($user['sexual_orientation']);
+//var_dump($user);
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +38,7 @@ $interest = get_user_interests($_GET['partner']);
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="" >User profile</a>
         <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative">
               <div class="input-group-prepend">
@@ -44,14 +47,14 @@ $interest = get_user_interests($_GET['partner']);
               <input class="form-control" placeholder="Search" type="text">
             </div>
           </div>
-        </form>
+        </form> -->
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg">
+                  <img alt="Image placeholder" src="<?php echo "../assets/avis/".$user['pic_name'] ?>">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold"><?php echo $user['fname'].' '.$user['lname'] ?>  </span>
@@ -89,7 +92,7 @@ $interest = get_user_interests($_GET['partner']);
       </div>
     </nav>
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(<?php echo "../assets/avis/".$user['pic_name'] ?>); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
@@ -98,7 +101,6 @@ $interest = get_user_interests($_GET['partner']);
           <div class="col-lg-7 col-md-10">
             <h1 class="display-2 text-white">Hello <?php echo $user['fname'] ?></h1>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-            <a href="" class="btn btn-info">Edit profile</a>
           </div>
         </div>
       </div>
@@ -112,7 +114,7 @@ $interest = get_user_interests($_GET['partner']);
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle">
+                    <img src="<?php echo "../assets/avis/".$user['pic_name'] ?>" class="rounded-circle">
                   </a>
                 </div>
               </div>
@@ -140,12 +142,7 @@ $interest = get_user_interests($_GET['partner']);
                 <h3>
                   <?php echo $user['fname']." ".$user['lname'] ?><span class="font-weight-light">, 27</span>
                 </h3>
-                <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                </div>
-                <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-                </div>
+                
                 <div>
                   <i class="ni education_hat mr-2"></i>Ashesi University
                 </div>
@@ -163,9 +160,7 @@ $interest = get_user_interests($_GET['partner']);
                 <div class="col-8">
                   <h3 class="mb-0">My account</h3>
                 </div>
-                <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                </div>
+               
               </div>
             </div>
             <div class="card-body">
@@ -208,43 +203,47 @@ $interest = get_user_interests($_GET['partner']);
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-address">Address</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text" readonly>
+                        <label class="form-control-label" for="input-address">Sexual Orientation</label>
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="<?php echo $user['sex_name']?>" type="text" readonly>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York" readonly>
+                        <label class="form-control-label" for="input-city">Instagram Account</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative"  value="<?php echo $user['insta'] ?>" readonly>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States" readonly>
+                        <label class="form-control-label" for="input-country">Twitter Account</label>
+                        <input type="text" id="input-country" class="form-control form-control-alternative"  value="<?php echo $user['twitter'] ?>" readonly>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" readonly>
+                        <label class="form-control-label" for="input-country">Major</label>
+                        <input type="text" id="input-postal-code" class="form-control form-control-alternative" value="<?php echo $user['course_title'] ?>"  readonly>
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr class="my-4">
                 <!-- Description -->
+                <?php if (!empty($interest)){ ?>
                 <h6 class="heading-small text-muted mb-4">Interests</h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>Interests</label>
                         <ul>
-                            <li></li>
+                          <?php foreach($interest as $int){ ?>
+                            <li><?php echo $interest['interest_name'] ?></li>
+                          <?php } ?>
                         </ul>
                   </div>
                 </div>
+                <?php } ?>
             
             </div>
           </div>

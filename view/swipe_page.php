@@ -52,7 +52,7 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
                 '<div class="tinder--card">
             <img src="../assets/avis/' . $partner['pic_name'] . '">
-            <h3>' . $partner['username'] . '</h3>
+            <h3><a href="view_user.php?partner='.$partner['Uid'].' ">' . $partner['username'] . '</a></h3>
             
 
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
