@@ -3,12 +3,13 @@
 var router = new Navigo(null, true, '#!');
 
 router.on({
-    '': function(){
+    '': async function(){
         if(!loginModule.isLogin) {
-            var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
-            console.log(chatAuth.email);
-            loginModule.setListeners(chatAuth.email, chatAuth.password);
-            router.navigate('/dashboard');
+            // await loginModule.init()
+            var user=localStorage.getItem('user');
+            var savedUser = JSON.parse(user);
+            await loginModule.setListeners(savedUser.email,savedUser.password);
+            // router.navigate('/dashboard');
         } else {
             router.navigate('/dashboard');
         }
@@ -34,12 +35,13 @@ router.on({
         document.querySelectorAll('.j-dialog__item').forEach(function (element) {
             element.classList.remove('selected');
         });
-        var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
-        console.log(chatAuth.email);
-         loginModule.setListeners(chatAuth.email, chatAuth.password);
-         router.navigate('/dashboard');
 
-        if(app.isDashboardLoaded) {
+        if(!loginModule.isLogin && !(await loginModule.init())) {
+            var user=localStorage.getItem('user');
+            var savedUser = JSON.parse(user);
+            await loginModule.setListeners(savedUser.email,savedUser.password);
+            // router.navigate('/dashboard');
+        } else if(app.isDashboardLoaded) {
             app.loadWelcomeTpl();
             app.sidebar.classList.add('active');
         } else {
@@ -76,7 +78,7 @@ router.on({
         if (!loginModule.isLogin){
             var chatAuth=JSON.parse(localStorage.getItem('chatAuth'));
             console.log(chatAuth.email);
-            loginModule.setListeners(chatAuth.email, chatAuth.password);
+            await loginModule.setListeners(chatAuth.email, chatAuth.password);
             router.navigate('/dashboard');
             return;
         }
@@ -106,13 +108,13 @@ router.on({
                 document.querySelector('.send_message .send_btn').style.top = '10px';
             }
 
-           if (dialog.type === CONSTANTS.DIALOG_TYPES.GROUPCHAT) {
-               document.querySelector('.moreList li:first-child').style.display = "block";
-               document.querySelector('.moreList').style.height = '86px';
-           }else{
-               document.querySelector('.moreList li:first-child').style.display = "none";
-               document.querySelector('.moreList').style.height = '50px';
-           }
+        //    if (dialog.type === CONSTANTS.DIALOG_TYPES.GROUPCHAT) {
+        //        document.querySelector('.moreList li:first-child').style.display = "block";
+        //        document.querySelector('.moreList').style.height = '86px';
+        //    }else{
+        //        document.querySelector('.moreList li:first-child').style.display = "none";
+        //        document.querySelector('.moreList').style.height = '50px';
+        //    }
 
             document.querySelector('#dialogName').innerHTML = dialog.name;
 

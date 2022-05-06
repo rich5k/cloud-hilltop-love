@@ -108,7 +108,7 @@ if (!isset($user)) {
     <div class="row messages-page">
         <div class="contacts col-lg-10 col-sm-12">
             <div id="user-name"></div>
-            <div id="dialogName"></div>
+            <div id="dialogName" style="color: black;"></div>
             <div id="page">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
@@ -482,7 +482,7 @@ if (!isset($user)) {
     <script src="../js/message.js" defer></script>
     <script src="../js/listeners.js" defer></script>
     <script src="../js/modal.js" defer></script>
-    <script src="../js/route3.js" defer></script>
+    <script src="../js/router.js" defer></script>
     <script src="../js/bootstrap.min.js"></script>
 </body>
 
