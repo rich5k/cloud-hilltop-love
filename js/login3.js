@@ -85,7 +85,7 @@ function Login() {
             listeners.setListeners();
 
             if(!isLogin) {
-                router.navigate('/login');
+                router.navigate('/login.php');
             }
 
             return Promise.resolve();

@@ -191,7 +191,7 @@ Register.prototype.setListeners = async function(email, fname, lname, username, 
 
     userCreate(user).then(function(){
         console.log("registered user");
-        window.location.replace("../view/auth/login");
+        window.location.replace("../view/auth/login.php");
         // router.navigate('/dashboard');
     }).catch(function(error){
         alert('register ERROR\n open console to get more info');

@@ -22,7 +22,6 @@ if (isset($_POST['register'])) {
     $sexual_orientation = $_POST['sexual_orientation'];
     $phone = $_POST['phone'];
     $major = $_POST['major'];
-    $role = 1;
 
     if (find_email_controller($email) === true) {
         header("Location: register.php?error=Email already exists!");
