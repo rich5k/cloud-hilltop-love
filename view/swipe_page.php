@@ -57,19 +57,22 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
                 '<div class="tinder--card">
             <img src="../assets/avis/' . $partner['pic_name'] . '">
             <h3>' . $partner['username'] . '</h3>
-            <p>Interests</p>
+            
 
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
             <input type="hidden" name="liked_users_name" value="' . $partner["username"] . '">
             ';
-                foreach ($interests as $interest){
-                    echo '
-                        <ul>
-                            <li>'.$interest['interest_name'].'</li>
-                        <ul>
-                        ';
+                if(!empty($interests)){
+                echo '<p>Interests</p>';
+                    foreach ($interests as $interest){
+                        echo '
+                            <ul>
+                                <li>'.$interest['interest_name'].'</li>
+                            <ul>
+                            ';
+                    }
+                echo '</div>';
                 }
-            echo '</div>';
             }
             
             
