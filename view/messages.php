@@ -25,8 +25,8 @@ if (!isset($user)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/messages.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://unpkg.com/navigo@7.1.2/lib/navigo.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
@@ -105,14 +105,16 @@ if (!isset($user)) {
 </head>
 
 <body>
-    <div class="row messages-page">
-        <div class="contacts col-lg-10 col-sm-12">
+    <div class="messages-page">
+        <div class="contacts ">
             <div id="user-name"></div>
             <div id="dialogName" style="color: black;"></div>
-            <div id="page">
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
-                        <span class="sr-only">Loading...</span>
+            <div id="content">
+                <div id="page">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,24 +124,7 @@ if (!isset($user)) {
             </div>
             <div class="modal"></div>
         </div>
-        <div class="contact-info col-lg-2 col-sm-12">
-            <div class="your-match-pics">
-                <img src="../images/person1.jpg" alt="Alex's pic">
-            </div>
-            <div class="personal-info">
-                <span class="name-age p-2">Alex, 24</span>
-                <span class="your-match-title">Founder at Creative Productions</span>
-            </div>
-            <br><br>
-            <div class="your-match-bio">
-                <p>
-                    I'm a libra, but not sure what it means. I like
-                    leftover pizza better than the fresh stuff. I love
-                    to travel. I have a cat named pickles, if he likes
-                    you I probably will too.
-                </p>
-            </div>
-        </div>
+
     </div>
 
     <!-- script to handle when the user has not selected any chat yet -->
@@ -228,7 +213,7 @@ if (!isset($user)) {
                                         <%- sender ? (window.app.user.id !== sender.id ? sender.name: 'You') : 'unknown user (' + message.sender_id + ')' %>
                                     </p>
 
-                                    <% var img = "./img/sent.svg"; %>
+                                    <% var img = "../img/sent.svg"; %>
                                     <% if (message.status) { img = "../img/"+message.status+".svg"; } %>
 
                                     <% if (window.app.user.id == sender.id) { %>
