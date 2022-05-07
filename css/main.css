@@ -284,7 +284,7 @@ select:-moz-focusring {
 body, html {
     height: 100%;
     width: 100%;
-    background-color: #F4F6F9 !important;
+    background-color: #CCFBFE !important;
     font-family: Open Sans Regular;
     overflow: hidden;
 }

@@ -25,7 +25,6 @@ if (!isset($user)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/messages.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://unpkg.com/navigo@7.1.2/lib/navigo.min.js" defer></script>
@@ -108,6 +107,9 @@ if (!isset($user)) {
     <div class="messages-page">
         <div class="contacts ">
             <div id="user-name"></div>
+            <div id="back_to_dashboard" onclick="app.backToDashboard()" class="back_to_dialog j-back_to_dialog">
+                <i class="material-icons">arrow_back</i>
+            </div>
             <div id="dialogName" style="color: black;"></div>
             <div id="content">
                 <div id="page">
