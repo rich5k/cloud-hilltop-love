@@ -159,6 +159,15 @@ class User extends db_connection
                              where user_interest.Uid = '$id'");
     }
 
+    function add_interest($Uid, $Iid){
+        
+        return $this->query("INSERT INTO user_interest(Uid, Iid) values ('$Uid','$Iid')");
+    }
+
+    function delete_interest($Uid){
+        return $this->query("DELETE FROM user_interest WHERE Uid = '$Uid' ");
+    }
+
     function getAllInterests(){
         return $this->fetch("SELECT * FROM interest");
     }

@@ -47,7 +47,7 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="" >Your Profile</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="swipe_page.php" >Home</a>
         <!-- Form -->
         <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -94,7 +94,7 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
         <div class="row">
           <div class="col-lg-7 col-md-10">
             <h1 class="display-2 text-white">Hello <?php echo $user['fname'] ?></h1>
-            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+            <p class="text-white mt-0 mb-5">This is your profile page. </p>
             
           </div>
         </div>
@@ -116,12 +116,9 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
             </div>
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
-                <?php if(!empty($like)){ ?>
-                  <a href="" class="btn btn-sm btn-info mr-4">Like</a>
-                <?php }?>
-                <?php if(!empty($match)){ ?>
-                  <a href="messages.php" class="btn btn-sm btn-default float-right">Message</a>
-                <?php }?>
+                
+                  <a href="messages.php" class="btn btn-sm btn-default float-right">Messages</a>
+                
               </div>
             </div>
             <div class="card-body pt-0 pt-md-4">
@@ -171,13 +168,13 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="<?php echo $user['username'] ?>" >
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="<?php echo $user['username'] ?>" readonly>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email Address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" value="<?php echo $user['email'] ?>" >
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" value="<?php echo $user['email'] ?>" readonly>
                       </div>
                     </div>
                   </div>
@@ -185,13 +182,13 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First Name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="<?php echo $user['fname'] ?>" >
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="<?php echo $user['fname'] ?>" readonly>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Last Name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="<?php echo $user['lname'] ?>" >
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="<?php echo $user['lname'] ?>" readonly>
                       </div>
                     </div>
                   </div>
@@ -204,7 +201,7 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-address">Sexual Orientation</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="<?php echo $user['sex_name']?>" type="text" >
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="<?php echo $user['sex_name']?>" type="text" readonly>
                       </div>
                     </div>
                   </div>
@@ -212,19 +209,19 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-city">Instagram Account</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative"  value="<?php echo $user['insta'] ?>" >
+                        <input type="text" id="input-city" class="form-control form-control-alternative"  value="<?php echo $user['insta'] ?>" readonly>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Twitter Account</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative"  value="<?php echo $user['twitter'] ?>" >
+                        <input type="text" id="input-country" class="form-control form-control-alternative"  value="<?php echo $user['twitter'] ?>" readonly>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Major</label>
-                        <input type="text" id="input-postal-code" class="form-control form-control-alternative" value="<?php echo $user['course_title'] ?>"  >
+                        <input type="text" id="input-postal-code" class="form-control form-control-alternative" value="<?php echo $user['course_title'] ?>"  readonly>
                       </div>
                     </div>
                   </div>
@@ -238,8 +235,8 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
                     <label>Interests</label>
                         <ul>
                           <?php foreach($interest as $int){ ?>
-                            <li><?php echo $interest['interest_name'] ?></li>
-                          <?php } ?>
+                            <li><?php echo $int['interest_name']; ?></li>
+                          <?php  } ?>
                         </ul>
                   </div>
                 </div>

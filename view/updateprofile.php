@@ -40,46 +40,42 @@ $majors = get_major_controller();
 <div class="container">
     <style>
         .avatar {
-    position: relative;
-    top: 30px;
-    margin-bottom: -50px;
-    text-align: center;
-}
-
-
-
-.pic_session .avatar img {
-    width: 100px;
-    height: 100px;
-    max-width: 250px;
-    max-height: 250px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    border: 5px solid rgba(255,255,255,0.5);
-}
-body{
-    background-color: rgba(214, 224, 226, 0.2);
-}
+          position: relative;
+          top: 30px;
+          margin-bottom: -50px;
+          text-align: center;
+        }
+        .pic_session .avatar img {
+            width: 100px;
+            height: 100px;
+            max-width: 250px;
+            max-height: 250px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.5);
+        }
+        body{
+            background-color: rgba(214, 224, 226, 0.2);
+        }
     </style>
     <h1>Edit Profile</h1>
   	<hr>
 	<div class="row">
       <!-- left column -->
+      <form action="../action/update_profile_process.php" class="form-horizontal" method="post" role="form" enctype='multipart/form-data'>
       <div class="col-md-3">
         <div class="text-center">
             <div class="pic_session">
                 <div class="avatar">
-                    <img src=<?php echo $imageUrl?> class="avatar img-circle" alt="avatar">
-                    
-                    
-                    
+                    <img class ="avatar pic_session" src=<?php echo $imageUrl?> class="avatar img-circle" alt="avatar">
                 </div>
-                
             </div>
-            <h6>Upload a different photo...</h6>
-            <input type="file" class="form-control">
+            
         </div>
+        <br><br><br><br><br><br><br>
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="form-control" name="file">
       </div>
      
       
@@ -92,7 +88,7 @@ body{
         </div> -->
         <h3>Personal info</h3>
         
-        <form action="../action/update_profile_process.php" class="form-horizontal" role="form" enct>
+        
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
@@ -102,7 +98,7 @@ body{
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" name="fname" value=<?php echo $user['lname'] ?>>
+              <input class="form-control" type="text" name="lname" value=<?php echo $user['lname'] ?>>
             </div>
           </div>
           <div class="form-group">
@@ -131,14 +127,14 @@ body{
           <div class='form-group'>
             <label for="twitter" class="col-lg-3 control-label">Twiter handle:</label>
             <div class="col-md-8">
-              <input type="text" id="twitter" name="twitter" value=<?php echo $user['twitter'] ?> >
+              <input type="text" class="form-control" id="twitter" name="twitter" value=<?php echo $user['twitter'] ?> >
             </div>
           </div>
 
           <div class='form-group'>
             <label for="instagram" class="col-lg-3 control-label">Instagram handle:</label>
             <div class="col-md-8">
-              <input type="text" id="instagram" name="instagram" value=<?php echo $user['insta'] ?> >
+              <input type="text" class="form-control" id="instagram" name="instagram" value=<?php echo $user['insta'] ?> >
             </div>
           </div>
          
@@ -191,7 +187,7 @@ body{
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
-              <input class="form-control" name="pass" type="password" value="">
+              <input class="form-control" name="password" type="password" value="">
             </div>
           </div>
           
@@ -202,10 +198,10 @@ body{
             </div>
           </div>
                     
-          <input type="hidden" name="pass" value = <?php echo $user['password']?>>
-          <input type="hidden" name="pass" value = <?php echo $user['class']?>>
-          <input type="hidden" name="pass" value = <?php echo $user['gender']?>>
-
+          <input type="hidden" name="pass" value = <?php echo $user['pass']?>>
+          <input type="hidden" name="class" value = <?php echo $user['class']?>>
+          <input type="hidden" name="gender" value = <?php echo $user['gender']?>>
+          <input type="hidden" name="Uid" value = <?php echo $user['Uid']?>>
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">

@@ -1,3 +1,13 @@
+
+<?php
+require('../../settings/core.php');
+
+if (check_login() !==  false ) {
+  header('Location: login.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

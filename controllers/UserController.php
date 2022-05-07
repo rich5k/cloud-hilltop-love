@@ -156,6 +156,18 @@ function check_like_controller($Uid, $Iid){
     $user_instance = new User();
     return $user_instance->check_likes($Uid, $Iid);
 }
+
+function add_interest_controller($Uid, $Iid){
+    $user_instance = new User();
+    return $user_instance->add_interest($Uid, $Iid);
+}
+
+function delete_interest_controller($Uid){
+    $user_instance = new User();
+    return $user_instance->delete_interest($Uid);
+}
+
+
 /*function addlike($first){
     $first=$first*3;
     $size=count(get_likes($id));

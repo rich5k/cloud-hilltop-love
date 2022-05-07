@@ -1,5 +1,6 @@
 <?php
 
+require('../controllers/UserController.php');
 if(isset($_POST['update'])){
     $email = $_POST['email'];
     $fname = $_POST['fname'];
@@ -14,6 +15,8 @@ if(isset($_POST['update'])){
     $gender = $_POST['gender'];
     $class = $_POST['class'];
     $major = $_POST['major'];
+    $interest = $_POST['interests'];
+    $Uid = $_POST['Uid'];
     if(isset($pass) && isset($confirmPass)){
         if($pass === $confirmPass){
             $nPass = $pass;
@@ -24,14 +27,16 @@ if(isset($_POST['update'])){
     }else{
         $nPass = $_POST['pass'];
     }
-
+        delete_interest_controller($Uid);
+        foreach($interest as $int){
+            add_interest_controller($Uid, $int);
+        }
         //die($pass);
         // echo "passed email and password auth";
-        if (update_user_controller($fname, $lname, $username, $email, $nPass,  $gender, $twitter, $instagram, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
-            header('Location: ../view/auth/register.php?error=Data could not be inserted');
-        } else {
-            // echo "can't add user";
-        }
+        if (update_user_controller($Uid, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
+            header('Location: ../view/profile.php?error=Data could not be updated');
+        } 
+       
 
         if (isset($_FILES["file"]["name"])) {
             $Uid = find_user_controller($email);
@@ -70,16 +75,36 @@ if(isset($_POST['update'])){
                         var fname="' . $fname . '";
                         var lname="' . $lname . '";
                         var username="' . $username . '";
-                        var password="' . $confirmPass . '";
+                        var password="' . $nPass . '";
                         registerModule.setListeners(email, fname, lname, username,password);
                         
                     </script>
                     ';
-                    // header('Location: ../view/auth/login.php');
+                    header('Location: ../view/profile.php');
                 }
             }
+        }else{
+            echo '
+            <script src="../js/quickblox.min.js" ></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" ></script>
+            <script src="https://unpkg.com/quickblox/quickblox.min.js"></script>
+            <script src="../js/QBconfig.js"></script>
+            <script src="../js/helpers.js" ></script>
+            <script src="../js/app.js" ></script>
+            <script src="../js/register.js" ></script>
+            <script>
+                var email="' . $email . '";
+                var fname="' . $fname . '";
+                var lname="' . $lname . '";
+                var username="' . $username . '";
+                var password="' . $nPass . '";
+                registerModule.setListeners(email, fname, lname, username,password);
+                
+            </script>
+            ';
+            header('Location: ../view/profile.php');
         }
-
+        
 
     
 }
