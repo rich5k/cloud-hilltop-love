@@ -1,3 +1,13 @@
+<?php
+ session_start();
+
+if(isset($_SESSION['Uid'])){
+  header('Location: ../swipe_page.php');
+  exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +22,7 @@
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous"></script>-->
   <link rel="stylesheet" href="../../css/style_signUP.css">
   <!-- <link rel="stylesheet" href="yearpicker.css"> -->
-  <script src="/path/to/cdn/jquery.slim.min.js"></script>
+  <!-- <script src="/path/to/cdn/jquery.slim.min.js"></script> -->
   <!-- <script src="yearpicker.js" async></script> -->
   <script src="../../js/quickblox.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" defer></script>
@@ -24,7 +34,7 @@
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess.php">
+      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" onsubmit="return false;">
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>
@@ -51,6 +61,7 @@
             <input type="password" name="cpass" id="cpass" placeholder="Confirm Password" required />
 
           </div>
+          <a href="login.php">Sign In</a>
 
           <input type="button" name="next" id="next" class="next action-button" value="Next" />
         </fieldset>
@@ -104,7 +115,7 @@
             <div class="select" style="width:200px">
               <label for="sexual_orient"> Sexual Orientation</label>
               <select name="sexual_orientation" id="sexual_orient" required>
-                <option value="1">Heterosexual</option>
+                <option value="1">Hecterosexual</option>
                 <option value="2">Bisexual</option>
                 <option value="3">Homosexual</option>
                 <option value="4">Pansexual</option>
@@ -113,9 +124,9 @@
           </div>
 
 
-
+          <a href="login.php">Sign In</a>
           <input type="button" name="previous" class="previous action-button" value="Previous" />
-          <input type="button" name="next" id="next" class="next action-button" value="Next" />
+          <input type="button" name="next"  class="next action-button" value="Next" />
         </fieldset>
 
         <fieldset id='social_details' class='fieldset'>
@@ -162,7 +173,7 @@
 
 
 
-
+          <a href="login.php">Sign In</a>
           <input type="button" name="previous" class="previous action-button" value="Previous" />
           <input type="submit" name="register" class="submit action-button" value="Submit" />
         </fieldset>
