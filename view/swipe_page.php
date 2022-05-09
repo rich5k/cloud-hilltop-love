@@ -51,29 +51,32 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 
             <?php
             foreach ($partners as $partner) {
-                $interests = get_user_interests($partner['Uid']);
-                echo
+                if (!already_swiped_controller($_SESSION['Uid'], $partner['Uid'])) {
 
-                '<div class="tinder--card">
-            <img src="../assets/avis/' . $partner['pic_name'] . '">
-            <h3>' . $partner['username'] . '</h3>
-            
+                    $interests = get_user_interests($partner['Uid']);
+                    echo
 
-            <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
-            <input type="hidden" name="liked_users_name" value="' . $partner["username"] . '">
-            ';
-                if (!empty($interests)) {
-                    echo '<p>Interests</p>';
-                    foreach ($interests as $interest) {
-                        echo '
-                            <ul>
-                                <li>' . $interest['interest_name'] . '</li>
-                            <ul>
-                            ';
+                    '<div class="tinder--card">
+                <img src="../assets/avis/' . $partner['pic_name'] . '">
+                <h3>' . $partner['username'] . '</h3>
+                
+    
+                <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
+                <input type="hidden" name="liked_users_name" value="' . $partner["username"] . '">
+                ';
+                    if (!empty($interests)) {
+                        echo '<p>Interests</p>';
+                        foreach ($interests as $interest) {
+                            echo '
+                                <ul>
+                                    <li>' . $interest['interest_name'] . '</li>
+                                <ul>
+                                ';
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '</div>';
                     }
-                    echo '</div>';
-                } else {
-                    echo '</div>';
                 }
             }
 
