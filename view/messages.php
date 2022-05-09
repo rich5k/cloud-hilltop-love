@@ -107,9 +107,9 @@ if (!isset($user)) {
     <div class="messages-page">
         <div class="contacts ">
             <div id="user-name"></div>
-            <div id="back_to_dashboard" onclick="app.backToDashboard()" class="back_to_dialog j-back_to_dialog">
+            <!-- <div id="back_to_dashboard" onclick="app.backToDashboard()" class="back_to_dialog j-back_to_dialog">
                 <i class="material-icons">arrow_back</i>
-            </div>
+            </div> -->
             <div id="dialogName" style="color: black;"></div>
             <div id="content">
                 <div id="page">

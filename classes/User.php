@@ -151,7 +151,8 @@ class User extends db_connection
         return $this->fetchOne("SELECT email FROM `users` WHERE Uid = '$likee_id'");
     }
 
-    function getInterests($id){
+    function getInterests($id)
+    {
         return $this->fetch("SELECT * 
                              from user_interest 
                              inner join interest
@@ -159,50 +160,45 @@ class User extends db_connection
                              where user_interest.Uid = '$id'");
     }
 
-    function add_interest($Uid, $Iid){
-        
+    function add_interest($Uid, $Iid)
+    {
+
         return $this->query("INSERT INTO user_interest(Uid, Iid) values ('$Uid','$Iid')");
     }
 
-    function delete_interest($Uid){
+    function delete_interest($Uid)
+    {
         return $this->query("DELETE FROM user_interest WHERE Uid = '$Uid' ");
     }
 
-    function getAllInterests(){
+    function getAllInterests()
+    {
         return $this->fetch("SELECT * FROM interest");
     }
 
-    function getUserMatch1($id){
+    function getUserMatch1($id)
+    {
         return $this->fetch("SELECT Iid FROM user_match where Uid='$id'");
     }
 
-    function getMajors(){
+    function getMajors()
+    {
         return $this->fetch("SELECT * FROM courses");
     }
-    
-    function getSexOrient($orient){
+
+    function getSexOrient($orient)
+    {
         return $this->fetchOne("SELECT sex_name FROM sexual_orientation WHERE id='$orient'");
     }
 
 
-    function check_match($Uid, $Iid){
+    function check_match($Uid, $Iid)
+    {
         return $this->fetchOne("SELECT Uid, Iid FROM user_match where Uid = '$Uid' and Iid = '$Iid'");
     }
 
-    function check_likes($Uid, $Iid){
+    function check_likes($Uid, $Iid)
+    {
         return $this->fetchOne("SELECT Uid, Iid FROM user_likes where Uid = '$Uid' and Iid = '$Iid' and like_dis = 'l'");
     }
 }
-
-    // record user like of other users.
-    function recordLike( $likee_username,  $liker_username){
-        return $this->db_query("INSERT INTO user_likes(Uid, lid) values ('$likee_username','$liker_username')");
-    }
-
-    function checkMatch ($likee_username,  $liker_username){
-        return $this->db_fetch_one("SELECT * from users_likes WHERE Uid = '$likee_username' AND lid = '$liker_username");
-    }
-
-    function record_success_match( $likee_username,  $liker_username){
-        return $this->db_query("INSERT INTO user_match(Uid, lid) values ('$liker_username','$likee_username')");
-    }

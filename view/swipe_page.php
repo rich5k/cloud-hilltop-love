@@ -4,7 +4,7 @@ require('../controllers/UserController.php');
 
 
 
-if (check_login() !==  true || check_login() === NULL ) {
+if (check_login() !==  true || check_login() === NULL) {
     header('Location: ./auth/login.php');
 }
 //var_dump($_SESSION['Uid']);
@@ -62,22 +62,24 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
             <input type="hidden" name="liked_users_id" value="' . $partner["Uid"] . '">
             <input type="hidden" name="liked_users_name" value="' . $partner["username"] . '">
             ';
-                if(!empty($interests)){
-                echo '<p>Interests</p>';
-                    foreach ($interests as $interest){
+                if (!empty($interests)) {
+                    echo '<p>Interests</p>';
+                    foreach ($interests as $interest) {
                         echo '
                             <ul>
-                                <li>'.$interest['interest_name'].'</li>
+                                <li>' . $interest['interest_name'] . '</li>
                             <ul>
                             ';
                     }
-                echo '</div>';
+                    echo '</div>';
+                } else {
+                    echo '</div>';
                 }
             }
-            
-            
-            
-            
+
+
+
+
             //var_dump($user);
             //var_dump($user);
             ?>
