@@ -201,4 +201,13 @@ class User extends db_connection
     {
         return $this->fetchOne("SELECT Uid, Iid FROM user_likes where Uid = '$Uid' and Iid = '$Iid' and like_dis = 'l'");
     }
+
+    function already_swiped($Uid, $Iid)
+    {
+        $db_results = $this->fetch("SELECT Uid, Iid FROM user_likes where Uid = '$Uid' and Iid = '$Iid'");
+        if ($db_results)
+            return true;
+        else
+            return false;
+    }
 }

@@ -120,73 +120,64 @@ function getLikeeEmail($likee_id)
     return $user_instance->getLikeeEmail($likee_id);
 }
 
-function get_user_interests($id){
+function get_user_interests($id)
+{
     $user_instance = new User();
     return $user_instance->getInterests($id);
 }
 
-function getUserMatch($id){
+function getUserMatch($id)
+{
     $user_instance = new User();
     return $user_instance->getUserMatch1($id);
 }
 
-function get_all_interest_controller(){
+function get_all_interest_controller()
+{
     $user_instance = new User();
     return $user_instance->getAllInterests();
 }
 
-function get_major_controller(){
-    $user_instance= new User();
+function get_major_controller()
+{
+    $user_instance = new User();
     return $user_instance->getMajors();
 }
 
 
-function get_sex_orient($orient){
+function get_sex_orient($orient)
+{
     $user_instance = new User();
     return $user_instance->getSexOrient($orient);
 }
 
 
-function check_match_controller($Uid, $Iid){
+function check_match_controller($Uid, $Iid)
+{
     $user_instance = new User();
     return $user_instance->check_match($Uid, $Iid);
 }
 
-function check_like_controller($Uid, $Iid){
+function check_like_controller($Uid, $Iid)
+{
     $user_instance = new User();
     return $user_instance->check_likes($Uid, $Iid);
 }
 
-function add_interest_controller($Uid, $Iid){
+function add_interest_controller($Uid, $Iid)
+{
     $user_instance = new User();
     return $user_instance->add_interest($Uid, $Iid);
 }
 
-function delete_interest_controller($Uid){
+function delete_interest_controller($Uid)
+{
     $user_instance = new User();
     return $user_instance->delete_interest($Uid);
 }
 
-
-/*function addlike($first){
-    $first=$first*3;
-    $size=count(get_likes($id));
-    if ($first < $size){
-        getUserLike($first,$first+3);
-    }else {
-        return;
-        
-    }
+function already_swiped_controller($Uid, $Iid)
+{
+    $user_instance = new User();
+    return $user_instance->already_swiped($Uid, $Iid);
 }
-
-function getUserLike($first,$second){
-    $first=first-1;
-    $useLike=get_likes($id);
-    $friends=array();
-    while ($first < $second ){
-        array_push($friends, $useLike['Iid']);
-        $first++;
-    }
-    return $friends;
-
-}*/
