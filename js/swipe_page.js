@@ -11,7 +11,7 @@ function swipe_action(id,username,love) {
 			//alert(id);
 			$.ajax({
 				type: 'post',
-				url: '../action/match_action.php',
+				url: '../action/match_action',
 				data: {
           'love': love,
 					'liked_users_id': id,
@@ -23,12 +23,12 @@ function swipe_action(id,username,love) {
 					var match_id=await userModule.getUserIdByEmail(data.substring(5)).
             then(result=> {return parseInt(result.id)});
             alertify.notify('you matched '+username, 'success', 5, function() {
-                console.log('dismissed');
+                console.log('matched');
             });
             dialogModule.createDialog(match_id);
           }else{
             alertify.notify(data, 'message', 5, function() {
-                console.log('dismissed');
+                console.log('not match yet');
             });
             console.log(data);
           }
