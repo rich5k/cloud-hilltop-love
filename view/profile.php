@@ -77,7 +77,7 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
 
             </li>
             <li class="nav-item">
-              <form action="./auth/logout.php" method="POST">
+              <form action="./auth/logout" method="POST">
                 <button class="nav-link btn btn-danger" name="logout" type="submit">Logout</button>
               </form>
             </li>

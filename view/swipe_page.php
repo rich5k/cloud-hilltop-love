@@ -30,13 +30,22 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
     <script src="../js/quickblox.min.js" defer></script>
     <link rel="stylesheet" href="../css/alertify.min.css">
     <script src="../js/alertify.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/swipe_page.css">
 </head>
 
 <body>
-    <div class="top-buttons">
-        <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
-        <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
+    <div class="row">
+        <div class="top-buttons col-lg-4">
+            <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+        <div class="top-buttons col-lg-4">
+            <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
+
+        </div>
 
 
     </div>

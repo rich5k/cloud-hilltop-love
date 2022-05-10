@@ -1,8 +1,7 @@
-
 <?php
 require('../../settings/core.php');
 
-if (check_login() !==  false ) {
+if (check_login() !==  false) {
   header('Location: login.php');
 }
 
@@ -34,7 +33,7 @@ if (check_login() !==  false ) {
   <div class="program_container" style="display:flex;">
 
     <div class="form_side" style="width:65%">
-      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess.php">
+      <form name="registerForm" id="msform" method='post' enctype="multipart/form-data" action="../../action/authprocess">
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">Account Setup</li>

@@ -1,8 +1,8 @@
 var QBconfig = {
   credentials: {
-    appId: '96465',
-    authKey: 'zhxr4Xm88NBJvWT',
-    authSecret: 'QMTwXjCHLmHDmLv',
+    appId: '96657',
+    authKey: '6MRTLCQUDM4faBm',
+    authSecret: 'qfbFrhr46COpZcy',
     accountKey: 'SryGxD8QXQzbvy5aNpeu'
       },
     appConfig: {

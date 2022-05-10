@@ -175,10 +175,10 @@ body {
   transform: scale(1.3);
 }
 
-.top-buttons {
+/* .top-buttons {
   flex: 0 0 100px;
   padding: 20px;
-}
+} */
 
 #message{
   margin-left: 88%;
