@@ -22,7 +22,7 @@ if (!isset($user)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Messages</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -105,27 +105,38 @@ if (!isset($user)) {
 
 <body>
     <div class="messages-page">
-        <div class="contacts ">
-            <div id="user-name"></div>
-            <!-- <div id="back_to_dashboard" onclick="app.backToDashboard()" class="back_to_dialog j-back_to_dialog">
-                <i class="material-icons">arrow_back</i>
-            </div> -->
-            <div id="dialogName" style="color: black;"></div>
-            <div id="content">
-                <div id="page">
-                    <div class="d-flex justify-content-center">
-                        <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
+        <div class="header">
+            <div class="dashboard_center">
+                <div class="header-sidebar">
+                    <div id="user-name"></div>
+                    <div id="backToSwipe">
+
+                    </div>
+
+                </div>
+                <div class="content">
+                    <div id="backToDashboard">
+
+                    </div>
+                    <div id="dialogName"></div>
+
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div id="page">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-primary" style="width: 8rem; height: 8rem;margin: 17% 0;" role="status">
+                        <span class="sr-only">Loading...</span>
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div id="substrate">
-                <!--<img class="close" src="./img/close.png" alt="close">-->
-            </div>
-            <div class="modal"></div>
         </div>
+        <!-- Modal -->
+        <div id="substrate">
+            <!--<img class="close" src="./img/close.png" alt="close">-->
+        </div>
+        <div class="modal"></div>
 
     </div>
 
