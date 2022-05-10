@@ -142,7 +142,7 @@ if (check_login() !==  false) {
           <div class='form-group'>
             <label for="major">Offering Major</label>
             <select id="major" name="major">
-              <option value="6">Buisness Administration</option>
+              <option value="6">Business Administration</option>
               <option value="2">Computer Science</option>
               <option value="5">Management Information Studies</option>
               <option value="4">Electrical Engineering</option>
