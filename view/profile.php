@@ -139,7 +139,7 @@ $numLikes = get_Number_of_Likes($_SESSION['Uid']);
                 </div>
                 <div class="text-center">
                   <h3>
-                    <?php echo $user['fname'] . " " . $user['lname'] ?><span class="font-weight-light">, 27</span>
+                    <?php echo $user['fname'] . " " . $user['lname'] ?><span class="font-weight-light"></span>
                   </h3>
 
                   <div>
