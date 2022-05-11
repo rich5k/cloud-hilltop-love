@@ -11,7 +11,7 @@ function swipe_action(id,username,love) {
 			//alert(id);
 			$.ajax({
 				type: 'post',
-				url: '../action/match_action',
+				url: '../action/match_action.php',
 				data: {
           'love': love,
 					'liked_users_id': id,
