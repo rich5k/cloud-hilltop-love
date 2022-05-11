@@ -68,7 +68,7 @@ $majors = get_major_controller();
     <hr>
     <div class="row">
       <!-- left column -->
-      <form action="../action/update_profile_process" class="form-horizontal" method="post" role="form" enctype='multipart/form-data'>
+      <form action="../action/update_profile_process.php" class="form-horizontal" method="post" role="form" enctype='multipart/form-data'>
         <div class="col-md-3">
           <div class="text-center">
             <div class="pic_session">
