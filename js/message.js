@@ -689,7 +689,7 @@ Message.prototype.setMessageStatus = function(data) {
         if(messageElem !== undefined){
             var statusElem = messageElem.querySelector('.j-message__status');
             if(statusElem !== null) {
-                statusElem.src = './img/'+status+'.svg';
+                statusElem.src = '../img/'+status+'.svg';
                 statusElem.innerText = status;
             }
         }
