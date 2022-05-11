@@ -35,18 +35,19 @@ $partners = get_partner_controller($_SESSION['Uid'], $user['gender'], $user['sex
 </head>
 
 <body>
-    <div class="row">
-        <div class="top-buttons col-lg-4">
-            <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
-        </div>
-        <div class="col-lg-4">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="top-buttons col-lg-5 col-sm-4">
+                <button id="profile" onclick="location.href = './profile.php';"><i class="fa-solid fa-user"></i></button>
+            </div>
+            <div class="col-lg-2 col-sm-4"></div>
+            <div class="top-buttons col-lg-5 col-sm-4">
+                <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
+
+            </div>
+
 
         </div>
-        <div class="top-buttons col-lg-4">
-            <button id="message" onclick="location.href = './messages.php';"><i class="fa-solid fa-message"></i></button>
-
-        </div>
-
 
     </div>
     <div class="tinder">
