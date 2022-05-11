@@ -15,7 +15,9 @@ if(isset($_POST['update'])){
     $gender = $_POST['gender'];
     $class = $_POST['class'];
     $major = $_POST['major'];
-    $interest = $_POST['interests'];
+    if(!empty($interest)){
+        $interest = $_POST['interests'];
+    }
     $Uid = $_POST['Uid'];
     if(isset($pass) && isset($confirmPass)){
         if($pass === $confirmPass){
@@ -28,12 +30,14 @@ if(isset($_POST['update'])){
         $nPass = $_POST['pass'];
     }
         delete_interest_controller($Uid);
-        foreach($interest as $int){
-            add_interest_controller($Uid, $int);
+        if(isset($interest)){
+            foreach($interest as $int){
+                add_interest_controller($Uid, $int);
+            }
         }
         //die($pass);
         // echo "passed email and password auth";
-        if (update_user_controller($Uid, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone) !== true) {
+        if (update_user_controller($Uid, $fname, $lname, $username, $email, $npass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone) !== true) {
             header('Location: ../view/profile.php?error=Data could not be updated');
         } 
        
@@ -102,8 +106,10 @@ if(isset($_POST['update'])){
                 
             </script>
             ';
+            //echo $username;
             header('Location: ../view/profile.php');
         }
+        header('Location: ../view/profile.php');
         
 
     

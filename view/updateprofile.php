@@ -215,6 +215,7 @@ $majors = get_major_controller();
           <input type="hidden" name="class" value=<?php echo $user['class'] ?>>
           <input type="hidden" name="gender" value=<?php echo $user['gender'] ?>>
           <input type="hidden" name="Uid" value=<?php echo $user['Uid'] ?>>
+
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">

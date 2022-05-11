@@ -13,10 +13,10 @@ function delete_user_controller($id)
     return $user_instance->deleteuser($id);
 }
 
-function update_user_controller($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone)
+function update_user_controller($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone)
 {
     $user_instance = new user();
-    return $user_instance->edituser($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $dob, $major, $phone);
+    return $user_instance->edituser($id, $fname, $lname, $username, $email, $pass, $twitter, $instagram, $gender, $class, $sexual_orientation, $major, $phone);
 }
 
 function find_user_controller($email)
